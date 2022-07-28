@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { results ->
             for (result in results) {
                 when (result.value) {
-                    true -> getGpsLocation()
+                    true -> getGPSLocation()
                     else -> {
                         when (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION) ||
                                 shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)) {
@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         registerForActivityResult(OpenSettings()) {
             checkPermission()
         }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         builder.show()
     }
 
-    private fun getGpsLocation() {
-        
+    private fun getGPSLocation() {
+
     }
 }
