@@ -1,6 +1,7 @@
 package com.example.bcsd_weather.data
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity
@@ -10,7 +11,13 @@ data class WeatherModel(
     @SerializedName("PEH") var humidity: String = "",        // 습도
     @SerializedName("WSP") var windSpeed: String = "",       // 풍속
     @SerializedName("fcstTime") var fcstTime: String = "",   // 예보시각
-)
+){
+    @PrimaryKey(autoGenerate = true)
+    var id = 0
+
+}
+
+
 
 // xml 파일 형식을 data class로 구현
 data class WEATHER(val response: RESPONSE)
