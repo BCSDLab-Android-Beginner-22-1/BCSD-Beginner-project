@@ -1,7 +1,9 @@
 package com.example.bcsd_weather.data
 
+import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class WeatherModel(
     @SerializedName("TMP") var temp: String = "",            // 온도
     @SerializedName("PCP") var precipitation: String = "",   // 강수량
