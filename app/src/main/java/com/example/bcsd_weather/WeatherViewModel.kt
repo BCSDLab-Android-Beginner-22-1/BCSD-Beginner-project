@@ -14,7 +14,7 @@ class WeatherViewModel(application: Application): AndroidViewModel(application) 
     private val repository = WeatherRepository(application)
 
 
-    // 새로운 날짜정보 추가
+    // 새로운 날씨 정보 추가 (data binding)
     fun addWeather(weather: WeatherModel){
 
         CoroutineScope(Dispatchers.IO).launch {
