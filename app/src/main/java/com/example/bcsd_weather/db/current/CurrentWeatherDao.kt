@@ -1,4 +1,4 @@
-package com.example.bcsd_weather
+package com.example.bcsd_weather.db.current
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
@@ -7,7 +7,7 @@ import com.example.bcsd_weather.data.WEATHER
 import com.example.bcsd_weather.data.WeatherModel
 
 @Dao
-interface WeatherDao {
+interface CurrentWeatherDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(weather: WeatherModel)
 

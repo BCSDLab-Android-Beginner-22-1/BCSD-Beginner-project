@@ -1,11 +1,12 @@
-package com.example.bcsd_weather
+package com.example.bcsd_weather.db
 
 import android.app.Application
 import androidx.lifecycle.LiveData
 import com.example.bcsd_weather.data.WeatherModel
+import com.example.bcsd_weather.db.current.CurrentWeatherDao
 
 class WeatherRepository(application: Application) {
-    private val weatherDao: WeatherDao
+    private val weatherDao: CurrentWeatherDao
     private val weatherList : LiveData<List<WeatherModel>>
 
     init {

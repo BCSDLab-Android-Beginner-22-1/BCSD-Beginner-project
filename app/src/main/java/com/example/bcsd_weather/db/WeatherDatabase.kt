@@ -1,13 +1,13 @@
-package com.example.bcsd_weather
+package com.example.bcsd_weather.db
 
 import android.content.Context
 import androidx.room.*
-import androidx.sqlite.db.SupportSQLiteOpenHelper
 import com.example.bcsd_weather.data.WeatherModel
+import com.example.bcsd_weather.db.current.CurrentWeatherDao
 
 @Database(entities = [WeatherModel::class], version = 1)
 abstract class WeatherDatabase : RoomDatabase() {
-    abstract fun weatherDao(): WeatherDao
+    abstract fun weatherDao(): CurrentWeatherDao
 
     companion object {
         private var instance: WeatherDatabase? = null

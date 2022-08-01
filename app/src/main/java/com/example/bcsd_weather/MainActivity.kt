@@ -7,6 +7,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.bcsd_weather.data.WeatherModel
 import com.example.bcsd_weather.databinding.ActivityMainBinding
+import com.example.bcsd_weather.db.WeatherViewModel
+import com.example.bcsd_weather.db.WeatherViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -16,7 +18,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
-        weatherViewModel = ViewModelProvider(this,WeatherViewModelFactory(application)).get(WeatherViewModel::class.java)
+        weatherViewModel = ViewModelProvider(this, WeatherViewModelFactory(application)).get(
+            WeatherViewModel::class.java)
 //        binding.weatherViewModel = weatherViewModel
 
         weatherViewModel.getAllWeather().observe(this, Observer {
