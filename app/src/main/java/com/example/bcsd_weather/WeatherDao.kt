@@ -2,6 +2,7 @@ package com.example.bcsd_weather
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.bcsd_weather.data.CURRENT_WEATHER_ID
 import com.example.bcsd_weather.data.WEATHER
 import com.example.bcsd_weather.data.WeatherModel
 
@@ -13,6 +14,9 @@ interface WeatherDao {
     @Delete
     fun delete(weather: WeatherModel)
 
-    @Query("SELECT * FROM WeatherModel")
-    fun getAll() : LiveData<List<WeatherModel>>
+    @Query("SELECT * FROM current_weather WHERE id = $CURRENT_WEATHER_ID")
+    fun getIdWeather() : LiveData<WeatherModel>
+
+    @Query("SELECT * FROM current_weather")
+    fun getAllWeather() : LiveData<List<WeatherModel>>
 }

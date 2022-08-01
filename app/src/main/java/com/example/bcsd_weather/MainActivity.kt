@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         weatherViewModel = ViewModelProvider(this,WeatherViewModelFactory(application)).get(WeatherViewModel::class.java)
 //        binding.weatherViewModel = weatherViewModel
 
-        weatherViewModel.getAll().observe(this, Observer {
+        weatherViewModel.getAllWeather().observe(this, Observer {
             // updateWeatherList(it) -> 메뉴에 날씨 추가
         })
 

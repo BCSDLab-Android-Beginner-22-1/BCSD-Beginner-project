@@ -11,7 +11,7 @@ class WeatherRepository(application: Application) {
     init {
         val db : WeatherDatabase = WeatherDatabase.getInstance(application)!!
         weatherDao = db.weatherDao()
-        weatherList = db.weatherDao().getAll()
+        weatherList = db.weatherDao().getAllWeather()
     }
 
     fun insert(weather: WeatherModel){
@@ -22,8 +22,12 @@ class WeatherRepository(application: Application) {
         weatherDao.delete(weather)
     }
 
-    fun getAll(): LiveData<List<WeatherModel>>{
-        return weatherDao.getAll()
+    fun getIdWeather(): LiveData<WeatherModel> {
+        return weatherDao.getIdWeather()
+    }
+
+    fun getAllWeather(): LiveData<List<WeatherModel>>{
+        return weatherDao.getAllWeather()
     }
 
 }

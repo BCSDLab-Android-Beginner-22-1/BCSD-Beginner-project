@@ -3,8 +3,6 @@ package com.example.bcsd_weather
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.example.bcsd_weather.data.WeatherModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,8 +20,13 @@ class WeatherViewModel(application: Application): AndroidViewModel(application) 
         }
     }
 
-    fun getAll() : LiveData<List<WeatherModel>> {
-        return repository.getAll()
+    fun getIdWeather(): LiveData<WeatherModel> {
+        return repository.getIdWeather()
+    }
+
+
+    fun getAllWeather() : LiveData<List<WeatherModel>> {
+        return repository.getAllWeather()
     }
 
 

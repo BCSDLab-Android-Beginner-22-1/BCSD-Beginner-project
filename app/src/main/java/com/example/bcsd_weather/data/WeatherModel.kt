@@ -4,7 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity
+const val CURRENT_WEATHER_ID = 0
+
+@Entity(tableName = "current_weather")
 data class WeatherModel(
     @SerializedName("TMP") var temp: String = "",            // 온도
     @SerializedName("PCP") var precipitation: String = "",   // 강수량
@@ -12,8 +14,8 @@ data class WeatherModel(
     @SerializedName("WSP") var windSpeed: String = "",       // 풍속
     @SerializedName("fcstTime") var fcstTime: String = "",   // 예보시각
 ){
-    @PrimaryKey(autoGenerate = true)
-    var id = 0
+    @PrimaryKey(autoGenerate = false)
+    var id = CURRENT_WEATHER_ID
 
 }
 

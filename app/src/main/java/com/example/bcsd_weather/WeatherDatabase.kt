@@ -6,19 +6,19 @@ import androidx.sqlite.db.SupportSQLiteOpenHelper
 import com.example.bcsd_weather.data.WeatherModel
 
 @Database(entities = [WeatherModel::class], version = 1)
-abstract class WeatherDatabase: RoomDatabase() {
+abstract class WeatherDatabase : RoomDatabase() {
     abstract fun weatherDao(): WeatherDao
 
-    companion object{
-        private var instance : WeatherDatabase?=null
+    companion object {
+        private var instance: WeatherDatabase? = null
 
-        fun getInstance(context : Context) : WeatherDatabase? {
-            if(instance == null){
-                synchronized(WeatherDatabase::class){
+        fun getInstance(context: Context): WeatherDatabase? {
+            if (instance == null) {
+                synchronized(WeatherDatabase::class) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         WeatherDatabase::class.java,
-                        "user.db"
+                        "weather.db"
                     ).build()
                 }
             }
