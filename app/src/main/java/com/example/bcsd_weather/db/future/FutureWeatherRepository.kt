@@ -5,7 +5,6 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import com.example.bcsd_weather.data.FutureWeatherEntity
-import com.example.bcsd_weather.data.WeatherModel
 import java.time.LocalDate
 
 @RequiresApi(Build.VERSION_CODES.O)

@@ -5,8 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.bcsd_weather.data.FutureWeatherEntity
-import com.example.bcsd_weather.data.WeatherModel
-import com.example.bcsd_weather.db.current.CurrentWeatherDao
+
 
 @Database(entities = [FutureWeatherEntity::class], version = 1)
 abstract class FutureWeatherDatabase : RoomDatabase() {
