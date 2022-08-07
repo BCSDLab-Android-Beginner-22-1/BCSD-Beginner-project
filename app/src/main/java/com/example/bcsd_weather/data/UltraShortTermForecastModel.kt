@@ -1,5 +1,6 @@
 package com.example.bcsd_weather.data
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
@@ -16,15 +17,7 @@ data class UltraShortTermForecastModel(
 )
 
 // xml 파일 형식을 data class로 구현
-@Entity(tableName = "future_weather", indices = [Index(value = ["fcstDate"], unique = true)])
-data class UstWEATHER(
-    val response: UstRESPONSE,
-    val ultraShortTermForecastModel: UltraShortTermForecastModel
-){
-    @PrimaryKey(autoGenerate = true)
-    var id:Int = 0
-}
-
+data class UstWEATHER(val response: UstRESPONSE)
 data class UstRESPONSE(val header: UstHEADER, val body: UstBODY)
 data class UstHEADER(val resultCode: Int, val resultMsg: String)
 data class UstBODY(val dataType: String, val items: UstITEMList, val totalCount: Int)

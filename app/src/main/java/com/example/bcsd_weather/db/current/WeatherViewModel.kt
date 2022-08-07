@@ -1,4 +1,4 @@
-package com.example.bcsd_weather.db
+package com.example.bcsd_weather.db.current
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

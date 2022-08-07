@@ -1,9 +1,8 @@
-package com.example.bcsd_weather.db
+package com.example.bcsd_weather.db.current
 
 import android.app.Application
 import androidx.lifecycle.LiveData
 import com.example.bcsd_weather.data.WeatherModel
-import com.example.bcsd_weather.db.current.CurrentWeatherDao
 
 class WeatherRepository(application: Application) {
     private val weatherDao: CurrentWeatherDao

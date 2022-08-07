@@ -7,8 +7,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.bcsd_weather.data.WeatherModel
 import com.example.bcsd_weather.databinding.ActivityMainBinding
-import com.example.bcsd_weather.db.WeatherViewModel
-import com.example.bcsd_weather.db.WeatherViewModelFactory
+import com.example.bcsd_weather.db.current.WeatherViewModel
+import com.example.bcsd_weather.db.current.WeatherViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

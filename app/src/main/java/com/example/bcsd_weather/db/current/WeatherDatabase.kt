@@ -1,9 +1,8 @@
-package com.example.bcsd_weather.db
+package com.example.bcsd_weather.db.current
 
 import android.content.Context
 import androidx.room.*
 import com.example.bcsd_weather.data.WeatherModel
-import com.example.bcsd_weather.db.current.CurrentWeatherDao
 
 @Database(entities = [WeatherModel::class], version = 1)
 abstract class WeatherDatabase : RoomDatabase() {
