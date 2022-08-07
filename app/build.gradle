@@ -17,6 +17,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "Weather_Api_Address", properties['weather_api_address']
         buildConfigField "String", "Weather_Api_Key", properties['weather_api_key']
     }
 
