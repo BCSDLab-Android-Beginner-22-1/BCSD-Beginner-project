@@ -1,13 +1,15 @@
 package com.example.bcsd_weather.network
 
+import com.example.bcsd_weather.BuildConfig
 import com.example.bcsd_weather.data.UstWEATHER
 import retrofit2.Call
+import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface UltraShortTermForecastInterface {
+    @GET("getUltraSrtFcst")
     fun getWeather(
-        @Query("serviceKey") serviceKey: String =
-            "zi34Riy4d9liIfFVCg0Vs4QG/jqmrSJTgnULJG8btfxHfDHlOCXmFo2swcdZV7zpVm/KP0HKbgP0y+lswuHdww==", // 인증키
+        @Query("serviceKey") serviceKey: String = BuildConfig.Weather_Api_Key,// 인증키
         @Query("numOfRows") num_of_rows: Int,   // 한 페이지 경과 수
         @Query("pageNo") page_no: Int,          // 페이지 번호
         @Query("dataType") data_type: String,   // 응답자료형식
