@@ -6,10 +6,10 @@ import androidx.room.Room
 
 class LocalRepository(application: Application) {
     private val localDao:LocalDao
-    private val localDataList: LiveData<List<LocalEntity>>
+    private val localDataList: List<LocalEntity>
 
     init {
-        val localDb = Room.databaseBuilder(application, LocalDatabase::class.java,"localdb").build()
+        val localDb : LocalDatabase = LocalDatabase.getInstance(application)!!
         localDao = localDb.localDao()
         localDataList = localDb.localDao().getAllLocalData()
     }

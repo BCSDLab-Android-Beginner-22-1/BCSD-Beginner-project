@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 class LocalViewModel(application: Application):AndroidViewModel(application) {
     private val repository = LocalRepository(application)
 
-    fun getAllLocalData(): LiveData<List<LocalEntity>>{
+    fun getAllLocalData(): List<LocalEntity>{
         return repository.getAllLocalData()
     }
 
@@ -20,10 +20,8 @@ class LocalViewModel(application: Application):AndroidViewModel(application) {
         }
     }
 
-    fun deletAllLocalData(){
-        CoroutineScope(Dispatchers.IO).launch(
-            repository.deleteAllLocalData()
-        )
+    fun deleteAllLocalData(){
+        repository.deleteAllLocalData()
     }
 
 }

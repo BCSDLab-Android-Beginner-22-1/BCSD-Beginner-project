@@ -8,11 +8,11 @@ import androidx.room.Query
 @Dao
 interface LocalDao {
     @Query("SELECT * FROM localDataTable")
-    suspend fun getAllLocalData():LiveData<List<LocalEntity>>
+    fun getAllLocalData():List<LocalEntity>
 
     @Insert
-    suspend fun insert(localWeatherEntity: LocalEntity)
+    fun insert(localWeatherEntity: LocalEntity)
 
     @Query("DELETE FROM localDataTable")
-    suspend fun deleteAllLocalData()
+    fun deleteAllLocalData()
 }
