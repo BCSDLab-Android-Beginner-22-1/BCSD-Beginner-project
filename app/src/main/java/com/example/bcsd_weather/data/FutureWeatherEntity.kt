@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "future_weather", indices = [Index(value = ["fcstDate"], unique = true)])
 data class FutureWeatherEntity(
-    val response: UstRESPONSE,
+    val response: StRESPONSE,
     @Embedded
     val shortTermForecastModel: ShortTermForecastModel,
     @Embedded
