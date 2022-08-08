@@ -3,6 +3,7 @@ package com.example.bcsd_weather
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val date = LocalDate.now()
+        Log.d("localdate","$date")
 //
 //        weatherViewModel = ViewModelProvider(this, WeatherViewModelFactory(application)).get(
 //            WeatherViewModel::class.java)
