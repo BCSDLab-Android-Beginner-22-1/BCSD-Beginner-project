@@ -1,10 +1,10 @@
 package com.example.bcsd_weather
 
 import android.Manifest
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.bcsd_weather.util.OpenSettings
 
 class MainActivity : AppCompatActivity() {
@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         requestPermission.launch(permissionList)
     }
+
     private fun permissionDialog(isDeniedOnce: Boolean) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.dialog_request_permission_title))
@@ -67,5 +68,4 @@ class MainActivity : AppCompatActivity() {
     private fun getGPSLocation() {
 
     }
-
 }

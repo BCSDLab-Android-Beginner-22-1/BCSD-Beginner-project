@@ -1,0 +1,66 @@
+package com.example.bcsd_weather.data.repository.remote
+
+import android.annotation.SuppressLint
+import android.content.Context
+import android.os.Looper
+import com.example.bcsd_weather.data.model.GPSRemote
+import com.google.android.gms.location.*
+
+@SuppressLint("MissingPermission")
+class GPSRemoteDataSourceImpl(private val context: Context) : GPSRemoteDataSource {
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+
+    private lateinit var currentLocation: GPSRemote
+
+    private val locationRequest = LocationRequest.create().apply {
+        interval = 10000
+        priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+    }
+
+    private val locationCallback = object : LocationCallback() {
+        override fun onLocationResult(locationResult: LocationResult) {
+            for (location in locationResult.locations) {
+                currentLocation = GPSRemote(location.latitude, location.longitude)
+                break
+            }
+        }
+    }
+
+    override fun initGPS() {
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
+
+        val builder = LocationSettingsRequest.Builder()
+            .addLocationRequest(locationRequest)
+        val client = LocationServices.getSettingsClient(context)
+        val task = client.checkLocationSettings(builder.build())
+
+        task.addOnSuccessListener {
+            println("location client setting success")
+        }
+
+        task.addOnFailureListener {
+            println("location client setting failure")
+        }
+
+        fusedLocationProviderClient.lastLocation
+            .addOnSuccessListener { location ->
+                if (location == null)
+                    println("location is null!")
+                else
+                    currentLocation = GPSRemote(location.latitude, location.longitude)
+            }
+
+        fusedLocationProviderClient.requestLocationUpdates(
+            locationRequest,
+            locationCallback,
+            Looper.getMainLooper()
+        )
+    }
+
+    override fun getGPS(): GPSRemote? {
+        return if (this@GPSRemoteDataSourceImpl::currentLocation.isInitialized)
+            currentLocation
+        else
+            null
+    }
+}
