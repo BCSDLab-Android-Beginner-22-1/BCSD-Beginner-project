@@ -9,9 +9,9 @@ import androidx.room.PrimaryKey
 data class FutureWeatherEntity(
     val response: UstRESPONSE,
     @Embedded
-    val ultraShortTermForecastModel: UltraShortTermForecastModel,
+    val shortTermForecastModel: ShortTermForecastModel,
     @Embedded
-    val ustITEM: UstITEM
+    val StITEM: StITEM
 ){
     @PrimaryKey(autoGenerate = true)
     var id:Int = 0
