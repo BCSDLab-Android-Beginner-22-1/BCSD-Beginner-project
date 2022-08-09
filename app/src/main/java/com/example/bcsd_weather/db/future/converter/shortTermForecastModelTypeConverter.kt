@@ -9,13 +9,13 @@ import com.google.gson.Gson
 class shortTermForecastModelTypeConverter(private val gson: Gson) {
 
     @TypeConverter
-    fun stfToJson(value: ShortTermForecastModel): String?{
+    fun stfToJson(value: ShortTermForecastModel): String? {
         return gson.toJson(value)
     }
 
     @TypeConverter
     fun jsonToStf(value: String): ShortTermForecastModel {
-        return gson.fromJson(value,ShortTermForecastModel::class.java)
+        return gson.fromJson(value, ShortTermForecastModel::class.java)
     }
 
 }

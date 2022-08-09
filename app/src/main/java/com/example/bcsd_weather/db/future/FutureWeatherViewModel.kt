@@ -11,12 +11,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 
-class FutureWeatherViewModel(application: Application):AndroidViewModel(application) {
+class FutureWeatherViewModel(application: Application) : AndroidViewModel(application) {
     @RequiresApi(Build.VERSION_CODES.O)
     private val repository = FutureWeatherRepository(application)
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>){
+    fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>) {
 
         CoroutineScope(Dispatchers.IO).launch {
             repository.insertFutureWeather(futureWeatherEntity)
@@ -25,16 +25,17 @@ class FutureWeatherViewModel(application: Application):AndroidViewModel(applicat
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getFutureWeather(startDate: LocalDate): LiveData<List<FutureWeatherEntity>> {
+    fun getFutureWeather(startDate: String): LiveData<List<FutureWeatherEntity>> {
         return repository.getFutureWeather(startDate)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getDetailedFutureWeather(date: LocalDate): LiveData<FutureWeatherEntity> {
+    fun getDetailedFutureWeather(date: String): LiveData<FutureWeatherEntity> {
         return repository.getDetailedFutureWeather(date)
     }
+
     @RequiresApi(Build.VERSION_CODES.O)
-    fun deleteWeather(firstDateToKeep: LocalDate){
+    fun deleteWeather(firstDateToKeep: String) {
         CoroutineScope(Dispatchers.IO).launch {
             repository.deleteWeather(firstDateToKeep)
         }

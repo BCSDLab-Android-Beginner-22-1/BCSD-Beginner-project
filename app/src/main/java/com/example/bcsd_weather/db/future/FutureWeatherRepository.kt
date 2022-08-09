@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter
 @RequiresApi(Build.VERSION_CODES.O)
 class FutureWeatherRepository(application: Application) {
     private val futureWeatherDao: FutureWeatherDao
-    private val futureWeatherList : LiveData<List<FutureWeatherEntity>>
+    private val futureWeatherList: LiveData<List<FutureWeatherEntity>>
     private val gson = Gson()
     private val current = LocalDate.now()
     private val formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
@@ -25,18 +25,19 @@ class FutureWeatherRepository(application: Application) {
         futureWeatherList = futureDb.futureWeatherDao().getFutureWeather(formatted)
     }
 
-    fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>){
+    fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>) {
         futureWeatherDao.insertFutureWeather(futureWeatherEntity)
     }
 
-    fun getFutureWeather(startDate: String): LiveData<List<FutureWeatherEntity>>{
+    fun getFutureWeather(startDate: String): LiveData<List<FutureWeatherEntity>> {
         return futureWeatherDao.getFutureWeather(startDate)
     }
 
-    fun getDetailedFutureWeather(date: String): LiveData<FutureWeatherEntity>{
+    fun getDetailedFutureWeather(date: String): LiveData<FutureWeatherEntity> {
         return futureWeatherDao.getDetailedFutureWeather(date)
     }
-    fun deleteWeather(firstDateToKeep: String){
+
+    fun deleteWeather(firstDateToKeep: String) {
         futureWeatherDao.deleteWeather(firstDateToKeep)
     }
 

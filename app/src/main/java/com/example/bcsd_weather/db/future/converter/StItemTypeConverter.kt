@@ -9,12 +9,12 @@ import com.google.gson.Gson
 class StItemTypeConverter(private val gson: Gson) {
 
     @TypeConverter
-    fun listToJson(value: StITEM): String?{
+    fun listToJson(value: StITEM): String? {
         return gson.toJson(value)
     }
 
     @TypeConverter
-    fun jsonToList(value: String):StITEM{
+    fun jsonToList(value: String): StITEM {
         return gson.fromJson(value, StITEM::class.java)
     }
 }

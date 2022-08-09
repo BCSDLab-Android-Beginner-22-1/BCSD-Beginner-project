@@ -25,7 +25,7 @@ abstract class FutureWeatherDatabase : RoomDatabase() {
     companion object {
         private var instance: FutureWeatherDatabase? = null
 
-        fun getInstance(context: Context,gson: Gson): FutureWeatherDatabase? {
+        fun getInstance(context: Context, gson: Gson): FutureWeatherDatabase? {
             if (instance == null) {
                 synchronized(FutureWeatherDatabase::class) {
                     instance = Room.databaseBuilder(
