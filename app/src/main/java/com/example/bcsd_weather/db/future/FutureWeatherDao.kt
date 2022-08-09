@@ -16,12 +16,12 @@ interface FutureWeatherDao {
 
     // repository에서 startDate 매개변수에 LocalDate.now() 전달함
     @Query("select * from future_weather where date(fcstDate) >= date(:startDate)")
-    fun getFutureWeather(startDate: LocalDate): LiveData<List<FutureWeatherEntity>>
+    fun getFutureWeather(startDate: String): LiveData<List<FutureWeatherEntity>>
 
     @Query("select * from future_weather where date(fcstDate) = date(:date)")
-    fun getDetailedFutureWeather(date: LocalDate): LiveData<FutureWeatherEntity>
+    fun getDetailedFutureWeather(date: String): LiveData<FutureWeatherEntity>
 
     @Query("delete from future_weather where date(fcstDate) < date(:firstDateToKeep)")
-    fun deleteWeather(firstDateToKeep: LocalDate)
+    fun deleteWeather(firstDateToKeep: String)
 
 }
