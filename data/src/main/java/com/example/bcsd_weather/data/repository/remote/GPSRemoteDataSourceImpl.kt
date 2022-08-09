@@ -16,7 +16,7 @@ class GPSRemoteDataSourceImpl(private val context: Context) : GPSRemoteDataSourc
     private lateinit var currentLocation: GPSRemote
 
     private val locationRequest = LocationRequest.create().apply {
-        interval = 10000
+        interval = 1000
         priority = LocationRequest.PRIORITY_HIGH_ACCURACY
     }
 
