@@ -5,6 +5,9 @@ import android.content.Context
 import android.os.Looper
 import com.example.bcsd_weather.data.model.GPSRemote
 import com.google.android.gms.location.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 @SuppressLint("MissingPermission")
 class GPSRemoteDataSourceImpl(private val context: Context) : GPSRemoteDataSource {
@@ -26,7 +29,7 @@ class GPSRemoteDataSourceImpl(private val context: Context) : GPSRemoteDataSourc
         }
     }
 
-    override fun initGPS() {
+    override suspend fun initGPS(): Flow<Boolean> {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
 
         val builder = LocationSettingsRequest.Builder()
@@ -34,7 +37,10 @@ class GPSRemoteDataSourceImpl(private val context: Context) : GPSRemoteDataSourc
         val client = LocationServices.getSettingsClient(context)
         val task = client.checkLocationSettings(builder.build())
 
+        var isInitialized = false
+
         task.addOnSuccessListener {
+            isInitialized = true
             println("location client setting success")
         }
 
@@ -55,12 +61,17 @@ class GPSRemoteDataSourceImpl(private val context: Context) : GPSRemoteDataSourc
             locationCallback,
             Looper.getMainLooper()
         )
+        return flow {
+            while (true) {
+                emit(isInitialized)
+                if (isInitialized)
+                    break
+                delay(1000)
+            }
+        }
     }
 
-    override fun getGPS(): GPSRemote? {
-        return if (this@GPSRemoteDataSourceImpl::currentLocation.isInitialized)
-            currentLocation
-        else
-            null
+    override fun getGPS(): GPSRemote {
+        return currentLocation
     }
 }
