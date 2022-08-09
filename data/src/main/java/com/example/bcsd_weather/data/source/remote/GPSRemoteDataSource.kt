@@ -1,4 +1,4 @@
-package com.example.bcsd_weather.data.repository.remote
+package com.example.bcsd_weather.data.source.remote
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 @SuppressLint("MissingPermission")
-class GPSRemoteDataSourceImpl(private val context: Context) : GPSRemoteDataSource {
+class GPSRemoteDataSource(private val context: Context) {
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     private lateinit var currentLocation: GPSRemote
@@ -29,7 +29,7 @@ class GPSRemoteDataSourceImpl(private val context: Context) : GPSRemoteDataSourc
         }
     }
 
-    override suspend fun initGPS(): Flow<Boolean> {
+    suspend fun initGPS(): Flow<Boolean> {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
 
         val builder = LocationSettingsRequest.Builder()
@@ -71,7 +71,7 @@ class GPSRemoteDataSourceImpl(private val context: Context) : GPSRemoteDataSourc
         }
     }
 
-    override fun getGPS(): GPSRemote {
+    fun getGPS(): GPSRemote {
         return currentLocation
     }
 }
