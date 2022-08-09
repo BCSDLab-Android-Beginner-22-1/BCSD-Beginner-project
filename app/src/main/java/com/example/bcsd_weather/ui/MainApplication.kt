@@ -1,4 +1,4 @@
-package com.example.bcsd_weather
+package com.example.bcsd_weather.ui
 
 import android.app.Application
 import com.example.bcsd_weather.di.appModule
