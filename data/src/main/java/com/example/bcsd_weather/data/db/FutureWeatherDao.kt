@@ -1,12 +1,12 @@
-package com.example.bcsd_weather.db.future
+package com.example.bcsd_weather.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.bcsd_weather.data.FutureWeatherEntity
-import com.example.bcsd_weather.data.UstWEATHER
+
+import com.example.bcsd_weather.domain.model.FutureWeatherEntity
 import java.time.LocalDate
 
 @Dao

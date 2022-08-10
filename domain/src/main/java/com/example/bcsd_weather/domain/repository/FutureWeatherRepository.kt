@@ -1,7 +1,8 @@
-package com.example.bcsd_weather.db.future
+package com.example.bcsd_weather.domain.repository
 
 import androidx.lifecycle.LiveData
-import com.example.bcsd_weather.data.FutureWeatherEntity
+
+import com.example.bcsd_weather.domain.model.FutureWeatherEntity
 
 interface FutureWeatherRepository {
     fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>)

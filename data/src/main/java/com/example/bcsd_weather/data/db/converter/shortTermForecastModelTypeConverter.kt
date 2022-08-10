@@ -2,7 +2,7 @@ package com.example.bcsd_weather.db.future.converter
 
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
-import com.example.bcsd_weather.data.ShortTermForecastModel
+import com.example.bcsd_weather.domain.model.ShortTermForecastModel
 import com.google.gson.Gson
 
 @ProvidedTypeConverter

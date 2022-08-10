@@ -1,12 +1,9 @@
 package com.example.bcsd_weather.db.future
 
-import android.app.Application
-import android.os.Build
-import androidx.annotation.RequiresApi
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.bcsd_weather.data.FutureWeatherEntity
+import com.example.bcsd_weather.domain.model.FutureWeatherEntity
+import com.example.bcsd_weather.domain.repository.FutureWeatherRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

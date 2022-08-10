@@ -1,4 +1,4 @@
-package com.example.bcsd_weather.data
+package com.example.bcsd_weather.domain.model
 
 import androidx.room.Embedded
 import androidx.room.Entity

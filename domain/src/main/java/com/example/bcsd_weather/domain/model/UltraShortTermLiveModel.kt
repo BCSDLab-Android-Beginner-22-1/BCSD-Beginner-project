@@ -1,4 +1,4 @@
-package com.example.bcsd_weather.data
+package com.example.bcsd_weather.domain.model
 
 import com.google.gson.annotations.SerializedName
 

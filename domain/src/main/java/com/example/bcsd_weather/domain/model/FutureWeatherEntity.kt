@@ -1,9 +1,11 @@
-package com.example.bcsd_weather.data
+package com.example.bcsd_weather.domain.model
 
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.example.bcsd_weather.domain.model.ShortTermForecastModel
+import com.example.bcsd_weather.domain.model.StITEM
 
 @Entity(tableName = "future_weather", indices = [Index(value = ["fcstDate"], unique = true)])
 data class FutureWeatherEntity(

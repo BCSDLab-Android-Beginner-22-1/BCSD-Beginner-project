@@ -1,16 +1,20 @@
-package com.example.bcsd_weather.db.future
+package com.example.bcsd_weather.data.repository
 
 import android.app.Application
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
-import com.example.bcsd_weather.data.FutureWeatherEntity
+import com.example.bcsd_weather.data.db.FutureWeatherDao
+import com.example.bcsd_weather.data.db.FutureWeatherDatabase
+import com.example.bcsd_weather.domain.model.FutureWeatherEntity
+import com.example.bcsd_weather.domain.repository.FutureWeatherRepository
 import com.google.gson.Gson
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
-class FutureWeatherRepositoryImpl(application: Application, var futureDb:FutureWeatherDatabase) : FutureWeatherRepository {
+class FutureWeatherRepositoryImpl(application: Application, var futureDb: FutureWeatherDatabase) :
+    FutureWeatherRepository {
     private val futureWeatherDao: FutureWeatherDao
     private val futureWeatherList: LiveData<List<FutureWeatherEntity>>
     private val gson = Gson()
