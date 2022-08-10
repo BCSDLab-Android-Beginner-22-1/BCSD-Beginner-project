@@ -10,7 +10,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
-class FutureWeatherRepository(application: Application) {
+class FutureWeatherRepositoryImpl(application: Application, var futureDb:FutureWeatherDatabase) : FutureWeatherRepository {
     private val futureWeatherDao: FutureWeatherDao
     private val futureWeatherList: LiveData<List<FutureWeatherEntity>>
     private val gson = Gson()
@@ -20,24 +20,24 @@ class FutureWeatherRepository(application: Application) {
 
     // 날짜 형식 : yyyyMMdd
     init {
-        val futureDb: FutureWeatherDatabase = FutureWeatherDatabase.getInstance(application, gson)!!
+        futureDb = FutureWeatherDatabase.getInstance(application, gson)!!
         futureWeatherDao = futureDb.futureWeatherDao()
         futureWeatherList = futureDb.futureWeatherDao().getFutureWeather(formatted)
     }
 
-    fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>) {
+    override fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>) {
         futureWeatherDao.insertFutureWeather(futureWeatherEntity)
     }
 
-    fun getFutureWeather(startDate: String): LiveData<List<FutureWeatherEntity>> {
+    override fun getFutureWeather(startDate: String): LiveData<List<FutureWeatherEntity>> {
         return futureWeatherDao.getFutureWeather(startDate)
     }
 
-    fun getDetailedFutureWeather(date: String): LiveData<FutureWeatherEntity> {
+    override fun getDetailedFutureWeather(date: String): LiveData<FutureWeatherEntity> {
         return futureWeatherDao.getDetailedFutureWeather(date)
     }
 
-    fun deleteWeather(firstDateToKeep: String) {
+    override fun deleteWeather(firstDateToKeep: String) {
         futureWeatherDao.deleteWeather(firstDateToKeep)
     }
 
