@@ -10,8 +10,6 @@ data class DayForecast(
     val snow: String,
     val skyState: String,
     val temperature: String,
-    val highestTemperature: String,
-    val lowestTemperature: String,
     val windDirection: String,
     val windSpeed: String,
     val waveHeight: String
