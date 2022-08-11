@@ -1,10 +1,10 @@
-package com.example.bcsd_weather.network
+package api
 
 import com.example.bcsd_weather.BuildConfig
-import com.example.bcsd_weather.data.UslWEATHER
-import retrofit2.Call
+import model.UslWeather
 import retrofit2.http.GET
 import retrofit2.http.Query
+import retrofit2.Call
 
 interface UltraShortTermLiveInterface {
     @GET("getUltraSrtNcst")
@@ -17,5 +17,5 @@ interface UltraShortTermLiveInterface {
         @Query("base_time") base_time: String,  // 발표 시각
         @Query("nx") nx: Int,                   // 예보지점 X 좌표
         @Query("ny") ny: Int                    // 예보지점 Y 좌표
-    ): Call<UslWEATHER>
+    ): Call<UslWeather>
 }
