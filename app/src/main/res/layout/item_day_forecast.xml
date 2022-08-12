@@ -28,7 +28,7 @@
             android:id="@+id/forecast_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/forecast_low_high_temperature(dayForecast.lowestTemperature, dayForecast.highestTemperature)}"
+            android:text="@{@string/forecast_temperature(dayForecast.temperature)}"
             android:textAppearance="?android:attr/textAppearanceLarge"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
