@@ -1,6 +1,6 @@
 package com.example.bcsd_weather.data.api
 
-import com.example.bcsd_weather.BuildConfig
+import com.example.bcsd_weather.data.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

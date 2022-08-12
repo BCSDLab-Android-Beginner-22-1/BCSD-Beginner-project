@@ -1,6 +1,6 @@
 package com.example.bcsd_weather.data.api
 
-import com.example.bcsd_weather.BuildConfig
+import com.example.bcsd_weather.data.BuildConfig
 import com.example.bcsd_weather.data.model.ShortTermForecastRemote
 import retrofit2.http.GET
 import retrofit2.http.Query
