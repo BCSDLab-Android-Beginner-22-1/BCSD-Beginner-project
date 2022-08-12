@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface UltraShortTermLiveInterface {
     @GET("getUltraSrtNcst")
-    fun getWeather(
+    suspend fun getWeather(
         @Query("serviceKey") serviceKey: String = BuildConfig.Weather_Api_Key, // 인증키
         @Query("numOfRows") numOfRows: Int = 1000,   // 한 페이지 경과 수
         @Query("pageNo") pageNo: Int = 1,          // 페이지 번호

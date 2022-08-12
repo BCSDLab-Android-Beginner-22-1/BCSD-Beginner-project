@@ -6,7 +6,7 @@ import com.example.bcsd_weather.domain.enum.ApiType
 import com.example.bcsd_weather.domain.enum.getBaseDateAndTime
 
 class ShortTermForecastDataSource {
-    fun getShortTermFcst(nx: Int, ny: Int): ShortTermForecastRemote {
+    suspend fun getShortTermFcst(nx: Int, ny: Int): ShortTermForecastRemote {
 
         val baseDateAndTime = ApiType.ShortTermForecast.getBaseDateAndTime()
         val baseDate = baseDateAndTime["baseDate"]!!
