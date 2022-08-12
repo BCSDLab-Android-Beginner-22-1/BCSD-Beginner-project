@@ -3,7 +3,7 @@ package usecase
 import model.UltraShortTermLive
 import repository.UltraSrtLiveRepository
 
-class GetUltraSrtLiveUseCase(private val ultraSrtLiveUseCase: UltraSrtLiveRepository) {
+class GetUltraSrtLiveUseCase(private val ultraSrtLiveRepository: UltraSrtLiveRepository) {
     suspend fun execute(
         serviceKey: String,
         numOfRows: Int,
@@ -13,7 +13,7 @@ class GetUltraSrtLiveUseCase(private val ultraSrtLiveUseCase: UltraSrtLiveReposi
         baseTime: String,
         nx: Int,
         ny: Int): UltraShortTermLive
-    = ultraSrtLiveUseCase.getUltraSrtLive(
+    = ultraSrtLiveRepository.getUltraSrtLive(
         serviceKey,
         numOfRows,
         pageNo,
