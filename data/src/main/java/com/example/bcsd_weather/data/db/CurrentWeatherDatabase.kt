@@ -6,7 +6,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.bcsd_weather.data.WeatherModel
 
-@Database(entities = [WeatherModel::class], version = 1)
+@Database(entities = [WeatherModel::class], version = 2)
 abstract class CurrentWeatherDatabase : RoomDatabase() {
     abstract fun currentWeatherDao(): CurrentWeatherDao
 
@@ -20,7 +20,9 @@ abstract class CurrentWeatherDatabase : RoomDatabase() {
                         context.applicationContext,
                         CurrentWeatherDatabase::class.java,
                         "current_weather.db"
-                    ).build()
+                    )
+                        .fallbackToDestructiveMigration()
+                        .build()
                 }
             }
             return instance

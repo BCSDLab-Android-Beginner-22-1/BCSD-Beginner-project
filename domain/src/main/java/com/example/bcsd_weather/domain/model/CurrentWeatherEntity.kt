@@ -15,7 +15,7 @@ data class WeatherModel(
     @SerializedName("fcstTime") var fcstTime: String = "",   // 예보시각
 ){
     @PrimaryKey(autoGenerate = false)
-    var id = CURRENT_WEATHER_ID
+    var id : Int? = null
 
 }
 
