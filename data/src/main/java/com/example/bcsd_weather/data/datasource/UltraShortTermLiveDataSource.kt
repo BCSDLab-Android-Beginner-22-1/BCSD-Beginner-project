@@ -7,7 +7,7 @@ import com.example.bcsd_weather.domain.enum.getBaseDateAndTime
 
 class UltraShortTermLiveDataSource {
     suspend fun getUltraShortTermLive(nx: Int, ny: Int): UltraShortTermLiveRemote {
-        val baseDateAndTime = ApiType.ShortTermForecast.getBaseDateAndTime()
+        val baseDateAndTime = ApiType.UltraShortTermLive.getBaseDateAndTime()
         val baseDate = baseDateAndTime["baseDate"]!!
         val baseTime = baseDateAndTime["baseTime"]!!
 
