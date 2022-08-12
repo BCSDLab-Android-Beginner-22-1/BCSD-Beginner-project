@@ -13,7 +13,10 @@ object RetrofitBuilder {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-    fun shortTermFcstService(): ShortTermForecastInterface = getRetrofit().create(api.ShortTermForecastInterface::class.java)
-    fun ultraShortTermFcstService(): UltraShortTermForecastInterface = getRetrofit().create(api.UltraShortTermForecastInterface::class.java)
-    fun ultraShortTermLiveService(): UltraShortTermLiveInterface = getRetrofit().create(api.UltraShortTermLiveInterface::class.java)
+    fun shortTermFcstService(): ShortTermForecastInterface = getRetrofit().create(
+        ShortTermForecastInterface::class.java)
+    fun ultraShortTermFcstService(): UltraShortTermForecastInterface = getRetrofit().create(
+        UltraShortTermForecastInterface::class.java)
+    fun ultraShortTermLiveService(): UltraShortTermLiveInterface = getRetrofit().create(
+        UltraShortTermLiveInterface::class.java)
 }
