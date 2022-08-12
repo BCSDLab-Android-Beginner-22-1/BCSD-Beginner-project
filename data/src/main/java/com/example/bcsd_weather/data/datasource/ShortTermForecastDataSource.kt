@@ -1,9 +1,9 @@
 package com.example.bcsd_weather.data.datasource
 
-import kotlinx.coroutines.flow.Flow
+import com.example.bcsd_weather.data.api.RetrofitBuilder
 import com.example.bcsd_weather.data.model.ShortTermForecastRemote
 
-interface ShortTermForecastDataSource {
+class ShortTermForecastDataSource {
     fun getShortTermFcst(
         serviceKey: String,
         numOfRows: Int,
@@ -13,5 +13,9 @@ interface ShortTermForecastDataSource {
         baseTime: String,
         nx: Int,
         ny: Int
-    ): ShortTermForecastRemote
+    ): ShortTermForecastRemote {
+        return RetrofitBuilder
+            .shortTermFcstService()
+            .getWeather(serviceKey, numOfRows, pageNo, dataType, baseDate, baseTime, nx, ny)
+    }
 }
