@@ -4,23 +4,6 @@ import com.example.bcsd_weather.domain.model.UltraShortTermLive
 import com.example.bcsd_weather.domain.repository.UltraSrtLiveRepository
 
 class GetUltraSrtLiveUseCase(private val ultraSrtLiveRepository: UltraSrtLiveRepository) {
-    suspend operator fun invoke(
-        serviceKey: String,
-        numOfRows: Int,
-        pageNo: Int,
-        dataType: String,
-        baseDate: String,
-        baseTime: String,
-        nx: Int,
-        ny: Int
-    ): UltraShortTermLive = ultraSrtLiveRepository.getUltraSrtLive(
-        serviceKey,
-        numOfRows,
-        pageNo,
-        dataType,
-        baseDate,
-        baseTime,
-        nx,
-        ny
-    )
+    suspend operator fun invoke(nx: Int, ny: Int): UltraShortTermLive =
+        ultraSrtLiveRepository.getUltraSrtLive(nx, ny)
 }

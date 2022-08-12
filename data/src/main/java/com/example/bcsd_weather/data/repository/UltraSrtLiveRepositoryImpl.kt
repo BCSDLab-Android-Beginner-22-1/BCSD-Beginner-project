@@ -7,25 +7,7 @@ import com.example.bcsd_weather.domain.repository.UltraSrtLiveRepository
 
 class UltraSrtLiveRepositoryImpl(private val ultraSrtTermLiveDataSource: UltraShortTermLiveDataSource) :
     UltraSrtLiveRepository {
-    override suspend fun getUltraSrtLive(
-        serviceKey: String,
-        numOfRows: Int,
-        pageNo: Int,
-        dataType: String,
-        baseDate: String,
-        baseTime: String,
-        nx: Int,
-        ny: Int
-    ): UltraShortTermLive {
-        return ultraSrtTermLiveDataSource.getUltraShortTermLive(
-            serviceKey,
-            numOfRows,
-            pageNo,
-            dataType,
-            baseDate,
-            baseTime,
-            nx,
-            ny
-        ).mapToUltraShortTermLive()
+    override suspend fun getUltraSrtLive(nx: Int, ny: Int): UltraShortTermLive {
+        return ultraSrtTermLiveDataSource.getUltraShortTermLive(nx, ny).mapToUltraShortTermLive()
     }
 }

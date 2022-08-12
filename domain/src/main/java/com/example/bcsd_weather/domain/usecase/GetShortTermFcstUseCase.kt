@@ -4,23 +4,6 @@ import com.example.bcsd_weather.domain.model.ShortTermForecast
 import com.example.bcsd_weather.domain.repository.ShortTermFcstRepository
 
 class GetShortTermFcstUseCase(private val shortTermFcstRepository: ShortTermFcstRepository) {
-    suspend operator fun invoke(
-        serviceKey: String,
-        numOfRows: Int,
-        pageNo: Int,
-        dataType: String,
-        baseDate: String,
-        baseTime: String,
-        nx: Int,
-        ny: Int
-    ): ArrayList<ShortTermForecast> = shortTermFcstRepository.getShortTermFcst(
-        serviceKey,
-        numOfRows,
-        pageNo,
-        dataType,
-        baseDate,
-        baseTime,
-        nx,
-        ny
-    )
+    suspend operator fun invoke(nx: Int, ny: Int): ArrayList<ShortTermForecast> =
+        shortTermFcstRepository.getShortTermFcst(nx, ny)
 }

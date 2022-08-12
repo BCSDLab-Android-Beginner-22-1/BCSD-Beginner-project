@@ -2,20 +2,18 @@ package com.example.bcsd_weather.data.datasource
 
 import com.example.bcsd_weather.data.api.RetrofitBuilder
 import com.example.bcsd_weather.data.model.ShortTermForecastRemote
+import com.example.bcsd_weather.domain.enum.ApiType
+import com.example.bcsd_weather.domain.enum.getBaseDateAndTime
 
 class ShortTermForecastDataSource {
-    fun getShortTermFcst(
-        serviceKey: String,
-        numOfRows: Int,
-        pageNo: Int,
-        dataType: String,
-        baseDate: String,
-        baseTime: String,
-        nx: Int,
-        ny: Int
-    ): ShortTermForecastRemote {
+    fun getShortTermFcst(nx: Int, ny: Int): ShortTermForecastRemote {
+
+        val baseDateAndTime = ApiType.ShortTermForecast.getBaseDateAndTime()
+        val baseDate = baseDateAndTime["baseDate"]!!
+        val baseTime = baseDateAndTime["baseTime"]!!
+
         return RetrofitBuilder
             .shortTermFcstService()
-            .getWeather(serviceKey, numOfRows, pageNo, dataType, baseDate, baseTime, nx, ny)
+            .getWeather(baseDate = baseDate, baseTime = baseTime, nx = nx, ny = ny)
     }
 }
