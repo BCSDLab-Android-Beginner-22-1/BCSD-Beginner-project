@@ -1,9 +1,10 @@
 package com.example.bcsd_weather.domain.model
 
 data class UltraShortTermLive(
-    val temp: String,
-    val precipitation: String,
-    val humidity: String,
-    val windSpeed: String,
-    val fcstTime: String
+    var temperature: String? = null,
+    var precipitationTypes: String? = null,
+    var precipitation: String? = null,
+    var humidity: String? = null,
+    var windDirection: String? = null,
+    var windSpeed: String? = null
 )
