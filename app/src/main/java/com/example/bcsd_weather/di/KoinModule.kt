@@ -1,7 +1,7 @@
 package com.example.bcsd_weather.di
 
 import com.example.bcsd_weather.data.repository.GPSRepositoryImpl
-import com.example.bcsd_weather.data.source.remote.GPSRemoteDataSource
+import com.example.bcsd_weather.data.datasource.remote.GPSRemoteDataSource
 import com.example.bcsd_weather.domain.repository.GPSRepository
 import com.example.bcsd_weather.domain.usecase.GetGPSLocationUseCase
 import com.example.bcsd_weather.domain.usecase.InitGPSLocationUseCase

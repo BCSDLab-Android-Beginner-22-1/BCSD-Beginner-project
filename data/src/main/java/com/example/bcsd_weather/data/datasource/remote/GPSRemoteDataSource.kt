@@ -1,4 +1,4 @@
-package com.example.bcsd_weather.data.source.remote
+package com.example.bcsd_weather.data.datasource.remote
 
 import android.annotation.SuppressLint
 import android.content.Context

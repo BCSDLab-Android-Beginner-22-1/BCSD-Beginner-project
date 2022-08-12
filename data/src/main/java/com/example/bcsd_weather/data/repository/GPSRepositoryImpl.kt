@@ -1,7 +1,7 @@
 package com.example.bcsd_weather.data.repository
 
 import com.example.bcsd_weather.data.model.mapToGPS
-import com.example.bcsd_weather.data.source.remote.GPSRemoteDataSource
+import com.example.bcsd_weather.data.datasource.remote.GPSRemoteDataSource
 import com.example.bcsd_weather.domain.model.GPS
 import com.example.bcsd_weather.domain.repository.GPSRepository
 import kotlinx.coroutines.flow.Flow
