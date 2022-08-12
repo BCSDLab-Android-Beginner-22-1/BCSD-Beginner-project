@@ -4,7 +4,7 @@ import com.example.bcsd_weather.domain.model.ShortTermForecast
 import com.example.bcsd_weather.domain.repository.ShortTermFcstRepository
 
 class GetShortTermFcstUseCase(private val shortTermFcstRepository: ShortTermFcstRepository) {
-    suspend fun excute(
+    suspend operator fun invoke(
         serviceKey: String,
         numOfRows: Int,
         pageNo: Int,

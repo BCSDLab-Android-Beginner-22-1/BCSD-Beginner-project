@@ -4,7 +4,7 @@ import com.example.bcsd_weather.domain.model.UltraShortTermForecast
 import com.example.bcsd_weather.domain.repository.UltraSrtFcstRepository
 
 class GetUltraSrtFcstUseCase(private val ultraSrtFcstRepository: UltraSrtFcstRepository) {
-    suspend fun execute(
+    suspend operator fun invoke(
         serviceKey: String,
         numOfRows: Int,
         pageNo: Int,

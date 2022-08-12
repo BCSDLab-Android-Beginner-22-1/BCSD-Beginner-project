@@ -4,7 +4,7 @@ import com.example.bcsd_weather.domain.model.UltraShortTermLive
 import com.example.bcsd_weather.domain.repository.UltraSrtLiveRepository
 
 class GetUltraSrtLiveUseCase(private val ultraSrtLiveRepository: UltraSrtLiveRepository) {
-    suspend fun execute(
+    suspend operator fun invoke(
         serviceKey: String,
         numOfRows: Int,
         pageNo: Int,
