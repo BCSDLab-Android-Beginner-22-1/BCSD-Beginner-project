@@ -15,7 +15,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-        buildConfigField "String", "Weather_Api_Address", properties['weather_api_address']
         buildConfigField "String", "Weather_Api_Key", properties['weather_api_key']
     }
 
