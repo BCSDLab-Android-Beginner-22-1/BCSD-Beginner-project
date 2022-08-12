@@ -2,6 +2,7 @@ package com.example.bcsd_weather.data.repository
 
 import android.app.Application
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import com.example.bcsd_weather.data.db.FutureWeatherDao
@@ -13,10 +14,10 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
-class FutureWeatherRepositoryImpl(application: Application, var futureDb: FutureWeatherDatabase) :
+class FutureWeatherRepositoryImpl(application: Application, var futureDb: FutureWeatherDatabase,val futureWeatherDao: FutureWeatherDao) :
     FutureWeatherRepository {
-    private val futureWeatherDao: FutureWeatherDao
-    private val futureWeatherList: LiveData<List<FutureWeatherEntity>>
+
+//    private val futureWeatherList: LiveData<List<FutureWeatherEntity>>
     private val gson = Gson()
     private val current = LocalDate.now()
     private val formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
@@ -25,11 +26,11 @@ class FutureWeatherRepositoryImpl(application: Application, var futureDb: Future
     // 날짜 형식 : yyyyMMdd
     init {
         futureDb = FutureWeatherDatabase.getInstance(application, gson)!!
-        futureWeatherDao = futureDb.futureWeatherDao()
-        futureWeatherList = futureDb.futureWeatherDao().getFutureWeather(formatted)
+        Log.v("init", ">>> 초기화")
+//        futureWeatherList = futureDb.futureWeatherDao().getFutureWeather(formatted)
     }
 
-    override fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>) {
+    override suspend fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>) {
         futureWeatherDao.insertFutureWeather(futureWeatherEntity)
     }
 
@@ -41,7 +42,7 @@ class FutureWeatherRepositoryImpl(application: Application, var futureDb: Future
         return futureWeatherDao.getDetailedFutureWeather(date)
     }
 
-    override fun deleteWeather(firstDateToKeep: String) {
+    override suspend fun deleteWeather(firstDateToKeep: String) {
         futureWeatherDao.deleteWeather(firstDateToKeep)
     }
 
