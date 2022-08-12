@@ -11,5 +11,5 @@ interface UltraSrtFcstRepository {
         baseDate: String,
         baseTime: String,
         nx: Int,
-        ny: Int): UltraShortTermForecast
+        ny: Int): ArrayList<UltraShortTermForecast>
 }

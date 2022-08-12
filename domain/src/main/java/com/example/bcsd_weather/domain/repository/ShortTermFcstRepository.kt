@@ -11,5 +11,5 @@ interface ShortTermFcstRepository {
         baseDate: String,
         baseTime: String,
         nx: Int,
-        ny: Int): ShortTermForecast
+        ny: Int): ArrayList<ShortTermForecast>
 }

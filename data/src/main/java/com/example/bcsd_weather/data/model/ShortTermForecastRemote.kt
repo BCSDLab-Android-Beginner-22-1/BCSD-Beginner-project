@@ -1,5 +1,7 @@
 package com.example.bcsd_weather.data.model
 
+import com.example.bcsd_weather.domain.model.ShortTermForecast
+
 data class ShortTermForecastRemote(val response: StResponse)
 data class StResponse(val header: StHeader, val body: StBody)
 data class StHeader(val resultCode: Int, val resultMsg: String)
@@ -12,3 +14,62 @@ data class ShortTermFcst(
     val fcstTime: String,  // 예측 시간
     val fcstValue: String  // 예보 값
 )
+
+fun ShortTermForecastRemote.mapToShortTermForecast(): ArrayList<ShortTermForecast> {
+    val list = response.body.items.item
+
+    val mappedData = ArrayList<ShortTermForecast>()
+    var newData = ShortTermForecast()
+
+    var forecastDate: String
+    var forecastTime = ""
+
+    for (item in list) {
+        if (forecastTime != item.fcstTime) {
+            if (forecastTime != "") {
+                mappedData.add(newData)
+            }
+
+            newData = ShortTermForecast()
+            forecastDate = item.fcstDate
+            forecastTime = item.fcstTime
+            newData.forecastDate = forecastDate
+            newData.forecastTime = forecastTime
+        }
+
+        when (item.category) {
+            "POP" -> {
+                newData.precipitationProbability = item.fcstValue
+            }
+            "PTY" -> {
+                newData.precipitationTypes = item.fcstValue
+            }
+            "PCP" -> {
+                newData.precipitation = item.fcstValue
+            }
+            "REH" -> {
+                newData.humidity = item.fcstValue
+            }
+            "SNO" -> {
+                newData.snow = item.fcstValue
+            }
+            "SKY" -> {
+                newData.skyState = item.fcstValue
+            }
+            "TMP" -> {
+                newData.temperature = item.fcstValue
+            }
+            "WAV" -> {
+                newData.waveHeight = item.fcstValue
+            }
+            "VEC" -> {
+                newData.windDirection = item.fcstValue
+            }
+            "WSD" -> {
+                newData.windSpeed = item.fcstValue
+            }
+            else -> {}
+        }
+    }
+    return mappedData
+}

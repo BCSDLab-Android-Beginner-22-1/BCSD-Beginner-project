@@ -12,8 +12,8 @@ class GetUltraSrtLiveUseCase(private val ultraSrtLiveRepository: UltraSrtLiveRep
         baseDate: String,
         baseTime: String,
         nx: Int,
-        ny: Int): UltraShortTermLive
-    = ultraSrtLiveRepository.getUltraSrtLive(
+        ny: Int
+    ): UltraShortTermLive = ultraSrtLiveRepository.getUltraSrtLive(
         serviceKey,
         numOfRows,
         pageNo,

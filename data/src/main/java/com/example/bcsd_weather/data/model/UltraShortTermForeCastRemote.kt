@@ -1,5 +1,7 @@
 package com.example.bcsd_weather.data.model
 
+import com.example.bcsd_weather.domain.model.UltraShortTermForecast
+
 data class UltraShortTermForeCastRemote(val response: UstResponse)
 data class UstResponse(val header: UstHeader, val body: UstBody)
 data class UstHeader(val resultCode: Int, val resultMsg: String)
@@ -12,3 +14,50 @@ data class UltraShortTermFcst(
     val fcstTime: String,   // 예측 시간
     val fcstValue: String,  // 예보 값
 )
+
+fun UltraShortTermForeCastRemote.mapToUltraShortTermForecast(): ArrayList<UltraShortTermForecast> {
+    val list = response.body.items.item
+
+    val mappedData = ArrayList<UltraShortTermForecast>()
+    var newData = UltraShortTermForecast()
+
+    var forecastTime = ""
+
+    for (item in list) {
+        if (forecastTime != item.fcstTime && newData.temperature != "") {
+            if (forecastTime != "") {
+                mappedData.add(newData)
+            }
+
+            newData = UltraShortTermForecast()
+            forecastTime = item.fcstTime
+            newData.forecastTime = forecastTime
+        }
+
+        when (item.category) {
+            "T1H" -> {
+                newData.temperature = item.fcstValue
+            }
+            "RN1" -> {
+                newData.precipitation = item.fcstValue
+            }
+            "SKY" -> {
+                newData.skyState = item.fcstValue
+            }
+            "REH" -> {
+                newData.humidity = item.fcstValue
+            }
+            "PTY" -> {
+                newData.precipitationTypes = item.fcstValue
+            }
+            "VEC" -> {
+                newData.windDirection = item.fcstValue
+            }
+            "WSD" -> {
+                newData.windSpeed = item.fcstValue
+            }
+            else -> {}
+        }
+    }
+    return mappedData
+}
