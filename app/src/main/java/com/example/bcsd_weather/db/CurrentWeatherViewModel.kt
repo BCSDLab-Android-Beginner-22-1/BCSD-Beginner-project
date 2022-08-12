@@ -1,16 +1,14 @@
 package com.example.bcsd_weather.db
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import com.example.bcsd_weather.data.WeatherModel
+import com.example.bcsd_weather.data.repository.CurrentWeatherRepositoryImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class WeatherViewModel(application: Application): AndroidViewModel(application) {
-    private val repository = WeatherRepository(application)
-
+class CurrentWeatherViewModel(val repository: CurrentWeatherRepositoryImpl): ViewModel() {
 
     // 새로운 날씨 정보 추가 (data binding)
     fun addWeather(weather: WeatherModel){

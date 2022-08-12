@@ -1,4 +1,4 @@
-package com.example.bcsd_weather.db.current
+package com.example.bcsd_weather.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

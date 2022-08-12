@@ -7,19 +7,18 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.bcsd_weather.data.WeatherModel
 import com.example.bcsd_weather.databinding.ActivityMainBinding
-import com.example.bcsd_weather.db.WeatherViewModel
-import com.example.bcsd_weather.db.WeatherViewModelFactory
+import com.example.bcsd_weather.db.CurrentWeatherViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var weatherViewModel: WeatherViewModel
+    private lateinit var weatherViewModel: CurrentWeatherViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
-        weatherViewModel = ViewModelProvider(this, WeatherViewModelFactory(application)).get(
-            WeatherViewModel::class.java)
+        weatherViewModel = ViewModelProvider(this).get(
+            CurrentWeatherViewModel::class.java)
 //        binding.weatherViewModel = weatherViewModel
 
         weatherViewModel.getAllWeather().observe(this, Observer {
