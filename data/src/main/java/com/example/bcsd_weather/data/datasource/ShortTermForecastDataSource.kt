@@ -16,4 +16,15 @@ class ShortTermForecastDataSource {
             .shortTermFcstService()
             .getWeather(baseDate = baseDate, baseTime = baseTime, nx = nx, ny = ny)
     }
+
+    suspend fun getShortTermTempFcst(nx: Int, ny: Int): ShortTermForecastRemote {
+
+        val baseDateAndTime = ApiType.ShortTermForecast.getBaseDateAndTime()
+        val baseDate = baseDateAndTime["baseDate"]!!
+        val baseTime = baseDateAndTime["baseTime"]!!
+
+        return RetrofitBuilder
+            .shortTermFcstService()
+            .getWeather(baseDate = baseDate, baseTime = baseTime, nx = nx, ny = ny)
+    }
 }

@@ -10,6 +10,7 @@ import com.example.bcsd_weather.domain.repository.ShortTermFcstRepository
 import com.example.bcsd_weather.domain.repository.UltraSrtFcstRepository
 import com.example.bcsd_weather.domain.repository.UltraSrtLiveRepository
 import com.example.bcsd_weather.domain.usecase.GetShortTermFcstUseCase
+import com.example.bcsd_weather.domain.usecase.GetShortTermTempFcstUseCase
 import com.example.bcsd_weather.domain.usecase.GetUltraSrtFcstUseCase
 import com.example.bcsd_weather.domain.usecase.GetUltraSrtLiveUseCase
 import org.koin.dsl.module
@@ -24,6 +25,7 @@ val appModule = module {
     single { UltraShortTermLiveDataSource() }
 
     single { GetShortTermFcstUseCase(get()) }
+    single { GetShortTermTempFcstUseCase(get()) }
     single { GetUltraSrtFcstUseCase(get()) }
     single { GetUltraSrtLiveUseCase(get()) }
 }

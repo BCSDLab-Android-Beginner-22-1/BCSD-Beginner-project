@@ -1,6 +1,7 @@
 package com.example.bcsd_weather.data.model
 
 import com.example.bcsd_weather.domain.model.ShortTermForecast
+import com.example.bcsd_weather.domain.model.ShortTermTempForecast
 
 data class ShortTermForecastRemote(val response: StResponse)
 data class StResponse(val header: StHeader, val body: StBody)
@@ -67,6 +68,38 @@ fun ShortTermForecastRemote.mapToShortTermForecast(): ArrayList<ShortTermForecas
             }
             "WSD" -> {
                 newData.windSpeed = item.fcstValue
+            }
+            else -> {}
+        }
+    }
+    return mappedData
+}
+
+fun ShortTermForecastRemote.mapToShortTermTempForecast(): ArrayList<ShortTermTempForecast> {
+    val list = response.body.items.item
+
+    val mappedData = ArrayList<ShortTermTempForecast>()
+    var newData = ShortTermTempForecast()
+
+    var forecastDate = ""
+
+    for (item in list) {
+        if (forecastDate != item.fcstDate) {
+            if (forecastDate != "") {
+                mappedData.add(newData)
+            }
+
+            newData = ShortTermTempForecast()
+            forecastDate = item.fcstDate
+            newData.forecastDate = forecastDate
+        }
+
+        when (item.category) {
+            "TMN" -> {
+                newData.lowestTemperature = item.fcstValue
+            }
+            "TMX" -> {
+                newData.highestTemperature = item.fcstValue
             }
             else -> {}
         }
