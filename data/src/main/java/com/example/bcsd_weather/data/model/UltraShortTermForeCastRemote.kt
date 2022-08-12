@@ -24,7 +24,7 @@ fun UltraShortTermForeCastRemote.mapToUltraShortTermForecast(): ArrayList<UltraS
     var forecastTime = ""
 
     for (item in list) {
-        if (forecastTime != item.fcstTime && newData.temperature != "") {
+        if (forecastTime != item.fcstTime && newData.temperature != null) {
             if (forecastTime != "") {
                 mappedData.add(newData)
             }
@@ -37,24 +37,6 @@ fun UltraShortTermForeCastRemote.mapToUltraShortTermForecast(): ArrayList<UltraS
         when (item.category) {
             "T1H" -> {
                 newData.temperature = item.fcstValue
-            }
-            "RN1" -> {
-                newData.precipitation = item.fcstValue
-            }
-            "SKY" -> {
-                newData.skyState = item.fcstValue
-            }
-            "REH" -> {
-                newData.humidity = item.fcstValue
-            }
-            "PTY" -> {
-                newData.precipitationTypes = item.fcstValue
-            }
-            "VEC" -> {
-                newData.windDirection = item.fcstValue
-            }
-            "WSD" -> {
-                newData.windSpeed = item.fcstValue
             }
             else -> {}
         }
