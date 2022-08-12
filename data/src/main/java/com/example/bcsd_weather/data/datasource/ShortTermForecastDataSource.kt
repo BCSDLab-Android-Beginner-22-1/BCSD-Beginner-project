@@ -13,5 +13,5 @@ interface ShortTermForecastDataSource {
         baseTime: String,
         nx: Int,
         ny: Int
-    ): Flow<ShortTermForecastRemote>
+    ): ShortTermForecastRemote
 }

@@ -13,5 +13,5 @@ interface UltraShortTermFcstDataSource {
         baseTime: String,
         nx: Int,
         ny: Int
-    ): Flow<UltraShortTermForeCastRemote>
+    ): UltraShortTermForeCastRemote
 }

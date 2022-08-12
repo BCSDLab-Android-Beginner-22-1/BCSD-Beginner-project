@@ -12,5 +12,5 @@ interface UltraShortTermLiveDataSource {
                               baseTime: String,
                               nx: Int,
                               ny: Int
-    ): Flow<UltraShortTermLiveRemote>
+    ): UltraShortTermLiveRemote
 }
