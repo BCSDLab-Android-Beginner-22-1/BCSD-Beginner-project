@@ -1,9 +1,10 @@
 package com.example.bcsd_weather.data.model
 
-import com.example.bcsd_weather.domain.model.GPS
+import com.example.bcsd_weather.data.mapper.ConvertGPS
+import com.example.bcsd_weather.domain.model.Location
 
 data class GPSRemote(val latitude: Double, val longitude: Double)
 
-fun GPSRemote.mapToGPS(): GPS {
-    return GPS(latitude, longitude)
+fun GPSRemote.mapToGPS(convertGPS: ConvertGPS): Location {
+    return convertGPS.convertGPStoXY(latitude, longitude)
 }
