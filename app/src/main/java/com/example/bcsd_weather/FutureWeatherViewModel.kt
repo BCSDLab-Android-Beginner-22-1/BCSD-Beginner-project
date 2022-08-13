@@ -4,14 +4,13 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.bcsd_weather.data.repository.FutureWeatherRepositoryImpl
 import com.example.bcsd_weather.domain.model.FutureWeatherEntity
 import com.example.bcsd_weather.domain.repository.FutureWeatherRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FutureWeatherViewModel(private val repository: FutureWeatherRepositoryImpl) : ViewModel() {
+class FutureWeatherViewModel(private val repository: FutureWeatherRepository) : ViewModel() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>) {
@@ -38,6 +37,4 @@ class FutureWeatherViewModel(private val repository: FutureWeatherRepositoryImpl
             repository.deleteWeather(firstDateToKeep)
         }
     }
-
-
 }

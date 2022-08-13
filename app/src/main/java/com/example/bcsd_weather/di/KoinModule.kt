@@ -1,41 +1,38 @@
 package com.example.bcsd_weather.di
 
 
-import android.os.Build
-import androidx.annotation.RequiresApi
+import android.app.Application
 import androidx.room.Room
 import com.example.bcsd_weather.FutureWeatherViewModel
+import com.example.bcsd_weather.data.db.FutureWeatherDao
 import com.example.bcsd_weather.data.db.FutureWeatherDatabase
 import com.example.bcsd_weather.data.repository.FutureWeatherRepositoryImpl
 import com.example.bcsd_weather.db.future.converter.StItemTypeConverter
 import com.example.bcsd_weather.db.future.converter.shortTermForecastModelTypeConverter
 import com.example.bcsd_weather.domain.repository.FutureWeatherRepository
 import com.google.gson.Gson
-import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import java.util.concurrent.Future
 
 
 val appModule = module {
 
-    single {
-        val gson = Gson()
-        Room.databaseBuilder(
-            androidContext(),
-            FutureWeatherDatabase::class.java,
-            "future_weather.db"
-        )
-            .addTypeConverter(shortTermForecastModelTypeConverter(gson))
-            .addTypeConverter(StItemTypeConverter(gson))
+    fun provideDataBase(application: Application): FutureWeatherDatabase {
+        return Room.databaseBuilder(application, FutureWeatherDatabase::class.java, "future_weather")
             .fallbackToDestructiveMigration()
             .build()
     }
 
-    single { get<FutureWeatherDatabase>().futureWeatherDao() }
-
-    single<FutureWeatherRepository> {
-        FutureWeatherRepositoryImpl(get())
+    fun provideDao(dataBase: FutureWeatherDatabase): FutureWeatherDao {
+        return dataBase.futureWeatherDao()
     }
+
+    single { provideDataBase(androidApplication()) }
+    single { provideDao(get()) }
+
+    single<FutureWeatherRepository> { FutureWeatherRepositoryImpl(get()) }
 
 }
 

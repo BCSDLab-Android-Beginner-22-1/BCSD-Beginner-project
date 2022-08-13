@@ -1,16 +1,12 @@
 package com.example.bcsd_weather.data.repository
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import com.example.bcsd_weather.data.db.FutureWeatherDao
 import com.example.bcsd_weather.domain.model.FutureWeatherEntity
 import com.example.bcsd_weather.domain.repository.FutureWeatherRepository
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 
-class FutureWeatherRepositoryImpl(val futureWeatherDao: FutureWeatherDao) :
+class FutureWeatherRepositoryImpl(private val futureWeatherDao: FutureWeatherDao) :
     FutureWeatherRepository {
 
 //    private val futureWeatherList: LiveData<List<FutureWeatherEntity>>
