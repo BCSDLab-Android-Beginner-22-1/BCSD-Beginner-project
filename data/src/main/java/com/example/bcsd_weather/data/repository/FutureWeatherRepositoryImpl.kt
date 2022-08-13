@@ -2,7 +2,7 @@ package com.example.bcsd_weather.data.repository
 
 import androidx.lifecycle.LiveData
 import com.example.bcsd_weather.data.db.FutureWeatherDao
-import com.example.bcsd_weather.domain.model.FutureWeatherEntity
+import com.example.bcsd_weather.data.model.FutureWeatherEntity
 import com.example.bcsd_weather.domain.repository.FutureWeatherRepository
 
 
@@ -22,11 +22,11 @@ class FutureWeatherRepositoryImpl(private val futureWeatherDao: FutureWeatherDao
         futureWeatherDao.insertFutureWeather(futureWeatherEntity)
     }
 
-    override fun getFutureWeather(startDate: String): LiveData<List<FutureWeatherEntity>> {
+    override fun getFutureWeather(startDate: String): List<FutureWeatherEntity> {
         return futureWeatherDao.getFutureWeather(startDate)
     }
 
-    override fun getDetailedFutureWeather(date: String): LiveData<FutureWeatherEntity> {
+    override fun getDetailedFutureWeather(date: String): FutureWeatherEntity {
         return futureWeatherDao.getDetailedFutureWeather(date)
     }
 

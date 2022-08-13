@@ -7,9 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.bcsd_weather.databinding.ActivityMainBinding
-import com.example.bcsd_weather.domain.model.FutureWeatherEntity
-import com.example.bcsd_weather.domain.model.ShortTermForecastModel
-import com.example.bcsd_weather.domain.model.StITEM
+import com.example.bcsd_weather.data.model.FutureWeatherLocal
+import com.example.bcsd_weather.domain.model.FutureWeather
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -22,9 +21,9 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
 
-        val ex = FutureWeatherEntity("tmp2","pre","hum","wind","fcstt","cate","2022-08-13","fcstvalue")
-        val ex2 = FutureWeatherEntity("tmp33","pre","hum","wind","fcstt","cate","2022-08-13","fcstvalue")
-        val ex3 = FutureWeatherEntity("tmp44","pre","hum","wind","fcstt","cate","2022-08-13","fcstvalue")
+        val ex = FutureWeather("tmp2","pre","hum","wind","fcstt","cate","2022-08-13","fcstvalue")
+        val ex2 = FutureWeather("tmp33","pre","hum","wind","fcstt","cate","2022-08-13","fcstvalue")
+        val ex3 = FutureWeather("tmp44","pre","hum","wind","fcstt","cate","2022-08-13","fcstvalue")
         futureWeatherViewModel.insertFutureWeather(ex)
         futureWeatherViewModel.insertFutureWeather(ex2)
         futureWeatherViewModel.insertFutureWeather(ex3)

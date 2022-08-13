@@ -4,7 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.bcsd_weather.domain.model.FutureWeatherEntity
+import com.example.bcsd_weather.data.model.FutureWeatherLocal
 import com.example.bcsd_weather.domain.repository.FutureWeatherRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 class FutureWeatherViewModel(private val repository: FutureWeatherRepository) : ViewModel() {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun insertFutureWeather(futureWeatherEntity: FutureWeatherEntity) {
+    fun insertFutureWeather(futureWeatherEntity: FutureWeatherLocal) {
 
         CoroutineScope(Dispatchers.IO).launch {
             repository.insertFutureWeather(futureWeatherEntity)
@@ -22,12 +22,12 @@ class FutureWeatherViewModel(private val repository: FutureWeatherRepository) : 
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getFutureWeather(startDate: String): LiveData<List<FutureWeatherEntity>> {
+    fun getFutureWeather(startDate: String): LiveData<List<FutureWeatherLocal>> {
         return repository.getFutureWeather(startDate)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getDetailedFutureWeather(date: String): LiveData<FutureWeatherEntity> {
+    fun getDetailedFutureWeather(date: String): LiveData<FutureWeatherLocal> {
         return repository.getDetailedFutureWeather(date)
     }
 
