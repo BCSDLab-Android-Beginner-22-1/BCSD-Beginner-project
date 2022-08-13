@@ -8,7 +8,7 @@ import com.example.bcsd_weather.domain.model.ShortTermForecastModel
 import com.example.bcsd_weather.domain.model.StITEM
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "future_weather", indices = [Index(value = ["fcstDate"])])
+@Entity(tableName = "future_weather", indices = [Index(value = ["fcstDate"])], primaryKeys = ["fcstDate", "fcstTime"])
 data class FutureWeatherEntity(
     var temp: String = "",            // 온도
     var precipitation: String = "",   // 강수량
@@ -18,7 +18,4 @@ data class FutureWeatherEntity(
     val category: String="",  // 자료 구분
     val fcstDate: String = "",  // 예측 날짜
     val fcstValue: String = ""  // 예보 값
-){
-    @PrimaryKey(autoGenerate = false)
-    var id: Int? = null
-}
+)
