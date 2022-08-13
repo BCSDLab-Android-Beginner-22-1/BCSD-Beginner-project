@@ -1,4 +1,4 @@
-package com.example.bcsd_weather.data.datasource.local
+package com.example.bcsd_weather.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

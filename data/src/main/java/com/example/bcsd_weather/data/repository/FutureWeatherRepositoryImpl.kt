@@ -1,6 +1,6 @@
 package com.example.bcsd_weather.data.repository
 
-import com.example.bcsd_weather.data.datasource.local.FutureWeatherDao
+import com.example.bcsd_weather.data.dao.FutureWeatherDao
 import com.example.bcsd_weather.data.mapper.mapToFutureWeather
 import com.example.bcsd_weather.data.mapper.mapToFutureWeatherEntity
 import com.example.bcsd_weather.domain.model.FutureWeather
