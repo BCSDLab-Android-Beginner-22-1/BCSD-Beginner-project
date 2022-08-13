@@ -1,15 +1,13 @@
 package com.example.bcsd_weather.domain.repository
 
-import androidx.lifecycle.LiveData
-
-import com.example.bcsd_weather.domain.model.FutureWeatherEntity
+import com.example.bcsd_weather.domain.model.FutureWeather
 
 interface FutureWeatherRepository {
-    suspend fun insertFutureWeather(futureWeatherEntity: FutureWeatherEntity)
+    suspend fun insertFutureWeather(futureWeather: FutureWeather)
 
-    fun getFutureWeather(startDate: String): List<FutureWeatherEntity>
+    fun getFutureWeather(startDate: String): List<FutureWeather>
 
-    fun getDetailedFutureWeather(date: String): FutureWeatherEntity
+    fun getDetailedFutureWeather(date: String): FutureWeather
 
     suspend fun deleteWeather(firstDateToKeep: String)
 }

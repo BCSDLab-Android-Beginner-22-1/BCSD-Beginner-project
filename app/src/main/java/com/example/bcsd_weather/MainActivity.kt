@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.bcsd_weather.databinding.ActivityMainBinding
-import com.example.bcsd_weather.data.model.FutureWeatherLocal
 import com.example.bcsd_weather.domain.model.FutureWeather
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -28,10 +30,10 @@ class MainActivity : AppCompatActivity() {
         futureWeatherViewModel.insertFutureWeather(ex2)
         futureWeatherViewModel.insertFutureWeather(ex3)
 
-        futureWeatherViewModel.getFutureWeather("2022-08-13").observe(this, Observer {
-            binding.textview.text = it.toString()
-        })
-
+        CoroutineScope(Dispatchers.IO).launch {
+            val data = futureWeatherViewModel.getFutureWeather("2022-08-13")
+            binding.textview.text = data.toString()
+        }
 
     }
 }

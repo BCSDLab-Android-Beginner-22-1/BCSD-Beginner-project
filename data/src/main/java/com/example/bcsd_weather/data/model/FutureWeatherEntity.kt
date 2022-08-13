@@ -9,7 +9,7 @@ import com.example.bcsd_weather.domain.model.StITEM
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "future_weather", indices = [Index(value = ["fcstDate"])])
-data class FutureWeatherLocal(
+data class FutureWeatherEntity(
     var temp: String = "",            // 온도
     var precipitation: String = "",   // 강수량
     var humidity: String = "",        // 습도

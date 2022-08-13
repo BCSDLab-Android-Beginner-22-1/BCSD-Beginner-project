@@ -1,8 +1,10 @@
 package com.example.bcsd_weather.data.repository
 
-import androidx.lifecycle.LiveData
 import com.example.bcsd_weather.data.db.FutureWeatherDao
+import com.example.bcsd_weather.data.mapper.mapToFutureWeather
+import com.example.bcsd_weather.data.mapper.mapToFutureWeatherEntity
 import com.example.bcsd_weather.data.model.FutureWeatherEntity
+import com.example.bcsd_weather.domain.model.FutureWeather
 import com.example.bcsd_weather.domain.repository.FutureWeatherRepository
 
 
@@ -18,16 +20,23 @@ class FutureWeatherRepositoryImpl(private val futureWeatherDao: FutureWeatherDao
 //        futureWeatherList = futureWeatherDao.getFutureWeather(formatted)
 //    }
 
-    override suspend fun insertFutureWeather(futureWeatherEntity: FutureWeatherEntity) {
-        futureWeatherDao.insertFutureWeather(futureWeatherEntity)
+    override suspend fun insertFutureWeather(futureWeather: FutureWeather) {
+        futureWeatherDao.insertFutureWeather(futureWeather.mapToFutureWeatherEntity())
     }
 
-    override fun getFutureWeather(startDate: String): List<FutureWeatherEntity> {
-        return futureWeatherDao.getFutureWeather(startDate)
+    override fun getFutureWeather(startDate: String): List<FutureWeather> {
+        val data = futureWeatherDao.getFutureWeather(startDate)
+        val converted = ArrayList<FutureWeather>()
+
+        for (i in data) {
+            converted.add(i.mapToFutureWeather())
+        }
+
+        return converted.toList()
     }
 
-    override fun getDetailedFutureWeather(date: String): FutureWeatherEntity {
-        return futureWeatherDao.getDetailedFutureWeather(date)
+    override fun getDetailedFutureWeather(date: String): FutureWeather {
+        return futureWeatherDao.getDetailedFutureWeather(date).mapToFutureWeather()
     }
 
     override suspend fun deleteWeather(firstDateToKeep: String) {
