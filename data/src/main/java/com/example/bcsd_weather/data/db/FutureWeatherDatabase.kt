@@ -21,25 +21,26 @@ import com.google.gson.Gson
 abstract class FutureWeatherDatabase : RoomDatabase() {
 
     abstract fun futureWeatherDao(): FutureWeatherDao
-
-    companion object {
-        private var instance: FutureWeatherDatabase? = null
-
-        fun getInstance(context: Context, gson: Gson): FutureWeatherDatabase? {
-            if (instance == null) {
-                synchronized(FutureWeatherDatabase::class) {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        FutureWeatherDatabase::class.java,
-                        "future_weather.db"
-                    )
-                        .addTypeConverter(shortTermForecastModelTypeConverter(gson))
-                        .addTypeConverter(StItemTypeConverter(gson))
-                        .build()
-                }
-            }
-            return instance
-        }
-    }
+//
+//    companion object {
+//        private var instance: FutureWeatherDatabase? = null
+//
+//        fun getInstance(context: Context, gson: Gson): FutureWeatherDatabase? {
+//            if (instance == null) {
+//                synchronized(FutureWeatherDatabase::class) {
+//                    instance = Room.databaseBuilder(
+//                        context.applicationContext,
+//                        FutureWeatherDatabase::class.java,
+//                        "future_weather.db"
+//                    )
+//                        .addTypeConverter(shortTermForecastModelTypeConverter(gson))
+//                        .addTypeConverter(StItemTypeConverter(gson))
+//                        .fallbackToDestructiveMigration()
+//                        .build()
+//                }
+//            }
+//            return instance
+//        }
+//    }
 
 }
