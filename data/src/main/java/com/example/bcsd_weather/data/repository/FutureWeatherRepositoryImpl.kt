@@ -11,15 +11,14 @@ class FutureWeatherRepositoryImpl(private val futureWeatherDao: FutureWeatherDao
 
 //    private val futureWeatherList: LiveData<List<FutureWeatherEntity>>
 //    private val current = LocalDate.now()
-//    private val formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
-//    private val formatted = current.format(formatter)
 
-    // 날짜 형식 : yyyyMMdd
+
+    // 날짜 형식 : yyyy-MM-dd
 //    init {
 //        futureWeatherList = futureWeatherDao.getFutureWeather(formatted)
 //    }
 
-    override suspend fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>) {
+    override suspend fun insertFutureWeather(futureWeatherEntity: FutureWeatherEntity) {
         futureWeatherDao.insertFutureWeather(futureWeatherEntity)
     }
 

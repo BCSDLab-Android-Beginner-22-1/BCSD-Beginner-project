@@ -20,9 +20,11 @@ import java.util.concurrent.Future
 val appModule = module {
 
     fun provideDataBase(application: Application): FutureWeatherDatabase {
+
         return Room.databaseBuilder(application, FutureWeatherDatabase::class.java, "future_weather")
             .fallbackToDestructiveMigration()
             .build()
+
     }
 
     fun provideDao(dataBase: FutureWeatherDatabase): FutureWeatherDao {

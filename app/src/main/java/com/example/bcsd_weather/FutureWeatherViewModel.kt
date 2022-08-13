@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 class FutureWeatherViewModel(private val repository: FutureWeatherRepository) : ViewModel() {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>) {
+    fun insertFutureWeather(futureWeatherEntity: FutureWeatherEntity) {
 
         CoroutineScope(Dispatchers.IO).launch {
             repository.insertFutureWeather(futureWeatherEntity)

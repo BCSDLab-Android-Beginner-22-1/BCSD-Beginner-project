@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import com.example.bcsd_weather.domain.model.FutureWeatherEntity
 
 interface FutureWeatherRepository {
-    suspend fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>)
+    suspend fun insertFutureWeather(futureWeatherEntity: FutureWeatherEntity)
 
     fun getFutureWeather(startDate: String): LiveData<List<FutureWeatherEntity>>
 

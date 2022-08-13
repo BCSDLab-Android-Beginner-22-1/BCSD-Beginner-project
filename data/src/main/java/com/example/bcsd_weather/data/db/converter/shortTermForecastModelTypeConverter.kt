@@ -6,16 +6,16 @@ import com.example.bcsd_weather.domain.model.ShortTermForecastModel
 import com.google.gson.Gson
 
 @ProvidedTypeConverter
-class shortTermForecastModelTypeConverter(private val gson: Gson) {
+class shortTermForecastModelTypeConverter() {
 
     @TypeConverter
     fun stfToJson(value: ShortTermForecastModel): String? {
-        return gson.toJson(value)
+        return Gson().toJson(value)
     }
 
     @TypeConverter
     fun jsonToStf(value: String): ShortTermForecastModel {
-        return gson.fromJson(value, ShortTermForecastModel::class.java)
+        return Gson().fromJson(value, ShortTermForecastModel::class.java)
     }
 
 }

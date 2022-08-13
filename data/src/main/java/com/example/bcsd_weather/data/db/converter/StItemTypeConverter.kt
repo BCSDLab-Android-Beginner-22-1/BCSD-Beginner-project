@@ -6,15 +6,15 @@ import com.example.bcsd_weather.domain.model.StITEM
 import com.google.gson.Gson
 
 @ProvidedTypeConverter
-class StItemTypeConverter(private val gson: Gson) {
+class StItemTypeConverter() {
 
     @TypeConverter
     fun listToJson(value: StITEM): String? {
-        return gson.toJson(value)
+        return Gson().toJson(value)
     }
 
     @TypeConverter
     fun jsonToList(value: String): StITEM {
-        return gson.fromJson(value, StITEM::class.java)
+        return Gson().fromJson(value, StITEM::class.java)
     }
 }

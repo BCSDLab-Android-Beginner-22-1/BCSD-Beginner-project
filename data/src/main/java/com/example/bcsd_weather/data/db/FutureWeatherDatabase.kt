@@ -11,13 +11,7 @@ import com.example.bcsd_weather.db.future.converter.shortTermForecastModelTypeCo
 import com.google.gson.Gson
 
 
-@Database(entities = [FutureWeatherEntity::class], version = 1)
-@TypeConverters(
-    value = [
-        shortTermForecastModelTypeConverter::class,
-        StItemTypeConverter::class
-    ]
-)
+@Database(entities = [FutureWeatherEntity::class], version = 5)
 abstract class FutureWeatherDatabase : RoomDatabase() {
 
     abstract fun futureWeatherDao(): FutureWeatherDao

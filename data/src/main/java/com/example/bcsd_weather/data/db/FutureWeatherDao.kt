@@ -12,9 +12,8 @@ import java.time.LocalDate
 @Dao
 interface FutureWeatherDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertFutureWeather(futureWeatherEntity: List<FutureWeatherEntity>)
+    fun insertFutureWeather(futureWeatherEntity: FutureWeatherEntity)
 
-    // repository에서 startDate 매개변수에 LocalDate.now() 전달함
     @Query("select * from future_weather where date(fcstDate) >= date(:startDate)")
     fun getFutureWeather(startDate: String): LiveData<List<FutureWeatherEntity>>
 

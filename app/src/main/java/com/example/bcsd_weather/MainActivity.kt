@@ -21,20 +21,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val stF: ShortTermForecastModel = ShortTermForecastModel("32", "강수량", "습도", "풍속", "예보시각")
-        val stitem: StITEM = StITEM("자료구분", "20220813", "fcsttime", "fcstvalue")
 
-        val futureweatherentity: List<FutureWeatherEntity> =
-            listOf(FutureWeatherEntity(stF, stitem))
+        val ex = FutureWeatherEntity("tmp2","pre","hum","wind","fcstt","cate","2022-08-13","fcstvalue")
+        val ex2 = FutureWeatherEntity("tmp33","pre","hum","wind","fcstt","cate","2022-08-13","fcstvalue")
+        val ex3 = FutureWeatherEntity("tmp44","pre","hum","wind","fcstt","cate","2022-08-13","fcstvalue")
+        futureWeatherViewModel.insertFutureWeather(ex)
+        futureWeatherViewModel.insertFutureWeather(ex2)
+        futureWeatherViewModel.insertFutureWeather(ex3)
 
-
-//        val viewModel:FutureWeatherViewModel = ViewModelProvider(this).get(FutureWeatherViewModel::class.java)
-
-        futureWeatherViewModel.deleteWeather("20220813")
-        futureWeatherViewModel.insertFutureWeather(futureweatherentity)
-
-        futureWeatherViewModel.getFutureWeather("20220813").observe(this, Observer {
-//            Log.v(TAG, ">>> $it")
+        futureWeatherViewModel.getFutureWeather("2022-08-13").observe(this, Observer {
             binding.textview.text = it.toString()
         })
 
