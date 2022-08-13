@@ -10,11 +10,11 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "future_weather", indices = [Index(value = ["fcstDate"])])
 data class FutureWeatherEntity(
-    @SerializedName("TMP") var temp: String = "",            // 온도
-    @SerializedName("PCP") var precipitation: String = "",   // 강수량
-    @SerializedName("PEH") var humidity: String = "",        // 습도
-    @SerializedName("WSP") var windSpeed: String = "",       // 풍속
-    @SerializedName("fcstTime") var fcstTime: String = "",   // 예보시각
+    var temp: String = "",            // 온도
+    var precipitation: String = "",   // 강수량
+    var humidity: String = "",        // 습도
+    var windSpeed: String = "",       // 풍속
+    var fcstTime: String = "",   // 예보시각
     val category: String="",  // 자료 구분
     val fcstDate: String = "",  // 예측 날짜
     val fcstValue: String = ""  // 예보 값
