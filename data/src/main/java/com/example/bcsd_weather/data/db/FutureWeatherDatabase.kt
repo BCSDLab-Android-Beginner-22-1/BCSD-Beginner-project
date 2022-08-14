@@ -10,26 +10,6 @@ import com.example.bcsd_weather.data.model.FutureWeatherEntity
 abstract class FutureWeatherDatabase : RoomDatabase() {
 
     abstract fun futureWeatherDao(): FutureWeatherDao
-//
-//    companion object {
-//        private var instance: FutureWeatherDatabase? = null
-//
-//        fun getInstance(context: Context, gson: Gson): FutureWeatherDatabase? {
-//            if (instance == null) {
-//                synchronized(FutureWeatherDatabase::class) {
-//                    instance = Room.databaseBuilder(
-//                        context.applicationContext,
-//                        FutureWeatherDatabase::class.java,
-//                        "future_weather.db"
-//                    )
-//                        .addTypeConverter(shortTermForecastModelTypeConverter(gson))
-//                        .addTypeConverter(StItemTypeConverter(gson))
-//                        .fallbackToDestructiveMigration()
-//                        .build()
-//                }
-//            }
-//            return instance
-//        }
-//    }
+
 
 }

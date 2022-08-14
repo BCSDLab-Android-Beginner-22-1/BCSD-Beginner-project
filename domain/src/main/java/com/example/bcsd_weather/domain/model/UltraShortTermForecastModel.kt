@@ -1,9 +1,6 @@
 package com.example.bcsd_weather.domain.model
 
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
+
 import com.google.gson.annotations.SerializedName
 
 // 초단기 예보
