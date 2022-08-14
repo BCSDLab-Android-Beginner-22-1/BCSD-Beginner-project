@@ -1,39 +1,34 @@
 package com.example.bcsd_weather.data.repository
 
-import android.app.Application
-import androidx.lifecycle.LiveData
-import com.example.bcsd_weather.data.WeatherModel
-import com.example.bcsd_weather.data.db.CurrentWeatherDao
-import com.example.bcsd_weather.data.db.CurrentWeatherDatabase
+
+import com.example.bcsd_weather.data.dao.CurrentWeatherDao
+import com.example.bcsd_weather.data.mapper.mapToCurrentWeather
+import com.example.bcsd_weather.data.mapper.mapToCurrentWeatherEntity
+import com.example.bcsd_weather.domain.model.CurrentWeather
 import com.example.bcsd_weather.domain.repository.CurrentWeatherRepository
 
 
-class CurrentWeatherRepositoryImpl(
-    application: Application,
-    var currentDb: CurrentWeatherDatabase, val currentWeatherDao: CurrentWeatherDao,
-) : CurrentWeatherRepository {
+class CurrentWeatherRepositoryImpl(private val currentWeatherDao: CurrentWeatherDao) :
+    CurrentWeatherRepository {
 
-    private val weatherList: LiveData<List<WeatherModel>>
 
-    init {
-        currentDb = CurrentWeatherDatabase.getInstance(application)!!
-        weatherList = currentDb.currentWeatherDao().getAllWeather()
+    override suspend fun insert(currentWeather: CurrentWeather) {
+        currentWeatherDao.insert(currentWeather.mapToCurrentWeatherEntity())
     }
 
-    override suspend fun insert(weather: WeatherModel) {
-        this.currentWeatherDao.insert(weather)
+    override suspend fun delete(currentWeather: CurrentWeather) {
+        this.currentWeatherDao.delete(currentWeather.mapToCurrentWeatherEntity())
     }
 
-    override suspend fun delete(weather: WeatherModel) {
-        this.currentWeatherDao.delete(weather)
-    }
 
-    override fun getIdWeather(): LiveData<WeatherModel> {
-        return this.currentWeatherDao.getIdWeather()
-    }
+    override fun getCurrentWeather(): List<CurrentWeather> {
+        val data = currentWeatherDao.getCurrentWeather()
+        val converted = ArrayList<CurrentWeather>()
 
-    override fun getAllWeather(): LiveData<List<WeatherModel>> {
-        return this.currentWeatherDao.getAllWeather()
+        for (i in data){
+            converted.add(i.mapToCurrentWeather())
+        }
+        return converted.toList()
     }
 
 }

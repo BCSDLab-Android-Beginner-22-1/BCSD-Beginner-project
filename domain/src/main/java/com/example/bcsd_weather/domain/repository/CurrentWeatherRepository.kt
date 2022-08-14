@@ -1,15 +1,14 @@
 package com.example.bcsd_weather.domain.repository
 
-import androidx.lifecycle.LiveData
-import com.example.bcsd_weather.data.WeatherModel
+
+import com.example.bcsd_weather.domain.model.CurrentWeather
 
 interface CurrentWeatherRepository {
-    suspend fun insert(weather: WeatherModel)
+    suspend fun insert(currentWeather: CurrentWeather)
 
-    suspend fun delete(weather: WeatherModel)
+    suspend fun delete(currentWeather: CurrentWeather)
 
-    fun getIdWeather(): LiveData<WeatherModel>
 
-    fun getAllWeather(): LiveData<List<WeatherModel>>
+    fun getCurrentWeather(): List<CurrentWeather>
 
 }
