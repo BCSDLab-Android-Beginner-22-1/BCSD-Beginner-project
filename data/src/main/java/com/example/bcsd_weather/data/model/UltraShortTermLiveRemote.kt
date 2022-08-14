@@ -1,5 +1,6 @@
 package com.example.bcsd_weather.data.model
 
+import com.example.bcsd_weather.domain.enum.UltraShortLivePrecipitationType
 import com.example.bcsd_weather.domain.model.UltraShortTermLive
 
 data class UltraShortTermLiveRemote(val response: UslResponse)
@@ -32,7 +33,16 @@ fun UltraShortTermLiveRemote.mapToUltraShortTermLive(): UltraShortTermLive {
                 mappedData.humidity = item.obsrValue
             }
             "PTY" -> {
-                mappedData.precipitationTypes = item.obsrValue
+                mappedData.precipitationTypes = when (item.obsrValue) {
+                    "0" -> UltraShortLivePrecipitationType.NONE
+                    "1" -> UltraShortLivePrecipitationType.RAIN
+                    "2" -> UltraShortLivePrecipitationType.RAIN_SNOW
+                    "3" -> UltraShortLivePrecipitationType.SNOW
+                    "4" -> UltraShortLivePrecipitationType.RAINDROP
+                    "5" -> UltraShortLivePrecipitationType.RAINDROP_SNOW_FLURRY
+                    "6" -> UltraShortLivePrecipitationType.SNOW_FLURRY
+                    else -> UltraShortLivePrecipitationType.NONE
+                }
             }
             "VEC" -> {
                 mappedData.windDirection = item.obsrValue

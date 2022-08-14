@@ -1,5 +1,7 @@
 package com.example.bcsd_weather.data.model
 
+import com.example.bcsd_weather.domain.enum.ShortForecastPrecipitationType
+import com.example.bcsd_weather.domain.enum.SkyType
 import com.example.bcsd_weather.domain.model.ShortTermForecast
 import com.example.bcsd_weather.domain.model.ShortTermTempForecast
 
@@ -43,7 +45,14 @@ fun ShortTermForecastRemote.mapToShortTermForecast(): ArrayList<ShortTermForecas
                 newData.precipitationProbability = item.fcstValue
             }
             "PTY" -> {
-                newData.precipitationTypes = item.fcstValue
+                newData.precipitationTypes = when (item.fcstValue) {
+                    "0" -> ShortForecastPrecipitationType.NONE
+                    "1" -> ShortForecastPrecipitationType.RAIN
+                    "2" -> ShortForecastPrecipitationType.RAIN_SNOW
+                    "3" -> ShortForecastPrecipitationType.SNOW
+                    "4" -> ShortForecastPrecipitationType.SHOWER
+                    else -> ShortForecastPrecipitationType.NONE
+                }
             }
             "PCP" -> {
                 newData.precipitation = item.fcstValue
@@ -55,7 +64,12 @@ fun ShortTermForecastRemote.mapToShortTermForecast(): ArrayList<ShortTermForecas
                 newData.snow = item.fcstValue
             }
             "SKY" -> {
-                newData.skyState = item.fcstValue
+                newData.skyState = when (item.fcstValue) {
+                    "1" -> SkyType.SUNNY
+                    "3" -> SkyType.CLOUDY
+                    "4" -> SkyType.OVERCAST
+                    else -> SkyType.SUNNY
+                }
             }
             "TMP" -> {
                 newData.temperature = item.fcstValue
