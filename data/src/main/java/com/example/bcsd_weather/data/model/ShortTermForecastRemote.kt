@@ -18,8 +18,12 @@ data class ShortTermFcst(
     val fcstValue: String  // 예보 값
 )
 
-fun ShortTermForecastRemote.mapToShortTermForecast(): ArrayList<ShortTermForecast> {
+fun ShortTermForecastRemote.mapToShortTermForecast(): ArrayList<ShortTermForecast>? {
     val list = response.body.items.item
+
+    if (response.header.resultCode != 0) {
+        return null
+    }
 
     val mappedData = ArrayList<ShortTermForecast>()
     var newData = ShortTermForecast()
@@ -89,8 +93,12 @@ fun ShortTermForecastRemote.mapToShortTermForecast(): ArrayList<ShortTermForecas
     return mappedData
 }
 
-fun ShortTermForecastRemote.mapToShortTermTempForecast(): ArrayList<ShortTermTempForecast> {
+fun ShortTermForecastRemote.mapToShortTermTempForecast(): ArrayList<ShortTermTempForecast>? {
     val list = response.body.items.item
+
+    if (response.header.resultCode != 0) {
+        return null
+    }
 
     val mappedData = ArrayList<ShortTermTempForecast>()
     var newData = ShortTermTempForecast()
