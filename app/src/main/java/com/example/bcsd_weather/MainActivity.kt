@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val ex = CurrentWeather(
-            "32","pre","hu","wind","1100"
-        )
+        val ex = CurrentWeather("32","pre","hu","wind","1100")
+        val ex2 = CurrentWeather("33","pre","hu","wind","1100")
         currentWeatherViewModel.insert(ex)
+        currentWeatherViewModel.insert(ex2)
 
         CoroutineScope(Dispatchers.IO).launch{
             val data = currentWeatherViewModel.getCurrentWeather()
