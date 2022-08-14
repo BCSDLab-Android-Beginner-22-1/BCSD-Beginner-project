@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "localDataTable")
 data class LocalEntity(
-    @PrimaryKey val id : Int,
+    @PrimaryKey val id : Long,
     val firstLocalName: String,
     val secondLocalName: String,
     val thirdLocalName: String,

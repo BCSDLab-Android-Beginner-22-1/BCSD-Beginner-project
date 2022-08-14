@@ -11,7 +11,7 @@ interface LocalDao {
     fun getAllLocalData():List<LocalEntity>
 
     @Insert
-    fun insert(localWeatherEntity: LocalEntity)
+    fun insertLocalData(localWeatherEntity: LocalEntity)
 
     @Query("DELETE FROM localDataTable")
     fun deleteAllLocalData()
