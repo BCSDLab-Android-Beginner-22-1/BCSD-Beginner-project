@@ -2,12 +2,8 @@ package com.example.bcsd_weather
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
-import com.example.bcsd_weather.db.local.LocalEntity
+import com.exxample.bcsd_weather.data.model.LocalEntity
 import com.example.bcsd_weather.db.local.LocalViewModel
-import com.example.bcsd_weather.db.local.LocalViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel:LocalViewModel

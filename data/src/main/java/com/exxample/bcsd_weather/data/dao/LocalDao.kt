@@ -1,9 +1,9 @@
-package com.example.bcsd_weather.db.local
+package com.exxample.bcsd_weather.data.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.exxample.bcsd_weather.data.model.LocalEntity
 
 @Dao
 interface LocalDao {

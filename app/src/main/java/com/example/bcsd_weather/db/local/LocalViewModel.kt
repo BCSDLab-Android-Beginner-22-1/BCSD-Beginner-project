@@ -2,7 +2,7 @@ package com.example.bcsd_weather.db.local
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
+import com.exxample.bcsd_weather.data.model.LocalEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
