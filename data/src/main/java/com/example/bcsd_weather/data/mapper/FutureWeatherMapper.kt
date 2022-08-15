@@ -5,24 +5,36 @@ import com.example.bcsd_weather.domain.model.FutureWeather
 
 fun FutureWeatherEntity.mapToFutureWeather(): FutureWeather {
     return FutureWeather(
-        temp,
+        fcstDate,
+        fcstTime,
+        precipitationProbability,
+        precipitationTypes,
         precipitation,
         humidity,
+        snow,
+        skyState,
+        temp,
+        windDirection,
         windSpeed,
-        fcstTime,
-        fcstDate,
+        waveHeight,
         fcstValue
     )
 }
 
 fun FutureWeather.mapToFutureWeatherEntity(): FutureWeatherEntity {
     return FutureWeatherEntity(
-        temp,
+        fcstDate,
+        fcstTime,
+        precipitationProbability,
+        precipitationTypes,
         precipitation,
         humidity,
+        snow,
+        skyState,
+        temp,
+        windDirection,
         windSpeed,
-        fcstTime,
-        fcstDate,
+        waveHeight,
         fcstValue
     )
 }
