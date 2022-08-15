@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="dayForecast"
-            type="com.example.bcsd_weather.domain.model.DayForecast" />
+            name="shortTermForecast"
+            type="com.example.bcsd_weather.domain.model.ShortTermForecast" />
 
     </data>
 
@@ -20,7 +20,7 @@
             android:id="@+id/forecast_date_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/forecast_date_time(dayForecast.forecastDate, dayForecast.forecastTime)}"
+            android:text="@{@string/forecast_date_time(shortTermForecast.forecastDate, shortTermForecast.forecastTime)}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/forecast_temperature" />
 
@@ -28,7 +28,7 @@
             android:id="@+id/forecast_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/forecast_temperature(dayForecast.temperature)}"
+            android:text="@{@string/forecast_temperature(shortTermForecast.temperature)}"
             android:textAppearance="?android:attr/textAppearanceLarge"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

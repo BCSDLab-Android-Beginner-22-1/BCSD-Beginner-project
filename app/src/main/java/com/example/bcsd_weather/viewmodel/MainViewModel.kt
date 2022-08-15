@@ -3,9 +3,7 @@ package com.example.bcsd_weather.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.bcsd_weather.domain.model.LocationItem
-import com.example.bcsd_weather.domain.model.NowCast
-import com.example.bcsd_weather.domain.model.TodayForecast
+import com.example.bcsd_weather.domain.model.*
 
 class MainViewModel : ViewModel() {
     private val _nowLocation = MutableLiveData<LocationItem>()
@@ -16,12 +14,12 @@ class MainViewModel : ViewModel() {
     val locationList: LiveData<ArrayList<LocationItem>>
         get() = _locationList
 
-    private val _todayForecastList = MutableLiveData<ArrayList<TodayForecast>>()
-    val todayForecastList: LiveData<ArrayList<TodayForecast>>
+    private val _todayForecastList = MutableLiveData<ArrayList<UltraShortTermForecast>>()
+    val todayForecastList: LiveData<ArrayList<UltraShortTermForecast>>
         get() = _todayForecastList
 
-    private val _nowCastData = MutableLiveData<NowCast>()
-    val nowCastData: LiveData<NowCast>
+    private val _nowCastData = MutableLiveData<UltraShortTermLive>()
+    val nowCastData: LiveData<UltraShortTermLive>
         get() = _nowCastData
 
     init {
