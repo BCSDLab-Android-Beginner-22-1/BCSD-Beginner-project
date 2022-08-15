@@ -1,7 +1,10 @@
 package com.example.bcsd_weather.ui
 
+import android.Manifest
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
@@ -10,6 +13,7 @@ import com.example.bcsd_weather.R
 import com.example.bcsd_weather.adapter.NavDrawerAdapter
 import com.example.bcsd_weather.adapter.TodayForecastAdapter
 import com.example.bcsd_weather.databinding.ActivityMainBinding
+import com.example.bcsd_weather.util.OpenSettings
 import com.example.bcsd_weather.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,6 +23,28 @@ class MainActivity : AppCompatActivity() {
     private val todayForecastAdapter = TodayForecastAdapter()
     private val navDrawerAdapter = NavDrawerAdapter()
     private val mainViewModel: MainViewModel by viewModel()
+
+    private val requestPermission =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { results ->
+            for (result in results) {
+                when (result.value) {
+                    true -> getGPSLocation()
+                    else -> {
+                        when (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION) ||
+                                shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                            true -> permissionDialog(true)
+                            else -> permissionDialog(false)
+                        }
+                        break
+                    }
+                }
+            }
+        }
+
+    private val openSettings =
+        registerForActivityResult(OpenSettings()) {
+            checkPermission()
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +59,8 @@ class MainActivity : AppCompatActivity() {
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_nav_menu)
         }
+
+        checkPermission()
 
         binding.toolbar.setNavigationOnClickListener {
             binding.drawerLayout.open()
@@ -84,6 +112,37 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ForecastActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun checkPermission() {
+        val permissionList = arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+
+        requestPermission.launch(permissionList)
+    }
+
+    private fun permissionDialog(isDeniedOnce: Boolean) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.dialog_request_permission_title))
+            .setMessage(getString(R.string.dialog_request_permission_message))
+            .setPositiveButton(getString(R.string.dialog_request_permission_ok)) { dialog, _ ->
+                when (isDeniedOnce) {
+                    true -> checkPermission()
+                    false -> openSettings.launch(null)
+                }
+                dialog.dismiss()
+            }
+            .setNegativeButton(getString(R.string.dialog_request_permission_cancel)) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+        builder.show()
+    }
+
+    private fun getGPSLocation() {
+
     }
 
     override fun onBackPressed() {

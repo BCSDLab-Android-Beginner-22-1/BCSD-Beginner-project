@@ -19,4 +19,9 @@
     <string name="add_location">위치 추가</string>
 
     <string name="data_empty">데이터 없음!</string>
+
+    <string name="dialog_request_permission_title">Permission required!</string>
+    <string name="dialog_request_permission_message">Location permission is required to run this app!</string>
+    <string name="dialog_request_permission_ok">OK</string>
+    <string name="dialog_request_permission_cancel">Cancel</string>
 </resources>
