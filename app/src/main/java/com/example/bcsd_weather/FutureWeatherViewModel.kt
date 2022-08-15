@@ -1,35 +1,40 @@
 package com.example.bcsd_weather
 
-import android.os.Build
-import androidx.annotation.RequiresApi
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.bcsd_weather.data.model.FutureWeatherEntity
 import com.example.bcsd_weather.domain.model.FutureWeather
 import com.example.bcsd_weather.domain.repository.FutureWeatherRepository
+import com.example.bcsd_weather.domain.usecase.DeleteWeatherUseCase
+import com.example.bcsd_weather.domain.usecase.GetDetailedFutureWeatherUseCase
+import com.example.bcsd_weather.domain.usecase.GetFutureWeatherUseCase
+import com.example.bcsd_weather.domain.usecase.InsertFutureWeatherUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FutureWeatherViewModel(private val repository: FutureWeatherRepository) : ViewModel() {
+class FutureWeatherViewModel(
+    private val deleteWeatherUseCase: DeleteWeatherUseCase,
+    private val getDetailedFutureWeatherUseCase: GetDetailedFutureWeatherUseCase,
+    private val getFutureWeatherUseCase: GetFutureWeatherUseCase,
+    private val insertFutureWeatherUseCase: InsertFutureWeatherUseCase,
+) : ViewModel() {
 
     fun insertFutureWeather(futureWeather: FutureWeather) {
         CoroutineScope(Dispatchers.IO).launch {
-            repository.insertFutureWeather(futureWeather)
+            insertFutureWeatherUseCase(futureWeather)
         }
     }
 
     fun getFutureWeather(startDate: String): List<FutureWeather> {
-        return repository.getFutureWeather(startDate)
+        return getFutureWeatherUseCase(startDate)
     }
 
     fun getDetailedFutureWeather(date: String): FutureWeather {
-        return repository.getDetailedFutureWeather(date)
+        return getDetailedFutureWeatherUseCase(date)
     }
 
     fun deleteWeather(firstDateToKeep: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            repository.deleteWeather(firstDateToKeep)
+            deleteWeatherUseCase(firstDateToKeep)
         }
     }
 }

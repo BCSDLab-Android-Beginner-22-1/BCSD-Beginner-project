@@ -10,15 +10,6 @@ import com.example.bcsd_weather.domain.repository.FutureWeatherRepository
 class FutureWeatherRepositoryImpl(private val futureWeatherDao: FutureWeatherDao) :
     FutureWeatherRepository {
 
-//    private val futureWeatherList: LiveData<List<FutureWeatherEntity>>
-//    private val current = LocalDate.now()
-
-
-    // 날짜 형식 : yyyy-MM-dd
-//    init {
-//        futureWeatherList = futureWeatherDao.getFutureWeather(formatted)
-//    }
-
     override suspend fun insertFutureWeather(futureWeather: FutureWeather) {
         futureWeatherDao.insertFutureWeather(futureWeather.mapToFutureWeatherEntity())
     }
