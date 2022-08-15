@@ -4,6 +4,7 @@ import com.example.bcsd_weather.data.datasource.ShortTermForecastDataSource
 import com.example.bcsd_weather.data.datasource.UltraShortTermFcstDataSource
 import com.example.bcsd_weather.data.datasource.UltraShortTermLiveDataSource
 import com.example.bcsd_weather.data.datasource.remote.GPSRemoteDataSource
+import com.example.bcsd_weather.data.mapper.ConvertGPS
 import com.example.bcsd_weather.data.repository.GPSRepositoryImpl
 import com.example.bcsd_weather.data.repository.ShortTermFcstRepositoryImpl
 import com.example.bcsd_weather.data.repository.UltraSrtFcstRepositoryImpl
@@ -37,6 +38,8 @@ val appModule = module {
     single { GetUltraSrtLiveUseCase(get()) }
     single { GetGPSLocationUseCase(get()) }
     single { InitGPSLocationUseCase(get()) }
+
+    single { ConvertGPS() }
 }
 
 val viewModelModule = module {
