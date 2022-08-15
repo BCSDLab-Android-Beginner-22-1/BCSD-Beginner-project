@@ -25,7 +25,15 @@ class GPSRepositoryImpl(
         }
     }
 
-    override fun getGPSLocation(): Location {
-        return gpsRemoteDataSource.getGPS().mapToGPS(convertGPS)
+    override suspend fun getGPSLocation(): Flow<Location> {
+        return flow {
+            gpsRemoteDataSource.getGPS()
+                .catch {
+                    println(it)
+                }
+                .collect {
+                    emit(it.mapToGPS(convertGPS))
+                }
+        }
     }
 }

@@ -71,7 +71,16 @@ class GPSRemoteDataSource(private val context: Context) {
         }
     }
 
-    fun getGPS(): GPSRemote {
-        return currentLocation
+    fun getGPS(): Flow<GPSRemote> {
+        return flow {
+            while (true) {
+                if (this@GPSRemoteDataSource::currentLocation.isInitialized) {
+                    emit(currentLocation)
+                    break
+                } else {
+                    delay(1000)
+                }
+            }
+        }
     }
 }

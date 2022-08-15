@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface GPSRepository {
     suspend fun initGPSLocation(): Flow<Boolean>
-    fun getGPSLocation(): Location
+    suspend fun getGPSLocation(): Flow<Location>
 }
