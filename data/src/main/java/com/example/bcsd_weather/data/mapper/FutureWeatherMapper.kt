@@ -16,8 +16,7 @@ fun FutureWeatherEntity.mapToFutureWeather(): FutureWeather {
         temp,
         windDirection,
         windSpeed,
-        waveHeight,
-        fcstValue
+        waveHeight
     )
 }
 
@@ -34,7 +33,6 @@ fun FutureWeather.mapToFutureWeatherEntity(): FutureWeatherEntity {
         temp,
         windDirection,
         windSpeed,
-        waveHeight,
-        fcstValue
+        waveHeight
     )
 }
