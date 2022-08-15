@@ -3,9 +3,18 @@ package com.example.bcsd_weather.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.bcsd_weather.domain.model.*
+import androidx.lifecycle.viewModelScope
+import com.example.bcsd_weather.domain.model.LocationItem
+import com.example.bcsd_weather.domain.model.UltraShortTermForecast
+import com.example.bcsd_weather.domain.model.UltraShortTermLive
+import com.example.bcsd_weather.domain.usecase.GetGPSLocationUseCase
+import com.example.bcsd_weather.domain.usecase.InitGPSLocationUseCase
+import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class MainViewModel(
+    private val initGPSLocationUseCase: InitGPSLocationUseCase,
+    private val getGPSLocationUseCase: GetGPSLocationUseCase
+) : ViewModel() {
     private val _nowLocation = MutableLiveData<LocationItem>()
     val nowLocation: LiveData<LocationItem>
         get() = _nowLocation
@@ -33,8 +42,20 @@ class MainViewModel : ViewModel() {
     }
 
     fun setCurrentLocationToGPS() {
-        _nowLocation.value = LocationItem(null, null, null)
-        getNowWeather()
+        viewModelScope.launch {
+            initGPSLocationUseCase()
+                .collect {
+                    if (it) {
+                        getGPSLocationUseCase()
+                            .collect { location ->
+                                _nowLocation.value = LocationItem(null, location.x, location.y)
+                                getNowWeather()
+                                getTodayForecast()
+                            }
+                    }
+                }
+
+        }
     }
 
     private fun getNowWeather() {

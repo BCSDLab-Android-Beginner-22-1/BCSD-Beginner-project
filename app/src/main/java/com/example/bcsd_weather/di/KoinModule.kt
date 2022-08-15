@@ -44,7 +44,7 @@ val appModule = module {
 
 val viewModelModule = module {
     viewModel {
-        MainViewModel()
+        MainViewModel(get(), get())
     }
     viewModel {
         ForecastViewModel()
