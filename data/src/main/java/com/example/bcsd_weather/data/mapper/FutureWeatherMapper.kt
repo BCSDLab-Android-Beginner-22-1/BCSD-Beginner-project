@@ -10,7 +10,6 @@ fun FutureWeatherEntity.mapToFutureWeather(): FutureWeather {
         humidity,
         windSpeed,
         fcstTime,
-        category,
         fcstDate,
         fcstValue
     )
@@ -23,7 +22,6 @@ fun FutureWeather.mapToFutureWeatherEntity(): FutureWeatherEntity {
         humidity,
         windSpeed,
         fcstTime,
-        category,
         fcstDate,
         fcstValue
     )
