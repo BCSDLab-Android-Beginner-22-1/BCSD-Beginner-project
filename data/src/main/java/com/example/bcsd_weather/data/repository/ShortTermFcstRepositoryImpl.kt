@@ -9,11 +9,11 @@ import com.example.bcsd_weather.domain.repository.ShortTermFcstRepository
 
 class ShortTermFcstRepositoryImpl(private val shortTermForecastDataSource: ShortTermForecastDataSource) :
     ShortTermFcstRepository {
-    override suspend fun getShortTermFcst(nx: Int, ny: Int): ArrayList<ShortTermForecast>? {
+    override suspend fun getShortTermFcst(nx: Int, ny: Int): List<ShortTermForecast>? {
         return shortTermForecastDataSource.getShortTermFcst(nx, ny).mapToShortTermForecast()
     }
 
-    override suspend fun getShortTermTempFcst(nx: Int, ny: Int): ArrayList<ShortTermTempForecast>? {
+    override suspend fun getShortTermTempFcst(nx: Int, ny: Int): List<ShortTermTempForecast>? {
         return shortTermForecastDataSource.getShortTermTempFcst(nx, ny).mapToShortTermTempForecast()
     }
 }
