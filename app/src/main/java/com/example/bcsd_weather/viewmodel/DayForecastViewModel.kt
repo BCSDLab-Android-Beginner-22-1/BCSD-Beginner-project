@@ -14,6 +14,10 @@ class DayForecastViewModel : ViewModel() {
     val forecastData: LiveData<ArrayList<ShortTermForecast>>
         get() = _forecastData
 
+    private val _isLoading = MutableLiveData(false)
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
     fun setForecastDate(date: String) {
         _forecastDate.value = date
     }

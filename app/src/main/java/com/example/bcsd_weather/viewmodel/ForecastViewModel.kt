@@ -10,6 +10,10 @@ class ForecastViewModel : ViewModel() {
     val forecastData: LiveData<ArrayList<ShortTermTempForecast>>
         get() = _forecastData
 
+    private val _isLoading = MutableLiveData(false)
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
     fun getForecastList() {
         // Get forecast list from db
         TODO()

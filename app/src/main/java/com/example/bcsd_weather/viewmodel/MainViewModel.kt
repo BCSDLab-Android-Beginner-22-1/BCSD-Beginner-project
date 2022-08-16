@@ -31,6 +31,10 @@ class MainViewModel(
     val nowCastData: LiveData<UltraShortTermLive>
         get() = _nowCastData
 
+    private val _isLoading = MutableLiveData(false)
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
     init {
         setCurrentLocationToGPS()
         getTodayForecast()
@@ -42,6 +46,7 @@ class MainViewModel(
     }
 
     fun setCurrentLocationToGPS() {
+        _isLoading.value = true
         viewModelScope.launch {
             initGPSLocationUseCase()
                 .collect {
@@ -49,6 +54,7 @@ class MainViewModel(
                         getGPSLocationUseCase()
                             .collect { location ->
                                 _nowLocation.value = LocationItem(null, location.x, location.y)
+                                _isLoading.value = false
                                 getNowWeather()
                                 getTodayForecast()
                             }
