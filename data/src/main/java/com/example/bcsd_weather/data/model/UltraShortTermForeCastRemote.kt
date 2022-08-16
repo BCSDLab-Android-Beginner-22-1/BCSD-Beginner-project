@@ -23,24 +23,11 @@ fun UltraShortTermForeCastRemote.mapToUltraShortTermForecast(): ArrayList<UltraS
     }
 
     val mappedData = ArrayList<UltraShortTermForecast>()
-    var newData = UltraShortTermForecast()
-
-    var forecastTime = ""
 
     for (item in list) {
-        if (forecastTime != item.fcstTime && newData.temperature != null) {
-            if (forecastTime != "") {
-                mappedData.add(newData)
-            }
-
-            newData = UltraShortTermForecast()
-            forecastTime = item.fcstTime
-            newData.forecastTime = forecastTime
-        }
-
         when (item.category) {
             "T1H" -> {
-                newData.temperature = item.fcstValue
+                mappedData.add(UltraShortTermForecast(item.fcstValue, item.fcstTime))
             }
             else -> {}
         }

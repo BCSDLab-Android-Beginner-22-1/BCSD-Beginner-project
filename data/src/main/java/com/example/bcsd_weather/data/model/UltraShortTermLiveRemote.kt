@@ -23,21 +23,26 @@ fun UltraShortTermLiveRemote.mapToUltraShortTermLive(): UltraShortTermLive? {
         return null
     }
 
-    val mappedData = UltraShortTermLive()
+    lateinit var temperature: String
+    lateinit var precipitation: String
+    lateinit var humidity: String
+    lateinit var precipitationType: UltraShortLivePrecipitationType
+    lateinit var windDirection: String
+    lateinit var windSpeed: String
 
     for (item in list) {
         when (item.category) {
             "T1H" -> {
-                mappedData.temperature = item.obsrValue
+                temperature = item.obsrValue
             }
             "RN1" -> {
-                mappedData.precipitation = item.obsrValue
+                precipitation = item.obsrValue
             }
             "REH" -> {
-                mappedData.humidity = item.obsrValue
+                humidity = item.obsrValue
             }
             "PTY" -> {
-                mappedData.precipitationTypes = when (item.obsrValue) {
+                precipitationType = when (item.obsrValue) {
                     "0" -> UltraShortLivePrecipitationType.NONE
                     "1" -> UltraShortLivePrecipitationType.RAIN
                     "2" -> UltraShortLivePrecipitationType.RAIN_SNOW
@@ -49,13 +54,21 @@ fun UltraShortTermLiveRemote.mapToUltraShortTermLive(): UltraShortTermLive? {
                 }
             }
             "VEC" -> {
-                mappedData.windDirection = item.obsrValue
+                windDirection = item.obsrValue
             }
             "WSD" -> {
-                mappedData.windSpeed = item.obsrValue
+                windSpeed = item.obsrValue
             }
             else -> {}
         }
     }
-    return mappedData
+
+    return UltraShortTermLive(
+        temperature,
+        precipitationType,
+        precipitation,
+        humidity,
+        windDirection,
+        windSpeed
+    )
 }

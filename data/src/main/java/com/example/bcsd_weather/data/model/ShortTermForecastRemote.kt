@@ -26,30 +26,52 @@ fun ShortTermForecastRemote.mapToShortTermForecast(): ArrayList<ShortTermForecas
     }
 
     val mappedData = ArrayList<ShortTermForecast>()
-    var newData = ShortTermForecast()
 
-    var forecastDate: String
+    var forecastDate = ""
     var forecastTime = ""
+
+    lateinit var precipitationProbability: String
+    lateinit var precipitationType: ShortForecastPrecipitationType
+    lateinit var precipitation: String
+    lateinit var humidity: String
+    lateinit var snow: String
+    lateinit var skyState: SkyType
+    lateinit var temperature: String
+    lateinit var waveHeight: String
+    lateinit var windDirection: String
+    lateinit var windSpeed: String
 
     for (item in list) {
         if (forecastTime != item.fcstTime) {
             if (forecastTime != "") {
-                mappedData.add(newData)
+                mappedData.add(
+                    ShortTermForecast(
+                        forecastDate,
+                        forecastTime,
+                        precipitationProbability,
+                        precipitationType,
+                        precipitation,
+                        humidity,
+                        snow,
+                        skyState,
+                        temperature,
+                        windDirection,
+                        windSpeed,
+                        waveHeight
+                    )
+                )
             }
-
-            newData = ShortTermForecast()
-            forecastDate = item.fcstDate
-            forecastTime = item.fcstTime
-            newData.forecastDate = forecastDate
-            newData.forecastTime = forecastTime
         }
+
+        forecastDate = item.fcstDate
+        forecastTime = item.fcstTime
 
         when (item.category) {
             "POP" -> {
-                newData.precipitationProbability = item.fcstValue
+                precipitationProbability = item.fcstValue
             }
             "PTY" -> {
-                newData.precipitationTypes = when (item.fcstValue) {
+                precipitationType = when (item.fcstValue) {
                     "0" -> ShortForecastPrecipitationType.NONE
                     "1" -> ShortForecastPrecipitationType.RAIN
                     "2" -> ShortForecastPrecipitationType.RAIN_SNOW
@@ -59,16 +81,16 @@ fun ShortTermForecastRemote.mapToShortTermForecast(): ArrayList<ShortTermForecas
                 }
             }
             "PCP" -> {
-                newData.precipitation = item.fcstValue
+                precipitation = item.fcstValue
             }
             "REH" -> {
-                newData.humidity = item.fcstValue
+                humidity = item.fcstValue
             }
             "SNO" -> {
-                newData.snow = item.fcstValue
+                snow = item.fcstValue
             }
             "SKY" -> {
-                newData.skyState = when (item.fcstValue) {
+                skyState = when (item.fcstValue) {
                     "1" -> SkyType.SUNNY
                     "3" -> SkyType.CLOUDY
                     "4" -> SkyType.OVERCAST
@@ -76,16 +98,16 @@ fun ShortTermForecastRemote.mapToShortTermForecast(): ArrayList<ShortTermForecas
                 }
             }
             "TMP" -> {
-                newData.temperature = item.fcstValue
+                temperature = item.fcstValue
             }
             "WAV" -> {
-                newData.waveHeight = item.fcstValue
+                waveHeight = item.fcstValue
             }
             "VEC" -> {
-                newData.windDirection = item.fcstValue
+                windDirection = item.fcstValue
             }
             "WSD" -> {
-                newData.windSpeed = item.fcstValue
+                windSpeed = item.fcstValue
             }
             else -> {}
         }
@@ -101,27 +123,31 @@ fun ShortTermForecastRemote.mapToShortTermTempForecast(): ArrayList<ShortTermTem
     }
 
     val mappedData = ArrayList<ShortTermTempForecast>()
-    var newData = ShortTermTempForecast()
+
+    var lowestTemperature: String? = null
+    var highestTemperature: String? = null
 
     var forecastDate = ""
 
     for (item in list) {
-        if (forecastDate != item.fcstDate) {
-            if (forecastDate != "") {
-                mappedData.add(newData)
-            }
-
-            newData = ShortTermTempForecast()
-            forecastDate = item.fcstDate
-            newData.forecastDate = forecastDate
+        if (forecastDate != item.fcstDate && forecastDate != "") {
+            mappedData.add(
+                ShortTermTempForecast(
+                    forecastDate,
+                    lowestTemperature,
+                    highestTemperature
+                )
+            )
         }
+
+        forecastDate = item.fcstDate
 
         when (item.category) {
             "TMN" -> {
-                newData.lowestTemperature = item.fcstValue
+                lowestTemperature = item.fcstValue
             }
             "TMX" -> {
-                newData.highestTemperature = item.fcstValue
+                highestTemperature = item.fcstValue
             }
             else -> {}
         }

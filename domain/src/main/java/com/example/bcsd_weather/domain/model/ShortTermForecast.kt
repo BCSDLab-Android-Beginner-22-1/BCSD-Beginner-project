@@ -4,16 +4,16 @@ import com.example.bcsd_weather.domain.enum.ShortForecastPrecipitationType
 import com.example.bcsd_weather.domain.enum.SkyType
 
 data class ShortTermForecast(
-    var forecastDate: String? = null,
-    var forecastTime: String? = null,
-    var precipitationProbability: String? = null,
-    var precipitationTypes: ShortForecastPrecipitationType = ShortForecastPrecipitationType.NONE,
-    var precipitation: String? = null,
-    var humidity: String? = null,
-    var snow: String? = null,
-    var skyState: SkyType = SkyType.SUNNY,
-    var temperature: String? = null,
-    var windDirection: String? = null,
-    var windSpeed: String? = null,
-    var waveHeight: String? = null
+    val forecastDate: String,
+    val forecastTime: String,
+    val precipitationProbability: String,
+    val precipitationType: ShortForecastPrecipitationType = ShortForecastPrecipitationType.NONE,
+    val precipitation: String,
+    val humidity: String,
+    val snow: String,
+    val skyState: SkyType = SkyType.SUNNY,
+    val temperature: String,
+    val windDirection: String,
+    val windSpeed: String,
+    val waveHeight: String
 )
