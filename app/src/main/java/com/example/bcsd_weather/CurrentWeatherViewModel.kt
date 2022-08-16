@@ -3,28 +3,34 @@ package com.example.bcsd_weather
 
 import androidx.lifecycle.ViewModel
 import com.example.bcsd_weather.domain.model.CurrentWeather
-import com.example.bcsd_weather.domain.repository.CurrentWeatherRepository
+import com.example.bcsd_weather.domain.usecase.DeleteCurrentWeatherUseCase
+import com.example.bcsd_weather.domain.usecase.GetCurrentWeatherUseCase
+import com.example.bcsd_weather.domain.usecase.InsertCurrentWeatherUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CurrentWeatherViewModel(private val repository: CurrentWeatherRepository) : ViewModel() {
+class CurrentWeatherViewModel(
+    private val deleteCurrentWeatherUseCase: DeleteCurrentWeatherUseCase,
+    private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase,
+    private val insertCurrentWeatherUseCase: InsertCurrentWeatherUseCase,
+) : ViewModel() {
 
-    fun insert(weather: CurrentWeather) {
+    fun insertCurrentWeather(weather: CurrentWeather) {
         CoroutineScope(Dispatchers.IO).launch {
-            repository.insert(weather)
+            insertCurrentWeatherUseCase(weather)
         }
     }
 
-    fun delete(weather: CurrentWeather){
+    fun deleteCurrentWeather(weather: CurrentWeather) {
         CoroutineScope(Dispatchers.IO).launch {
-            repository.delete(weather)
+            deleteCurrentWeatherUseCase(weather)
         }
     }
 
 
     fun getCurrentWeather(): List<CurrentWeather> {
-        return repository.getCurrentWeather()
+        return getCurrentWeatherUseCase()
     }
 
 

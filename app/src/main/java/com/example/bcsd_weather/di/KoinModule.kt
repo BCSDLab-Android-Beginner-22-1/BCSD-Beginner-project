@@ -7,6 +7,9 @@ import com.example.bcsd_weather.data.dao.CurrentWeatherDao
 import com.example.bcsd_weather.data.db.CurrentWeatherDatabase
 import com.example.bcsd_weather.data.repository.CurrentWeatherRepositoryImpl
 import com.example.bcsd_weather.domain.repository.CurrentWeatherRepository
+import com.example.bcsd_weather.domain.usecase.DeleteCurrentWeatherUseCase
+import com.example.bcsd_weather.domain.usecase.GetCurrentWeatherUseCase
+import com.example.bcsd_weather.domain.usecase.InsertCurrentWeatherUseCase
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -29,9 +32,12 @@ val appModule = module {
     single { provideDao(get()) }
 
     single<CurrentWeatherRepository> {CurrentWeatherRepositoryImpl(get())  }
+    single { DeleteCurrentWeatherUseCase(get()) }
+    single { GetCurrentWeatherUseCase(get()) }
+    single { InsertCurrentWeatherUseCase(get()) }
 
 }
 
 val viewModelModule = module {
-    viewModel { CurrentWeatherViewModel(get()) }
+    viewModel { CurrentWeatherViewModel(get(),get(),get()) }
 }

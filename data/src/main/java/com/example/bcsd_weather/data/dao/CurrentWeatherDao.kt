@@ -7,10 +7,10 @@ import com.example.bcsd_weather.data.CurrentWeatherEntity
 @Dao
 interface CurrentWeatherDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(currentWeatherEntity: CurrentWeatherEntity)
+    fun insertCurrentWeather(currentWeatherEntity: CurrentWeatherEntity)
 
     @Delete
-    fun delete(currentWeatherEntity: CurrentWeatherEntity)
+    fun deleteCurrentWeather(currentWeatherEntity: CurrentWeatherEntity)
 
     @Query("select * from current_weather")
     fun getCurrentWeather() : List<CurrentWeatherEntity>
