@@ -15,12 +15,13 @@ data class UltraShortTermFcst(
     val fcstValue: String,  // 예보 값
 )
 
-fun UltraShortTermForeCastRemote.mapToUltraShortTermForecast(): List<UltraShortTermForecast>? {
-    val list = response.body.items.item
+fun UltraShortTermForeCastRemote.mapToUltraShortTermForecast(): List<UltraShortTermForecast> {
 
     if (response.header.resultCode != 0) {
-        return null
+        return listOf()
     }
+
+    val list = response.body.items.item
 
     val mappedData = ArrayList<UltraShortTermForecast>()
 
