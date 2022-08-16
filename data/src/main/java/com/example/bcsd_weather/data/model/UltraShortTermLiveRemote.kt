@@ -17,11 +17,11 @@ data class UltraShortTermLiveData(
 )
 
 fun UltraShortTermLiveRemote.mapToUltraShortTermLive(): UltraShortTermLive? {
-    val list = response.body.items.item
-
     if (response.header.resultCode != 0) {
         return null
     }
+
+    val list = response.body.items.item
 
     lateinit var temperature: String
     lateinit var precipitation: String
