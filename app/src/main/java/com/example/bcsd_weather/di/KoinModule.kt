@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.room.Room
 import com.example.bcsd_weather.db.local.LocalViewModel
 import com.example.bcsd_weather.domain.repository.LocalRepository
+import com.example.bcsd_weather.domain.usecase.GetLocalUseCase
+import com.example.bcsd_weather.domain.usecase.InsertLocalUseCase
 import com.exxample.bcsd_weather.data.dao.LocalDao
 import com.exxample.bcsd_weather.data.db.LocalDatabase
 import com.exxample.bcsd_weather.data.repository.LocalRepositoryImpl
@@ -26,10 +28,12 @@ val appModule = module {
 
     single { provideDataBase(androidApplication()) }
     single { provideDao(get()) }
+    single { GetLocalUseCase(get()) }
+    single { InsertLocalUseCase(get()) }
     single<LocalRepository> {LocalRepositoryImpl(get())  }
 
 }
 
 val viewModelModule = module {
-    viewModel{LocalViewModel(get())}
+    viewModel{LocalViewModel(get(),get(),get())}
 }
