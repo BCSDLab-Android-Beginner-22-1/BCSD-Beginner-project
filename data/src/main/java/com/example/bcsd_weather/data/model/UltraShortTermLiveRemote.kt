@@ -1,6 +1,6 @@
 package com.example.bcsd_weather.data.model
 
-import com.example.bcsd_weather.domain.enum.UltraShortLivePrecipitationType
+import com.example.bcsd_weather.domain.enums.UltraShortLivePrecipitationType
 import com.example.bcsd_weather.domain.model.UltraShortTermLive
 
 data class UltraShortTermLiveRemote(val response: UslResponse)

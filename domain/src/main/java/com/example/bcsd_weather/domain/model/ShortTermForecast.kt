@@ -1,7 +1,7 @@
 package com.example.bcsd_weather.domain.model
 
-import com.example.bcsd_weather.domain.enum.ShortForecastPrecipitationType
-import com.example.bcsd_weather.domain.enum.SkyType
+import com.example.bcsd_weather.domain.enums.ShortForecastPrecipitationType
+import com.example.bcsd_weather.domain.enums.SkyType
 
 data class ShortTermForecast(
     var forecastDate: String? = null,

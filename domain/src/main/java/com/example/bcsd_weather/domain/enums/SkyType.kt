@@ -1,4 +1,4 @@
-package com.example.bcsd_weather.domain.enum
+package com.example.bcsd_weather.domain.enums
 
 /**
  * SUNNY (1): 맑음
