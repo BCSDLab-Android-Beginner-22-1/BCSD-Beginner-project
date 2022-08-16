@@ -37,7 +37,6 @@ class MainViewModel(
 
     init {
         setCurrentLocationToGPS()
-        getTodayForecast()
     }
 
     fun changeLocation(locationItem: LocationItem) {
