@@ -27,6 +27,10 @@ class DayForecastViewModel : ViewModel() {
         _forecastDate.value = date
     }
 
+    fun setLocation(name: String?, x: Int, y:Int) {
+        _nowLocation.value = LocationItem(name, x, y)
+    }
+
     fun getForecastDataByDate() {
         // Get forecast data from db
         TODO()

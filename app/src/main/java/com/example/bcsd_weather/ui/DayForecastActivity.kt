@@ -26,13 +26,19 @@ class DayForecastActivity : AppCompatActivity() {
 
         binding.lifecycleOwner = this
 
+        dayForecastViewModel.setLocation(
+            intent.getStringExtra("name"),
+            intent.getIntExtra("x", 0),
+            intent.getIntExtra("y", 0)
+        )
+
+        dayForecastViewModel.setForecastDate(intent.getStringExtra("date")!!)
+
         binding.dayForecastRecyclerView.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             adapter = dayForecastAdapter
         }
-
-        dayForecastViewModel.setForecastDate(intent.getStringExtra("date")!!)
 
         dayForecastViewModel.forecastData.observe(this) {
             dayForecastAdapter.submitList(it)

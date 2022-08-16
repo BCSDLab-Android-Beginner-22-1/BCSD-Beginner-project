@@ -27,6 +27,12 @@ class ForecastActivity : AppCompatActivity() {
 
         binding.lifecycleOwner = this
 
+        forecastViewModel.setLocation(
+            intent.getStringExtra("name"),
+            intent.getIntExtra("x", 0),
+            intent.getIntExtra("y", 0)
+        )
+
         binding.forecastRecyclerView.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
@@ -36,6 +42,9 @@ class ForecastActivity : AppCompatActivity() {
         forecastAdapter.setOnClickListener {
             val intent = Intent(this, DayForecastActivity::class.java)
             intent.putExtra("date", it)
+            intent.putExtra("name", forecastViewModel.nowLocation.value!!.title)
+            intent.putExtra("x", forecastViewModel.nowLocation.value!!.x)
+            intent.putExtra("y", forecastViewModel.nowLocation.value!!.y)
             startActivity(intent)
         }
 

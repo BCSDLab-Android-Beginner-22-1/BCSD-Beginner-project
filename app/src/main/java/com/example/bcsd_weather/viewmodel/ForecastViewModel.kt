@@ -1,5 +1,6 @@
 package com.example.bcsd_weather.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,6 +19,10 @@ class ForecastViewModel : ViewModel() {
     private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean>
         get() = _isLoading
+
+    fun setLocation(name: String?, x: Int, y:Int) {
+        _nowLocation.value = LocationItem(name, x, y)
+    }
 
     fun getForecastList() {
         // Get forecast list from db
