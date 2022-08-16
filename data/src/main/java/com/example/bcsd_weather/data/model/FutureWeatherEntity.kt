@@ -10,7 +10,7 @@ import com.example.bcsd_weather.domain.enum.SkyType
     indices = [Index(value = ["fcstDate"])],
     primaryKeys = ["fcstDate", "fcstTime"])
 data class FutureWeatherEntity(
-    val fcstDate: String = "",  // 예측 날짜
+    var fcstDate: String = "",  // 예측 날짜
     var fcstTime: String = "",   // 예보시각
     var precipitationProbability: String = "", // 강수 확률
     var precipitationTypes: ShortForecastPrecipitationType = ShortForecastPrecipitationType.NONE, // 강수 형태
