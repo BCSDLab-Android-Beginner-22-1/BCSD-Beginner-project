@@ -2,11 +2,7 @@ package com.example.bcsd_weather
 
 import androidx.lifecycle.ViewModel
 import com.example.bcsd_weather.domain.model.FutureWeather
-import com.example.bcsd_weather.domain.repository.FutureWeatherRepository
-import com.example.bcsd_weather.domain.usecase.DeleteWeatherUseCase
-import com.example.bcsd_weather.domain.usecase.GetDetailedFutureWeatherUseCase
-import com.example.bcsd_weather.domain.usecase.GetFutureWeatherUseCase
-import com.example.bcsd_weather.domain.usecase.InsertFutureWeatherUseCase
+import com.example.bcsd_weather.domain.usecase.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,6 +12,8 @@ class FutureWeatherViewModel(
     private val getDetailedFutureWeatherUseCase: GetDetailedFutureWeatherUseCase,
     private val getFutureWeatherUseCase: GetFutureWeatherUseCase,
     private val insertFutureWeatherUseCase: InsertFutureWeatherUseCase,
+    private val getHighestTempUseCase: GetHighestTempUseCase,
+    private val getLowestTempUseCase: GetLowestTempUseCase
 ) : ViewModel() {
 
     fun insertFutureWeather(futureWeather: FutureWeather) {
@@ -36,5 +34,12 @@ class FutureWeatherViewModel(
         CoroutineScope(Dispatchers.IO).launch {
             deleteWeatherUseCase(firstDateToKeep)
         }
+    }
+    fun getHighestTemp(date: String): String {
+        return getHighestTempUseCase(date).temp
+    }
+
+    fun getLowestTemp(date: String): String {
+        return getLowestTempUseCase(date).temp
     }
 }

@@ -69,10 +69,12 @@ val appModule = module {
     single { GetDetailedFutureWeatherUseCase(get()) }
     single { GetFutureWeatherUseCase(get()) }
     single { InsertFutureWeatherUseCase(get()) }
+    single { GetHighestTempUseCase(get()) }
+    single { GetLowestTempUseCase(get()) }
 
     single { ConvertGPS() }
 }
 
 val viewModelModule = module {
-    viewModel { FutureWeatherViewModel(get(), get(), get(), get()) }
+    viewModel { FutureWeatherViewModel(get(), get(), get(), get(),get(),get()) }
 }

@@ -10,4 +10,8 @@ interface FutureWeatherRepository {
     fun getDetailedFutureWeather(date: String): List<FutureWeather>
 
     suspend fun deleteWeather(firstDateToKeep: String)
+
+    fun getHighestTemp(date:String):FutureWeather
+
+    fun getLowestTemp(date:String):FutureWeather
 }

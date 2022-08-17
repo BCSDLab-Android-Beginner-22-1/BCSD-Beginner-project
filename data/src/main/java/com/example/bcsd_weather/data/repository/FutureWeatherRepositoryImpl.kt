@@ -40,4 +40,16 @@ class FutureWeatherRepositoryImpl(private val futureWeatherDao: FutureWeatherDao
         futureWeatherDao.deleteWeather(firstDateToKeep)
     }
 
+    override fun getHighestTemp(date: String): FutureWeather {
+        val data = futureWeatherDao.getHighestTemp(date)
+
+        return data.mapToFutureWeather()
+    }
+
+    override fun getLowestTemp(date: String): FutureWeather {
+        val data = futureWeatherDao.getHighestTemp(date)
+
+        return data.mapToFutureWeather()
+    }
+
 }
