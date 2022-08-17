@@ -11,8 +11,8 @@ class DayForecastViewModel : ViewModel() {
     val forecastDate: LiveData<String>
         get() = _forecastDate
 
-    private val _forecastData = MutableLiveData<ArrayList<ShortTermForecast>>()
-    val forecastData: LiveData<ArrayList<ShortTermForecast>>
+    private val _forecastData = MutableLiveData<List<ShortTermForecast>>()
+    val forecastData: LiveData<List<ShortTermForecast>>
         get() = _forecastData
 
     private val _nowLocation = MutableLiveData<LocationItem>()

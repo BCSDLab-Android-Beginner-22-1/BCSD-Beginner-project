@@ -8,8 +8,8 @@ import com.example.bcsd_weather.domain.model.LocationItem
 import com.example.bcsd_weather.domain.model.ShortTermTempForecast
 
 class ForecastViewModel : ViewModel() {
-    private val _forecastData = MutableLiveData<ArrayList<ShortTermTempForecast>>()
-    val forecastData: LiveData<ArrayList<ShortTermTempForecast>>
+    private val _forecastData = MutableLiveData<List<ShortTermTempForecast>>()
+    val forecastData: LiveData<List<ShortTermTempForecast>>
         get() = _forecastData
 
     private val _nowLocation = MutableLiveData<LocationItem>()

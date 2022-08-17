@@ -19,12 +19,12 @@ class MainViewModel(
     val nowLocation: LiveData<LocationItem>
         get() = _nowLocation
 
-    private val _locationList = MutableLiveData<ArrayList<LocationItem>>()
-    val locationList: LiveData<ArrayList<LocationItem>>
+    private val _locationList = MutableLiveData<List<LocationItem>>()
+    val locationList: LiveData<List<LocationItem>>
         get() = _locationList
 
-    private val _todayForecastList = MutableLiveData<ArrayList<UltraShortTermForecast>>()
-    val todayForecastList: LiveData<ArrayList<UltraShortTermForecast>>
+    private val _todayForecastList = MutableLiveData<List<UltraShortTermForecast>>()
+    val todayForecastList: LiveData<List<UltraShortTermForecast>>
         get() = _todayForecastList
 
     private val _nowCastData = MutableLiveData<UltraShortTermLive>()
