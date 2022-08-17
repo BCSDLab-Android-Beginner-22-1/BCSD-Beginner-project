@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getGPSLocation() {
-
+        mainViewModel.setCurrentLocationToGPS()
     }
 
     override fun onBackPressed() {

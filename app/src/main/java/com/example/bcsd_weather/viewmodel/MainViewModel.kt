@@ -36,7 +36,6 @@ class MainViewModel(
         get() = _isLoading
 
     init {
-        setCurrentLocationToGPS()
     }
 
     fun changeLocation(locationItem: LocationItem) {
