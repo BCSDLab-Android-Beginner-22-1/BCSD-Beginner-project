@@ -47,7 +47,7 @@ class FutureWeatherRepositoryImpl(private val futureWeatherDao: FutureWeatherDao
     }
 
     override fun getLowestTemp(date: String): FutureWeather {
-        val data = futureWeatherDao.getHighestTemp(date)
+        val data = futureWeatherDao.getLowestTemp(date)
 
         return data.mapToFutureWeather()
     }
