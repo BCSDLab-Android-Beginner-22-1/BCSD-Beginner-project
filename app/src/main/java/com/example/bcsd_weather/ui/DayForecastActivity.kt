@@ -25,6 +25,7 @@ class DayForecastActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.lifecycleOwner = this
+        binding.vm = dayForecastViewModel
 
         dayForecastViewModel.setLocation(
             intent.getStringExtra("name"),

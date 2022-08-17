@@ -26,6 +26,7 @@ class ForecastActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.lifecycleOwner = this
+        binding.vm = forecastViewModel
 
         forecastViewModel.setLocation(
             intent.getStringExtra("name"),
