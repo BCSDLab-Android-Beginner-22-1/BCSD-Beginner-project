@@ -28,7 +28,7 @@ class FutureWeatherViewModel(
         return getFutureWeatherUseCase(startDate)
     }
 
-    fun getDetailedFutureWeather(date: String): FutureWeather {
+    fun getDetailedFutureWeather(date: String): List<FutureWeather> {
         return getDetailedFutureWeatherUseCase(date)
     }
 

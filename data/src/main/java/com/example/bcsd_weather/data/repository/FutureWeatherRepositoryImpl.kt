@@ -25,8 +25,15 @@ class FutureWeatherRepositoryImpl(private val futureWeatherDao: FutureWeatherDao
         return converted.toList()
     }
 
-    override fun getDetailedFutureWeather(date: String): FutureWeather {
-        return futureWeatherDao.getDetailedFutureWeather(date).mapToFutureWeather()
+    override fun getDetailedFutureWeather(date: String): List<FutureWeather> {
+        val data = futureWeatherDao.getDetailedFutureWeather(date)
+        val converted = ArrayList<FutureWeather>()
+
+        for (i in data) {
+            converted.add(i.mapToFutureWeather())
+        }
+
+        return converted.toList()
     }
 
     override suspend fun deleteWeather(firstDateToKeep: String) {

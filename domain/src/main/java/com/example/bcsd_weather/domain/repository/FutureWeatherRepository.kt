@@ -7,7 +7,7 @@ interface FutureWeatherRepository {
 
     fun getFutureWeather(startDate: String): List<FutureWeather>
 
-    fun getDetailedFutureWeather(date: String): FutureWeather
+    fun getDetailedFutureWeather(date: String): List<FutureWeather>
 
     suspend fun deleteWeather(firstDateToKeep: String)
 }

@@ -17,7 +17,7 @@ interface FutureWeatherDao {
     fun getFutureWeather(startDate: String): List<FutureWeatherEntity>
 
     @Query("select * from future_weather where fcstDate = :date")
-    fun getDetailedFutureWeather(date: String): FutureWeatherEntity
+    fun getDetailedFutureWeather(date: String): List<FutureWeatherEntity>
 
     @Query("delete from future_weather where CAST(fcstDate AS INTEGER) < CAST(:firstDateToKeep AS INTEGER)")
     fun deleteWeather(firstDateToKeep: String)
