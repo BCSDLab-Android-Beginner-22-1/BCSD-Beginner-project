@@ -14,6 +14,7 @@ import com.example.bcsd_weather.adapter.NavDrawerAdapter
 import com.example.bcsd_weather.adapter.TodayForecastAdapter
 import com.example.bcsd_weather.databinding.ActivityMainBinding
 import com.example.bcsd_weather.util.OpenSettings
+import com.example.bcsd_weather.view.GeocoderDialog
 import com.example.bcsd_weather.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -85,6 +86,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.navContent.addLocationButton.setOnClickListener {
+            val dialog = GeocoderDialog()
+            dialog.setButtonClickListener(object : GeocoderDialog.OnButtonClickListener {
+                override fun onButtonClicked() {
+
+                }
+            })
+            dialog.show(supportFragmentManager, "GeocoderDialog")
 
         }
 

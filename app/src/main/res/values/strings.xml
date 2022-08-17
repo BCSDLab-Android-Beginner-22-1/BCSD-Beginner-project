@@ -24,4 +24,7 @@
     <string name="dialog_request_permission_message">Location permission is required to run this app!</string>
     <string name="dialog_request_permission_ok">OK</string>
     <string name="dialog_request_permission_cancel">Cancel</string>
+    <string name="dialog_add_location_title">Add Location</string>
+    <string name="dialog_add_location_address">Address</string>
+    <string name="dialog_add_location_add">Add</string>
 </resources>
