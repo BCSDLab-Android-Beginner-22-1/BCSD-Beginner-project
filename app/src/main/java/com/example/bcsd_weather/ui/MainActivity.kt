@@ -70,7 +70,6 @@ class MainActivity : AppCompatActivity() {
         // Navigation drawer start
 
         binding.navContent.navDrawerRecyclerView.apply {
-            setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             adapter = navDrawerAdapter
         }
