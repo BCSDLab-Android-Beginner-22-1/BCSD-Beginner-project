@@ -5,12 +5,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitBuilder {
     private const val baseUrl = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/"
+    private var retrofit: Retrofit? = null
 
-    private fun getRetrofit(): Retrofit =
-        Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    private fun getRetrofit(): Retrofit {
+        if(retrofit == null) {
+            retrofit = Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
+
+        return retrofit!!
+    }
 
     fun shortTermFcstService(): ShortTermForecastInterface = getRetrofit().create(
         ShortTermForecastInterface::class.java
