@@ -9,7 +9,8 @@
     <string name="today_forecast_title">오늘 날씨</string>
     <string name="forecast_time">%s</string>
     <string name="forecast_temperature">%s°C</string>
-    <string name="forecast_low_high_temperature">%1$s°C / %2$s°C</string>
+    <string name="forecast_low_high_temperature">Minimum temperature: %1$s°C / Maximum temperature: %2$s°C</string>
+    <string name="forecast_more">More forecast</string>
     <string name="forecast_date_time">%1$s\n%2$s</string>
     <string name="forecast_precipitation">강수량: %smm</string>
     <string name="forecast_precipitation_probability">강수확률: %s%%</string>
