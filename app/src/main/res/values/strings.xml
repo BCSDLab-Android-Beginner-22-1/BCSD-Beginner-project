@@ -27,4 +27,7 @@
     <string name="dialog_add_location_title">Add Location</string>
     <string name="dialog_add_location_address">Address</string>
     <string name="dialog_add_location_add">Add</string>
+    <string name="dialog_network_check_title">Connect network first!</string>
+    <string name="dialog_network_check_message">Can\'t find any network connection!</string>
+    <string name="dialog_network_check_finish">Finish</string>
 </resources>

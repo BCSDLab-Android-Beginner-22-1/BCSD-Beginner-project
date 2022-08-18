@@ -1,7 +1,10 @@
 package com.example.bcsd_weather.ui
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -50,6 +53,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        checkNetworkConnection()
 
         binding.lifecycleOwner = this
         binding.contentMain.vm = mainViewModel
@@ -122,6 +127,27 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("y", mainViewModel.nowLocation.value!!.y)
             startActivity(intent)
         }
+    }
+
+    private fun checkNetworkConnection() {
+        if (!getNetworkState()) {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle(getString(R.string.dialog_network_check_title))
+                .setMessage(getString(R.string.dialog_network_check_message))
+                .setPositiveButton(getString(R.string.dialog_network_check_finish)) { dialog, _ ->
+                    dialog.dismiss()
+                    finish()
+                }
+                .setCancelable(false)
+            builder.show()
+        }
+    }
+
+    private fun getNetworkState(): Boolean {
+        val connectivityManager =
+            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
+        return activeNetwork?.isConnectedOrConnecting == true
     }
 
     private fun checkPermission() {
