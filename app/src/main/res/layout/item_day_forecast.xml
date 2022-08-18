@@ -17,12 +17,29 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/forecast_date_time"
+            android:id="@+id/forecast_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/forecast_date_time(shortTermForecast.forecastDate, shortTermForecast.forecastTime)}"
+            android:text="@{shortTermForecast.forecastTime}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/forecast_temperature" />
+
+        <TextView
+            android:id="@+id/forecast_precipitation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/forecast_precipitation(shortTermForecast.precipitation, shortTermForecast.precipitationProbability)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/forecast_time" />
+
+        <TextView
+            android:id="@+id/forecast_wind_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/forecast_wind_speed(shortTermForecast.windSpeed)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/forecast_precipitation" />
 
         <TextView
             android:id="@+id/forecast_temperature"
@@ -30,9 +47,16 @@
             android:layout_height="wrap_content"
             android:text="@{@string/forecast_temperature(shortTermForecast.temperature)}"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/forecast_sky_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{shortTermForecast.skyState.name()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/forecast_temperature" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

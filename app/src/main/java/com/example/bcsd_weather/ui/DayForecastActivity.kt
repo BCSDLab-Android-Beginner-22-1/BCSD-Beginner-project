@@ -35,6 +35,8 @@ class DayForecastActivity : AppCompatActivity() {
 
         dayForecastViewModel.setForecastDate(intent.getStringExtra("date")!!)
 
+        supportActionBar?.title = dayForecastViewModel.forecastDate.value
+
         binding.dayForecastRecyclerView.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)

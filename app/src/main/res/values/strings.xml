@@ -12,9 +12,13 @@
     <string name="forecast_low_high_temperature">Minimum temperature: %1$s°C / Maximum temperature: %2$s°C</string>
     <string name="forecast_more">More forecast</string>
     <string name="forecast_date_time">%1$s\n%2$s</string>
-    <string name="forecast_precipitation">강수량: %smm</string>
-    <string name="forecast_precipitation_probability">강수확률: %s%%</string>
+    <string name="forecast_precipitation">강수량: %smm 강수확률: %s%%</string>
     <string name="forecast_humidity">습도: %s%%</string>
+    <string name="forecast_wind_speed">풍속: %sm/s</string>
+    
+    <string name="forecast_sky_type_sunny">맑음</string>
+    <string name="forecast_sky_type_overcast">흐림</string>
+    <string name="forecast_sky_type_cloudy">구름 많음</string>
 
     <string name="current_location">현재 위치</string>
     <string name="add_location">위치 추가</string>
