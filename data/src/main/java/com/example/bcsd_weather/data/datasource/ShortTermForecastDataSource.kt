@@ -23,8 +23,10 @@ class ShortTermForecastDataSource {
         val baseDate = baseDateAndTime["baseDate"]!!
         val baseTime = baseDateAndTime["baseTime"]!!
 
+        // API only provide lowest temperature if baseTime is 0200.
+        // So, hardcode baseTime to 0200 to get lowest temperature
         return RetrofitBuilder
             .shortTermFcstService()
-            .getWeather(baseDate = baseDate, baseTime = baseTime, nx = nx, ny = ny)
+            .getWeather(baseDate = baseDate, baseTime = "0200", nx = nx, ny = ny)
     }
 }
