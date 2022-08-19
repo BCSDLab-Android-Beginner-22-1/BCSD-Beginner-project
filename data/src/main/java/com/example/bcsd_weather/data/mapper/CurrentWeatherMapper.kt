@@ -5,20 +5,26 @@ import com.example.bcsd_weather.domain.model.CurrentWeather
 
 fun CurrentWeatherEntity.mapToCurrentWeather():CurrentWeather{
     return CurrentWeather(
-        temp,
+        x,
+        y,
+        temperature,
+        precipitationType,
         precipitation,
         humidity,
-        windSpeed,
-        fcstTime
+        windDirection,
+        windSpeed
     )
 }
 
 fun CurrentWeather.mapToCurrentWeatherEntity(): CurrentWeatherEntity{
     return CurrentWeatherEntity(
-        temp,
+        x,
+        y,
+        temperature,
+        precipitationType,
         precipitation,
         humidity,
-        windSpeed,
-        fcstTime
+        windDirection,
+        windSpeed
     )
 }

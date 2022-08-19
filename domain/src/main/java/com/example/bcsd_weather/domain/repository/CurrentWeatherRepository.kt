@@ -8,7 +8,6 @@ interface CurrentWeatherRepository {
 
     suspend fun deleteCurrentWeather(currentWeather: CurrentWeather)
 
-
     fun getCurrentWeather(): List<CurrentWeather>
 
 }

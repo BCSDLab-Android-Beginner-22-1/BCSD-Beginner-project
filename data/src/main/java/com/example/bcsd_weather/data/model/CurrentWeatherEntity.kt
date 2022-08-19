@@ -3,15 +3,19 @@ package com.example.bcsd_weather.data
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.example.bcsd_weather.domain.enum.UltraShortLivePrecipitationType
 
-@Entity(tableName = "current_weather", indices = [Index(value = ["fcstTime"])])
+@Entity(tableName = "current_weather", indices = [Index(value = ["fcstTime"])],primaryKeys = ["x","y"])
 data class CurrentWeatherEntity(
-    @PrimaryKey
-    var fcstTime: String = "",        // 예보시각
-    var temp: String = "",            // 온도
-    var precipitation: String = "",   // 강수량
-    var humidity: String = "",        // 습도
-    var windSpeed: String = ""       // 풍속
+    var x: Int,
+    var y: Int,
+    var temperature: String,
+    var precipitationType: UltraShortLivePrecipitationType = UltraShortLivePrecipitationType.NONE,
+    var precipitation: String,
+    var humidity: String,
+    var windDirection: String,
+    var windSpeed: String
 )
+
 
 
