@@ -4,6 +4,7 @@
     <string name="current_precipitation">강수량: %smm</string>
     <string name="current_humidity">습도: %s%%</string>
     <string name="current_wind_speed">풍속: %sm/s</string>
+    <string name="current_unknown">알 수 없음</string>
 
     <string name="today_forecast_title">오늘 날씨</string>
     <string name="forecast_time">%s</string>

@@ -4,6 +4,7 @@
     <string name="current_precipitation">Precipitation: %smm</string>
     <string name="current_humidity">Humidity: %s%%</string>
     <string name="current_wind_speed">Wind speed: %sm/s</string>
+    <string name="current_unknown">Unknown</string>
 
     <string name="today_forecast_title">Today\'s weather</string>
     <string name="forecast_time">%s</string>
