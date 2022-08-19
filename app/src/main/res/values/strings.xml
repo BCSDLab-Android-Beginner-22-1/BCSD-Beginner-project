@@ -13,12 +13,17 @@
     <string name="forecast_more">More forecast</string>
     <string name="forecast_date_time">%1$s\n%2$s</string>
     <string name="forecast_precipitation">Precipitation: %s Precipitation probability: %s%%</string>
-    <string name="forecast_humidity">Humidity: %s%%</string>
-    <string name="forecast_wind_speed">Wind speed: %sm/s</string>
+    <string name="forecast_humidity_wind_speed">Humidity: %s%% Wind speed: %sm/s</string>
     
     <string name="forecast_sky_type_sunny">Sunny</string>
     <string name="forecast_sky_type_overcast">Overcast</string>
     <string name="forecast_sky_type_cloudy">Cloudy</string>
+
+    <string name="forecast_precipitation_type_rain">Rain</string>
+    <string name="forecast_precipitation_type_rain_snow">Rain and snow</string>
+    <string name="forecast_precipitation_type_snow">Snow</string>
+    <string name="forecast_precipitation_type_shower">Shower</string>
+
 
     <string name="current_location">Current location</string>
     <string name="add_location">Add location</string>

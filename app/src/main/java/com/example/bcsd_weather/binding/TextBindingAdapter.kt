@@ -1,7 +1,9 @@
 package com.example.bcsd_weather.binding
 
+import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.example.bcsd_weather.domain.enum.ShortForecastPrecipitationType
 
 object TextBindingAdapter {
     @BindingAdapter("sky_type_text")
@@ -15,6 +17,24 @@ object TextBindingAdapter {
             context.packageName
         )
         textView.text = context.getString(resourceId)
+    }
+
+    @BindingAdapter("precipitation_type_text")
+    @JvmStatic
+    fun setPrecipitationTypeText(textView: TextView, precipitationType: ShortForecastPrecipitationType) {
+        val context = textView.context
+
+        when (precipitationType) {
+            ShortForecastPrecipitationType.NONE -> textView.visibility = View.GONE
+            else -> {
+                val resourceId = context.resources.getIdentifier(
+                    "forecast_precipitation_type_${precipitationType.name.lowercase()}",
+                    "string",
+                    context.packageName
+                )
+                textView.text = context.getString(resourceId)
+            }
+        }
     }
 
     @BindingAdapter("date_text")

@@ -37,7 +37,7 @@
             android:id="@+id/forecast_wind_speed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/forecast_wind_speed(shortTermForecast.windSpeed)}"
+            android:text="@{@string/forecast_humidity_wind_speed(shortTermForecast.humidity, shortTermForecast.windSpeed)}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/forecast_precipitation" />
 
@@ -57,6 +57,14 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/forecast_temperature" />
+
+        <TextView
+            android:id="@+id/forecast_precipitation_type"
+            precipitation_type_text="@{shortTermForecast.precipitationTypes}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/forecast_sky_type" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
