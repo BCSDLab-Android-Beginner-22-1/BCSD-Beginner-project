@@ -8,8 +8,10 @@ import com.example.bcsd_weather.domain.enum.SkyType
 
 @Entity(tableName = "future_weather",
     indices = [Index(value = ["fcstDate"])],
-    primaryKeys = ["fcstDate", "fcstTime"])
+    primaryKeys = ["fcstDate", "fcstTime","x","y"])
 data class FutureWeatherEntity(
+    var x: Int,
+    var y: Int,
     var fcstDate: String = "",  // 예측 날짜
     var fcstTime: String = "",   // 예보시각
     var precipitationProbability: String = "", // 강수 확률
