@@ -52,9 +52,9 @@
 
         <TextView
             android:id="@+id/forecast_sky_type"
+            sky_type_text="@{shortTermForecast.skyState.name()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{shortTermForecast.skyState.name()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/forecast_temperature" />
 
