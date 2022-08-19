@@ -6,7 +6,7 @@ import com.example.bcsd_weather.data.dao.FutureWeatherDao
 import com.example.bcsd_weather.data.model.FutureWeatherEntity
 
 
-@Database(entities = [FutureWeatherEntity::class], version = 5)
+@Database(entities = [FutureWeatherEntity::class], version = 6)
 abstract class FutureWeatherDatabase : RoomDatabase() {
 
     abstract fun futureWeatherDao(): FutureWeatherDao
