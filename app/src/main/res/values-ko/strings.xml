@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">BCSD-weather</string>
+    <string name="current_temperature">%s°C</string>
+    <string name="current_precipitation">강수량: %smm</string>
+    <string name="current_humidity">습도: %s%%</string>
+    <string name="current_wind_speed">풍속: %sm/s</string>
+
+    <string name="today_forecast_title">오늘 날씨</string>
+    <string name="forecast_time">%s</string>
+    <string name="forecast_temperature">%s°C</string>
+    <string name="forecast_low_high_temperature">최저 기온: %1$s°C / 최고 기온: %2$s°C</string>
+    <string name="forecast_more">더보기</string>
+    <string name="forecast_date_time">%1$s\n%2$s</string>
+    <string name="forecast_precipitation">강수량: %s 강수확률: %s%%</string>
+    <string name="forecast_humidity">습도: %s%%</string>
+    <string name="forecast_wind_speed">풍속: %sm/s</string>
+
+    <string name="forecast_sky_type_sunny">맑음</string>
+    <string name="forecast_sky_type_overcast">흐림</string>
+    <string name="forecast_sky_type_cloudy">구름 많음</string>
+
+    <string name="current_location">현재 위치</string>
+    <string name="add_location">위치 추가</string>
+
+    <string name="data_empty">데이터 없음!</string>
+
+    <string name="dialog_request_permission_title">권한이 필요합니다!</string>
+    <string name="dialog_request_permission_message">앱 실행을 위해 위치 권한이 필요합니다!</string>
+    <string name="dialog_request_permission_ok">확인</string>
+    <string name="dialog_request_permission_cancel">취소</string>
+    <string name="dialog_add_location_title">위치 추가</string>
+    <string name="dialog_add_location_address">주소</string>
+    <string name="dialog_add_location_add">추가</string>
+    <string name="dialog_network_check_title">인터넷을 먼저 연결해주세요!</string>
+    <string name="dialog_network_check_message">인터넷이 연결되어 있지 않습니다!</string>
+    <string name="dialog_network_check_finish">종료</string>
+</resources>

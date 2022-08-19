@@ -1,29 +1,28 @@
 <resources>
     <string name="app_name">BCSD-weather</string>
     <string name="current_temperature">%s°C</string>
-    <string name="current_precipitation">강수량: %smm</string>
-    <string name="current_humidity">습도: %s%%</string>
-    <string name="current_wind_speed">풍속: %sm/s</string>
-    <string name="current_sky">구름 많음</string>
+    <string name="current_precipitation">Precipitation: %smm</string>
+    <string name="current_humidity">Humidity: %s%%</string>
+    <string name="current_wind_speed">Wind speed: %sm/s</string>
 
-    <string name="today_forecast_title">오늘 날씨</string>
+    <string name="today_forecast_title">Today\'s weather</string>
     <string name="forecast_time">%s</string>
     <string name="forecast_temperature">%s°C</string>
     <string name="forecast_low_high_temperature">Minimum temperature: %1$s°C / Maximum temperature: %2$s°C</string>
     <string name="forecast_more">More forecast</string>
     <string name="forecast_date_time">%1$s\n%2$s</string>
-    <string name="forecast_precipitation">강수량: %s 강수확률: %s%%</string>
-    <string name="forecast_humidity">습도: %s%%</string>
-    <string name="forecast_wind_speed">풍속: %sm/s</string>
+    <string name="forecast_precipitation">Precipitation: %s Precipitation probability: %s%%</string>
+    <string name="forecast_humidity">Humidity: %s%%</string>
+    <string name="forecast_wind_speed">Wind speed: %sm/s</string>
     
-    <string name="forecast_sky_type_sunny">맑음</string>
-    <string name="forecast_sky_type_overcast">흐림</string>
-    <string name="forecast_sky_type_cloudy">구름 많음</string>
+    <string name="forecast_sky_type_sunny">Sunny</string>
+    <string name="forecast_sky_type_overcast">Overcast</string>
+    <string name="forecast_sky_type_cloudy">Cloudy</string>
 
-    <string name="current_location">현재 위치</string>
-    <string name="add_location">위치 추가</string>
+    <string name="current_location">Current location</string>
+    <string name="add_location">Add location</string>
 
-    <string name="data_empty">데이터 없음!</string>
+    <string name="data_empty">No Data!</string>
 
     <string name="dialog_request_permission_title">Permission required!</string>
     <string name="dialog_request_permission_message">Location permission is required to run this app!</string>
