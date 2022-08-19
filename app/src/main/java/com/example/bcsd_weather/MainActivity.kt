@@ -10,19 +10,16 @@ import com.example.bcsd_weather.util.OpenSettings
 class MainActivity : AppCompatActivity() {
 
     private val requestPermission =
-        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { results ->
-            for (result in results) {
-                when (result.value) {
-                    true -> getGPSLocation()
-                    else -> {
-                        when (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION) ||
-                                shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)) {
-                            true -> permissionDialog(true)
-                            else -> permissionDialog(false)
-                        }
-                        break
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            when (isGranted) {
+                true -> getGPSLocation()
+                else -> {
+                    when (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                        true -> permissionDialog(true)
+                        else -> permissionDialog(false)
                     }
                 }
+
             }
         }
 
@@ -39,12 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkPermission() {
-        val permissionList = arrayOf(
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION
-        )
-
-        requestPermission.launch(permissionList)
+        requestPermission.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
     }
 
     private fun permissionDialog(isDeniedOnce: Boolean) {
