@@ -35,7 +35,7 @@ class DayForecastActivity : AppCompatActivity() {
 
         dayForecastViewModel.setForecastDate(intent.getStringExtra("date")!!)
 
-        supportActionBar?.title = dayForecastViewModel.forecastDate.value
+        supportActionBar?.title = dayForecastViewModel.forecastDate.value!!.formatDate()
 
         binding.dayForecastRecyclerView.apply {
             setHasFixedSize(true)
@@ -46,6 +46,14 @@ class DayForecastActivity : AppCompatActivity() {
         dayForecastViewModel.forecastData.observe(this) {
             dayForecastAdapter.submitList(it)
         }
+    }
+
+    private fun String.formatDate(): String {
+        val year = this.substring(0 until 4)
+        val month = this.substring(4 until 6)
+        val day = this.substring(6 until 8)
+
+        return "$year/$month/$day"
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

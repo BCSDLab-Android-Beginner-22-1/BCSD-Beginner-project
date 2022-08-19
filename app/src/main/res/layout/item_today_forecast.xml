@@ -31,9 +31,9 @@
 
         <TextView
             android:id="@+id/item_time"
+            time_text="@{String.format(@string/forecast_time(ultraShortTermForecast.forecastTime))}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{String.format(@string/forecast_time(ultraShortTermForecast.forecastTime))}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
