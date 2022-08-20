@@ -125,8 +125,8 @@ fun ShortTermForecastRemote.mapToShortTermTempForecast(): List<ShortTermTempFore
 
     val mappedData = ArrayList<ShortTermTempForecast>()
 
-    var lowestTemperature: String? = null
-    var highestTemperature: String? = null
+    var lowestTemperature = ""
+    var highestTemperature = ""
 
     var forecastDate = ""
 
