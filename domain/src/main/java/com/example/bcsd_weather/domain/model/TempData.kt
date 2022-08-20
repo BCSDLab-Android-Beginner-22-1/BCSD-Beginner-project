@@ -1,8 +1,10 @@
 package com.example.bcsd_weather.domain.model
 
 data class TempData(
-    val id: Long,
-    val date: Int,
-    val maxTemperature: Double,
-    val minTemperature: Double
+    val date: String,
+    var x : Int,
+    var y : Int,
+    var updateTime : Long,
+    val maxTemperature: String,
+    val minTemperature: String
 )

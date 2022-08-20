@@ -8,4 +8,6 @@ interface TempRepository {
     suspend fun insertTempData(tempWeatherEntity: TempData)
 
     suspend fun deleteTempData(tempWeatherEntity: TempData)
+
+    fun getTempData(findDate : String):List<TempData>
 }

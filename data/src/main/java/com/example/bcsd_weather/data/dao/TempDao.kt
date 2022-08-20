@@ -16,4 +16,7 @@ interface TempDao {
 
     @Delete
     fun deleteTempData(localWeatherEntity: TempEntity)
+
+    @Query("SELECT * FROM tempDataTable where CAST(date AS INTEGER) >= CAST(:findDate AS INTEGER )")
+    fun getTempData(findDate : String):List<TempEntity>
 }

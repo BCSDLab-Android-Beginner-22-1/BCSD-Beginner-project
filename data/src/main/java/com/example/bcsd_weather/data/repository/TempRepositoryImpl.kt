@@ -18,6 +18,16 @@ class TempRepositoryImpl(private val tempDao: TempDao):TempRepository {
         return converted.toList()
     }
 
+    override fun getTempData(findDate: String): List<TempData> {
+        val data = tempDao.getTempData(findDate)
+        val converted = ArrayList<TempData>()
+
+        for (i in data){
+            converted.add(i.mapToTempData())
+        }
+        return converted.toList()
+    }
+
     override suspend fun insertTempData(TempData: TempData) {
         tempDao.insertTempData(TempData.mapToTempEntity())
     }

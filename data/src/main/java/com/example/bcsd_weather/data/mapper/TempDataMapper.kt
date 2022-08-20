@@ -5,8 +5,10 @@ import com.example.bcsd_weather.data.model.TempEntity
 
 fun TempEntity.mapToTempData():TempData{
     return TempData(
-        id,
         date,
+        x,
+        y,
+        updateTime,
         maxTemperature,
         minTemperature
     )
@@ -14,8 +16,10 @@ fun TempEntity.mapToTempData():TempData{
 
 fun TempData.mapToTempEntity():TempEntity{
     return TempEntity(
-        id,
         date,
+        x,
+        y,
+        updateTime,
         maxTemperature,
         minTemperature
     )

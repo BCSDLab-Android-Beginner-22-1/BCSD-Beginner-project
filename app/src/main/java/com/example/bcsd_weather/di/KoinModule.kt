@@ -4,11 +4,12 @@ import android.app.Application
 import androidx.room.Room
 import com.example.bcsd_weather.domain.repository.TempRepository
 import com.example.bcsd_weather.domain.usecase.DeleteTempUseCase
-import com.example.bcsd_weather.domain.usecase.GetTempUseCase
+import com.example.bcsd_weather.domain.usecase.GetAllTempUseCase
 import com.example.bcsd_weather.domain.usecase.InsertTempUseCase
 import com.example.bcsd_weather.data.dao.TempDao
 import com.example.bcsd_weather.data.db.TempDatabase
 import com.example.bcsd_weather.data.repository.TempRepositoryImpl
+import com.example.bcsd_weather.domain.usecase.GetTempUseCase
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
@@ -27,6 +28,7 @@ val appModule = module {
 
     single { TempProvideDataBase(androidApplication()) }
     single { TempProvideDao(get()) }
+    single { GetAllTempUseCase(get()) }
     single { GetTempUseCase(get()) }
     single { InsertTempUseCase(get()) }
     single { DeleteTempUseCase(get()) }
