@@ -1,7 +1,7 @@
-package com.exxample.bcsd_weather.data.mapper
+package com.example.bcsd_weather.data.mapper
 
 import com.example.bcsd_weather.domain.model.LocalData
-import com.exxample.bcsd_weather.data.model.LocalEntity
+import com.example.bcsd_weather.data.model.LocalEntity
 
 fun LocalEntity.mapToLocalData():LocalData{
     return LocalData(

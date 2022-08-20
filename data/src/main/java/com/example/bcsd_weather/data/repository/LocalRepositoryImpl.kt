@@ -1,13 +1,13 @@
-package com.exxample.bcsd_weather.data.repository
+package com.example.bcsd_weather.data.repository
 
 import android.app.Application
 import com.example.bcsd_weather.domain.model.LocalData
 import com.example.bcsd_weather.domain.repository.LocalRepository
-import com.exxample.bcsd_weather.data.dao.LocalDao
-import com.exxample.bcsd_weather.data.db.LocalDatabase
-import com.exxample.bcsd_weather.data.mapper.mapToLocalData
-import com.exxample.bcsd_weather.data.mapper.mapToLocalEntity
-import com.exxample.bcsd_weather.data.model.LocalEntity
+import com.example.bcsd_weather.data.dao.LocalDao
+import com.example.bcsd_weather.data.db.LocalDatabase
+import com.example.bcsd_weather.data.mapper.mapToLocalData
+import com.example.bcsd_weather.data.mapper.mapToLocalEntity
+import com.example.bcsd_weather.data.model.LocalEntity
 
 class LocalRepositoryImpl(private val localDao: LocalDao):LocalRepository {
 

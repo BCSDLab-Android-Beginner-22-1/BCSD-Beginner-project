@@ -1,10 +1,10 @@
-package com.exxample.bcsd_weather.data.dao
+package com.example.bcsd_weather.data.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.exxample.bcsd_weather.data.model.LocalEntity
+import com.example.bcsd_weather.data.model.LocalEntity
 
 @Dao
 interface LocalDao {
