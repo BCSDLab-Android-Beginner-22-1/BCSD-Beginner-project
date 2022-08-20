@@ -26,8 +26,8 @@ class LocalRepositoryImpl(private val localDao: LocalDao):LocalRepository {
     }
 
 
-    override suspend fun deleteAllLocalData(){
-        localDao.deleteAllLocalData()
+    override suspend fun deleteLocalData(localData: LocalData){
+        this.localDao.deleteLocalData(localData.mapToLocalEntity())
     }
 
 }

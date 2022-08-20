@@ -29,9 +29,9 @@ class LocalViewModel(
         }
     }
 
-    fun deleteAllLocalData() {
+    fun deleteLocalData(localData: LocalData) {
         CoroutineScope(Dispatchers.IO).launch {
-            repository.deleteAllLocalData()
+            repository.deleteLocalData(localData)
         }
 
     }

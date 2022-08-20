@@ -22,10 +22,11 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
 
-        localViewModel.deleteAllLocalData()
+/*
         val geocoder = Geocoder(this, Locale.KOREA)
         val add = geocoder.getFromLocationName("대천해수욕장", 1) // locationName은 추후 사용자가 입력
-        val input = LocalData(11140625003, "대천해수욕장", add[0].latitude, add[0].longitude)
+        val input = LocalData(11140625004, "대천해수욕장", add[0].latitude, add[0].longitude)
+        localViewModel.deleteLocalData(input)
         localViewModel.insertLocalData(input)
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -33,6 +34,6 @@ class MainActivity : AppCompatActivity() {
             binding.textview.text = data.toString()
         }
 
-
+*/
     }
 }

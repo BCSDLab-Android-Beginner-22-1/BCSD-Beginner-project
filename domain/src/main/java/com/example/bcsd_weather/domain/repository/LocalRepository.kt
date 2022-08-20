@@ -7,5 +7,5 @@ interface LocalRepository {
 
     suspend fun insertLocalData(localWeatherEntity: LocalData)
 
-    suspend fun deleteAllLocalData()
+    suspend fun deleteLocalData(localWeatherEntity: LocalData)
 }
