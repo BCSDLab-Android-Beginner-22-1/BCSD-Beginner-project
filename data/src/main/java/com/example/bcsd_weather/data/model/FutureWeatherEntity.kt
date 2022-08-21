@@ -24,4 +24,5 @@ data class FutureWeatherEntity(
     var windDirection: String = "", // 풍향
     var windSpeed: String = "",       // 풍속
     var waveHeight: String = "",
+    var lastUpdateTime: Long
 )
