@@ -12,7 +12,8 @@ fun CurrentWeatherEntity.mapToCurrentWeather():CurrentWeather{
         precipitation,
         humidity,
         windDirection,
-        windSpeed
+        windSpeed,
+        lastUpdateTime
     )
 }
 
@@ -25,6 +26,7 @@ fun CurrentWeather.mapToCurrentWeatherEntity(): CurrentWeatherEntity{
         precipitation,
         humidity,
         windDirection,
-        windSpeed
+        windSpeed,
+        lastUpdateTime
     )
 }

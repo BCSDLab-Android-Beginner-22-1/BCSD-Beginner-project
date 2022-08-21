@@ -14,7 +14,8 @@ data class CurrentWeatherEntity(
     var precipitation: String,
     var humidity: String,
     var windDirection: String,
-    var windSpeed: String
+    var windSpeed: String,
+    var lastUpdateTime: Long
 )
 
 

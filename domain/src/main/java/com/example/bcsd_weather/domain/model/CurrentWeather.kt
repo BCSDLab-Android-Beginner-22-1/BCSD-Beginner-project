@@ -10,5 +10,6 @@ data class CurrentWeather(
     var precipitation: String,
     var humidity: String,
     var windDirection: String,
-    var windSpeed: String
+    var windSpeed: String,
+    var lastUpdateTime: Long
 )
