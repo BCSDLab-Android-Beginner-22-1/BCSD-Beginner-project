@@ -15,32 +15,20 @@ data class UltraShortTermFcst(
     val fcstValue: String,  // 예보 값
 )
 
-fun UltraShortTermForeCastRemote.mapToUltraShortTermForecast(): ArrayList<UltraShortTermForecast>? {
-    val list = response.body.items.item
+fun UltraShortTermForeCastRemote.mapToUltraShortTermForecast(): List<UltraShortTermForecast> {
 
     if (response.header.resultCode != 0) {
-        return null
+        return listOf()
     }
 
-    val mappedData = ArrayList<UltraShortTermForecast>()
-    var newData = UltraShortTermForecast()
+    val list = response.body.items.item
 
-    var forecastTime = ""
+    val mappedData = ArrayList<UltraShortTermForecast>()
 
     for (item in list) {
-        if (forecastTime != item.fcstTime && newData.temperature != null) {
-            if (forecastTime != "") {
-                mappedData.add(newData)
-            }
-
-            newData = UltraShortTermForecast()
-            forecastTime = item.fcstTime
-            newData.forecastTime = forecastTime
-        }
-
         when (item.category) {
             "T1H" -> {
-                newData.temperature = item.fcstValue
+                mappedData.add(UltraShortTermForecast(item.fcstValue, item.fcstTime))
             }
             else -> {}
         }

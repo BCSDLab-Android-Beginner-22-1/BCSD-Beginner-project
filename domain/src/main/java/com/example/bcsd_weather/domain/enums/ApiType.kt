@@ -1,4 +1,4 @@
-package com.example.bcsd_weather.domain.enum
+package com.example.bcsd_weather.domain.enums
 
 import java.text.SimpleDateFormat
 import java.util.*
