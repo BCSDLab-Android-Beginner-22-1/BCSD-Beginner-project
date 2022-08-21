@@ -2,11 +2,13 @@ package com.example.bcsd_weather.di
 
 import android.app.Application
 import androidx.room.Room
+import com.example.bcsd_weather.data.dao.FutureWeatherDao
 import com.example.bcsd_weather.data.dao.TempDao
 import com.example.bcsd_weather.data.datasource.ShortTermForecastDataSource
 import com.example.bcsd_weather.data.datasource.UltraShortTermFcstDataSource
 import com.example.bcsd_weather.data.datasource.UltraShortTermLiveDataSource
 import com.example.bcsd_weather.data.datasource.remote.GPSRemoteDataSource
+import com.example.bcsd_weather.data.db.FutureWeatherDatabase
 import com.example.bcsd_weather.data.db.TempDatabase
 import com.example.bcsd_weather.data.mapper.ConvertGPS
 import com.example.bcsd_weather.data.repository.*
@@ -29,14 +31,33 @@ val appModule = module {
         return dataBase.tempDao()
     }
 
+    fun provideFutureWeatherDataBase(application: Application): FutureWeatherDatabase {
+        return Room.databaseBuilder(
+            application,
+            FutureWeatherDatabase::class.java,
+            "future_weather"
+        )
+            .fallbackToDestructiveMigration()
+            .build()
+
+    }
+
+    fun provideFutureWeatherDao(dataBase: FutureWeatherDatabase): FutureWeatherDao {
+        return dataBase.futureWeatherDao()
+    }
+
     single { TempProvideDataBase(androidApplication()) }
     single { TempProvideDao(get()) }
+
+    single { provideFutureWeatherDataBase(androidApplication()) }
+    single { provideFutureWeatherDao(get()) }
 
     single<ShortTermFcstRepository> { ShortTermFcstRepositoryImpl(get()) }
     single<UltraSrtFcstRepository> { UltraSrtFcstRepositoryImpl(get()) }
     single<UltraSrtLiveRepository> { UltraSrtLiveRepositoryImpl(get()) }
     single<GPSRepository> { GPSRepositoryImpl(get(), get()) }
     single<TempRepository> { TempRepositoryImpl(get()) }
+    single<FutureWeatherRepository> { FutureWeatherRepositoryImpl(get()) }
 
     single { ShortTermForecastDataSource() }
     single { UltraShortTermFcstDataSource() }
@@ -53,6 +74,10 @@ val appModule = module {
     single { GetTempUseCase(get()) }
     single { InsertTempUseCase(get()) }
     single { DeleteTempUseCase(get()) }
+    single { DeleteWeatherUseCase(get()) }
+    single { GetDetailedFutureWeatherUseCase(get()) }
+    single { InsertFutureWeatherUseCase(get()) }
+
 
     single { ConvertGPS() }
 }

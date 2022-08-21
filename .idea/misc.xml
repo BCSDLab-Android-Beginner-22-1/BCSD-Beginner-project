@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
+        <entry key="..\:/Users/seong/StudioProjects/BCSD-Beginner-project/app/src/main/res/layout/activity_main.xml" value="0.17603850050658562" />
+=======
         <entry key="..\:/Users/12jan/github/BCSD-Beginner-project/app/src/main/res/layout/activity_main.xml" value="0.24947916666666667" />
+>>>>>>> 162cfd295a0de88d698b54e118a3c3e980e822b7
       </map>
     </option>
   </component>
