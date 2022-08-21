@@ -23,7 +23,7 @@ class TempRepositoryImpl(private val tempDao: TempDao):TempRepository {
         val converted = ArrayList<TempData>()
 
         for (i in data){
-            converted.add(i.mapToTempData(x, y))
+            converted.add(i.mapToTempData())
         }
         return converted.toList()
     }

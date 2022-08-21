@@ -3,11 +3,9 @@ package com.example.bcsd_weather.data.mapper
 import com.example.bcsd_weather.domain.model.TempData
 import com.example.bcsd_weather.data.model.TempEntity
 
-fun TempEntity.mapToTempData(x: Int = 0, y: Int = 0):TempData{
+fun TempEntity.mapToTempData():TempData{
     return TempData(
         date,
-        x,
-        y,
         updateTime,
         maxTemperature,
         minTemperature
