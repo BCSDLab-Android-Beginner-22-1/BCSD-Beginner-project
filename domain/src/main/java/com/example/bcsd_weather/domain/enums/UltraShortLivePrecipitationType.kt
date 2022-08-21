@@ -1,4 +1,4 @@
-package com.example.bcsd_weather.domain.enum
+package com.example.bcsd_weather.domain.enums
 
 /**
  * 초단기 예보 / 초단기 실황 강수 형태
