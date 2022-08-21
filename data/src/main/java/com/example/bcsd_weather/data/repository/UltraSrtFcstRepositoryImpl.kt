@@ -7,7 +7,7 @@ import com.example.bcsd_weather.domain.repository.UltraSrtFcstRepository
 
 class UltraSrtFcstRepositoryImpl(private val ultraShortTermFcstDataSource: UltraShortTermFcstDataSource) :
     UltraSrtFcstRepository {
-    override suspend fun getUltraSrtFcst(nx: Int, ny: Int): ArrayList<UltraShortTermForecast>? {
+    override suspend fun getUltraSrtFcst(nx: Int, ny: Int): List<UltraShortTermForecast> {
         return ultraShortTermFcstDataSource.getUltraShortTermFcst(nx, ny)
             .mapToUltraShortTermForecast()
     }

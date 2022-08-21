@@ -1,6 +1,6 @@
 package com.example.bcsd_weather.data.model
 
-import com.example.bcsd_weather.domain.enum.UltraShortLivePrecipitationType
+import com.example.bcsd_weather.domain.enums.UltraShortLivePrecipitationType
 import com.example.bcsd_weather.domain.model.UltraShortTermLive
 
 data class UltraShortTermLiveRemote(val response: UslResponse)
@@ -17,27 +17,32 @@ data class UltraShortTermLiveData(
 )
 
 fun UltraShortTermLiveRemote.mapToUltraShortTermLive(): UltraShortTermLive? {
-    val list = response.body.items.item
-
     if (response.header.resultCode != 0) {
         return null
     }
 
-    val mappedData = UltraShortTermLive()
+    val list = response.body.items.item
+
+    lateinit var temperature: String
+    lateinit var precipitation: String
+    lateinit var humidity: String
+    lateinit var precipitationType: UltraShortLivePrecipitationType
+    lateinit var windDirection: String
+    lateinit var windSpeed: String
 
     for (item in list) {
         when (item.category) {
             "T1H" -> {
-                mappedData.temperature = item.obsrValue
+                temperature = item.obsrValue
             }
             "RN1" -> {
-                mappedData.precipitation = item.obsrValue
+                precipitation = item.obsrValue
             }
             "REH" -> {
-                mappedData.humidity = item.obsrValue
+                humidity = item.obsrValue
             }
             "PTY" -> {
-                mappedData.precipitationTypes = when (item.obsrValue) {
+                precipitationType = when (item.obsrValue) {
                     "0" -> UltraShortLivePrecipitationType.NONE
                     "1" -> UltraShortLivePrecipitationType.RAIN
                     "2" -> UltraShortLivePrecipitationType.RAIN_SNOW
@@ -49,13 +54,21 @@ fun UltraShortTermLiveRemote.mapToUltraShortTermLive(): UltraShortTermLive? {
                 }
             }
             "VEC" -> {
-                mappedData.windDirection = item.obsrValue
+                windDirection = item.obsrValue
             }
             "WSD" -> {
-                mappedData.windSpeed = item.obsrValue
+                windSpeed = item.obsrValue
             }
             else -> {}
         }
     }
-    return mappedData
+
+    return UltraShortTermLive(
+        temperature,
+        precipitationType,
+        precipitation,
+        humidity,
+        windDirection,
+        windSpeed
+    )
 }
