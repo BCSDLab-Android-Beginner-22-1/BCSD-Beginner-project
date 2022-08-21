@@ -2,7 +2,6 @@ package com.example.bcsd_weather.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.bcsd_weather.CurrentWeatherViewModel
 import com.example.bcsd_weather.data.dao.CurrentWeatherDao
 import com.example.bcsd_weather.data.datasource.ShortTermForecastDataSource
 import com.example.bcsd_weather.data.datasource.UltraShortTermFcstDataSource
@@ -64,6 +63,4 @@ val appModule = module {
     single { ConvertGPS() }
 }
 
-val viewModelModule = module {
-    viewModel { CurrentWeatherViewModel(get(), get(), get()) }
-}
+

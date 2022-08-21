@@ -12,16 +12,16 @@ class CurrentWeatherRepositoryImpl(private val currentWeatherDao: CurrentWeather
     CurrentWeatherRepository {
 
 
-    override suspend fun insertCurrentWeather(currentWeather: CurrentWeather) {
-        currentWeatherDao.insertCurrentWeather(currentWeather.mapToCurrentWeatherEntity())
+    override suspend fun insertCurrentWeather(currentWeather: CurrentWeather, x: Int, y: Int) {
+        currentWeatherDao.insertCurrentWeather(currentWeather.mapToCurrentWeatherEntity(x,y))
     }
 
-    override suspend fun deleteCurrentWeather(currentWeather: CurrentWeather) {
-        this.currentWeatherDao.deleteCurrentWeather(currentWeather.mapToCurrentWeatherEntity())
+    override suspend fun deleteCurrentWeather(currentWeather: CurrentWeather, x: Int, y: Int) {
+        this.currentWeatherDao.deleteCurrentWeather(currentWeather.mapToCurrentWeatherEntity(x,y))
     }
 
 
-    override fun getCurrentWeather(): List<CurrentWeather> {
+    override fun getCurrentWeather(x: Int, y: Int): List<CurrentWeather> {
         val data = currentWeatherDao.getCurrentWeather()
         val converted = ArrayList<CurrentWeather>()
 

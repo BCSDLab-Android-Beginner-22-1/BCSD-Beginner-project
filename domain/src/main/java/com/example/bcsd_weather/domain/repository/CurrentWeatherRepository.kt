@@ -4,10 +4,10 @@ package com.example.bcsd_weather.domain.repository
 import com.example.bcsd_weather.domain.model.CurrentWeather
 
 interface CurrentWeatherRepository {
-    suspend fun insertCurrentWeather(currentWeather: CurrentWeather)
+    suspend fun insertCurrentWeather(currentWeather: CurrentWeather, x: Int, y: Int)
 
-    suspend fun deleteCurrentWeather(currentWeather: CurrentWeather)
+    suspend fun deleteCurrentWeather(currentWeather: CurrentWeather, x: Int, y: Int)
 
-    fun getCurrentWeather(): List<CurrentWeather>
+    fun getCurrentWeather(x: Int, y: Int): List<CurrentWeather>
 
 }

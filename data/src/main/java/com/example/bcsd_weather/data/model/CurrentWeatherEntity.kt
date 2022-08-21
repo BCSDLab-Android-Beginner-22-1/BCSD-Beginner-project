@@ -5,7 +5,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.example.bcsd_weather.domain.enum.UltraShortLivePrecipitationType
 
-@Entity(tableName = "current_weather", indices = [Index(value = ["fcstTime"])],primaryKeys = ["x","y"])
+@Entity(tableName = "current_weather", indices = [Index(value = ["fcstTime"])],primaryKeys = ["x","y","fcstTime"])
 data class CurrentWeatherEntity(
     var x: Int,
     var y: Int,
@@ -15,7 +15,10 @@ data class CurrentWeatherEntity(
     var humidity: String,
     var windDirection: String,
     var windSpeed: String,
-    var lastUpdateTime: Long
+    var fcstTime: String,
+    var lastUpdateTime: Long,
+
+
 )
 
 
