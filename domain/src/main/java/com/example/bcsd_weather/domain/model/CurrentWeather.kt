@@ -1,6 +1,6 @@
 package com.example.bcsd_weather.domain.model
 
-import com.example.bcsd_weather.domain.enum.UltraShortLivePrecipitationType
+import com.example.bcsd_weather.domain.enums.UltraShortLivePrecipitationType
 
 data class CurrentWeather(
     var temperature: String,

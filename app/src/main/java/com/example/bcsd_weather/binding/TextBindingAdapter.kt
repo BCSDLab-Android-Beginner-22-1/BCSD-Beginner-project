@@ -3,7 +3,7 @@ package com.example.bcsd_weather.binding
 import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.example.bcsd_weather.domain.enum.ShortForecastPrecipitationType
+import com.example.bcsd_weather.domain.enums.ShortForecastPrecipitationType
 
 object TextBindingAdapter {
     @BindingAdapter("sky_type_text")
@@ -21,7 +21,10 @@ object TextBindingAdapter {
 
     @BindingAdapter("precipitation_type_text")
     @JvmStatic
-    fun setPrecipitationTypeText(textView: TextView, precipitationType: ShortForecastPrecipitationType) {
+    fun setPrecipitationTypeText(
+        textView: TextView,
+        precipitationType: ShortForecastPrecipitationType
+    ) {
         val context = textView.context
 
         when (precipitationType) {
