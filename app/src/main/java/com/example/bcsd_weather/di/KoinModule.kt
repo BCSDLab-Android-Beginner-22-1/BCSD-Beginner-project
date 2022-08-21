@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.bcsd_weather.data.dao.CurrentWeatherDao
 import com.example.bcsd_weather.data.dao.FutureWeatherDao
+import com.example.bcsd_weather.data.dao.LocalDao
 import com.example.bcsd_weather.data.dao.TempDao
 import com.example.bcsd_weather.data.datasource.ShortTermForecastDataSource
 import com.example.bcsd_weather.data.datasource.UltraShortTermFcstDataSource
@@ -11,6 +12,7 @@ import com.example.bcsd_weather.data.datasource.UltraShortTermLiveDataSource
 import com.example.bcsd_weather.data.datasource.remote.GPSRemoteDataSource
 import com.example.bcsd_weather.data.db.CurrentWeatherDatabase
 import com.example.bcsd_weather.data.db.FutureWeatherDatabase
+import com.example.bcsd_weather.data.db.LocalDatabase
 import com.example.bcsd_weather.data.db.TempDatabase
 import com.example.bcsd_weather.data.mapper.ConvertGPS
 import com.example.bcsd_weather.data.repository.*
@@ -68,6 +70,18 @@ val appModule = module {
         return dataBase.currentWeatherDao()
     }
 
+    fun localProvideDataBase(application: Application): LocalDatabase {
+
+        return Room.databaseBuilder(application, LocalDatabase::class.java, "localDataTable")
+            .fallbackToDestructiveMigration()
+            .build()
+
+    }
+
+    fun localProvideDao(dataBase: LocalDatabase): LocalDao {
+        return dataBase.localDao()
+    }
+
     single { TempProvideDataBase(androidApplication()) }
     single { TempProvideDao(get()) }
 
@@ -77,6 +91,9 @@ val appModule = module {
     single { provideCurrentWeatherDataBase(androidApplication()) }
     single { provideCurrentWeatherDao(get()) }
 
+    single { localProvideDataBase(androidApplication()) }
+    single { localProvideDao(get()) }
+
     single<ShortTermFcstRepository> { ShortTermFcstRepositoryImpl(get()) }
     single<UltraSrtFcstRepository> { UltraSrtFcstRepositoryImpl(get()) }
     single<UltraSrtLiveRepository> { UltraSrtLiveRepositoryImpl(get()) }
@@ -84,6 +101,7 @@ val appModule = module {
     single<TempRepository> { TempRepositoryImpl(get()) }
     single<FutureWeatherRepository> { FutureWeatherRepositoryImpl(get()) }
     single<CurrentWeatherRepository> { CurrentWeatherRepositoryImpl(get()) }
+    single<LocalRepository> { LocalRepositoryImpl(get()) }
 
     single { ShortTermForecastDataSource() }
     single { UltraShortTermFcstDataSource() }
@@ -106,6 +124,9 @@ val appModule = module {
     single { DeleteCurrentWeatherUseCase(get()) }
     single { GetCurrentWeatherUseCase(get()) }
     single { InsertCurrentWeatherUseCase(get()) }
+    single { GetLocalUseCase(get()) }
+    single { InsertLocalUseCase(get()) }
+    single { DeleteLocalUseCase(get()) }
 
     single { ConvertGPS() }
 }
