@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BCSD-weather</string>
+
+    <string name="dialog_request_permission_title">Permission required!</string>
+    <string name="dialog_request_permission_message">Location permission is required to run this app!</string>
+    <string name="dialog_request_permission_ok">OK</string>
+    <string name="dialog_request_permission_cancel">Cancel</string>
 </resources>
