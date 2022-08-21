@@ -4,8 +4,6 @@ import com.example.bcsd_weather.domain.enum.ShortForecastPrecipitationType
 import com.example.bcsd_weather.domain.enum.SkyType
 
 data class FutureWeather(
-    var x:Int,
-    var y:Int,
     var fcstDate: String = "",  // 예측 날짜
     var fcstTime: String = "",   // 예보시각
     var precipitationProbability: String = "", // 강수 확률
@@ -18,5 +16,4 @@ data class FutureWeather(
     var windDirection: String = "", // 풍향
     var windSpeed: String = "",       // 풍속
     var waveHeight: String = "",
-    var lastUpdateTime: Long
 )

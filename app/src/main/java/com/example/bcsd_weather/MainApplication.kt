@@ -11,7 +11,7 @@ import org.koin.core.context.GlobalContext.startKoin
 
 class MainApplication : Application() {
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onCreate() {
         super.onCreate()
 
