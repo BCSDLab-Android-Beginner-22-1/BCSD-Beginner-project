@@ -11,6 +11,7 @@ import com.example.bcsd_weather.domain.usecase.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainViewModel(
     private val initGPSLocationUseCase: InitGPSLocationUseCase,
@@ -28,8 +29,8 @@ class MainViewModel(
     val locationList: LiveData<List<LocalData>>
         get() = _locationList
 
-    private val _todayForecastList = MutableLiveData<List<CurrentWeather>>()
-    val todayForecastList: LiveData<List<CurrentWeather>>
+    private val _todayForecastList = MutableLiveData<List<CurrentWeather>?>()
+    val todayForecastList: LiveData<List<CurrentWeather>?>
         get() = _todayForecastList
 
     private val _nowCastData = MutableLiveData<UltraShortTermLive?>()
@@ -41,11 +42,13 @@ class MainViewModel(
         get() = _isLoading
 
     init {
+        getAllLocalData()
     }
 
     fun changeLocation(localData: LocalData) {
         _nowLocation.value = localData
         getNowWeather()
+        getTodayForecast()
     }
 
     fun setCurrentLocationToGPS() {
@@ -84,6 +87,21 @@ class MainViewModel(
                 nowLocation.value!!.x,
                 nowLocation.value!!.y
             )
+        }
+    }
+
+    fun getAllLocalData() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val data = getLocalUseCase()
+            withContext(Dispatchers.Main) {
+                _locationList.value = data
+            }
+        }
+    }
+
+    fun insertLocalData(localData: LocalData) {
+        CoroutineScope(Dispatchers.IO).launch {
+            insertLocalUseCase(localData)
         }
     }
 }

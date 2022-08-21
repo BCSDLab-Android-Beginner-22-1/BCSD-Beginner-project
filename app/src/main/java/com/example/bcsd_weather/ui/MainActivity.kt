@@ -3,9 +3,11 @@ package com.example.bcsd_weather.ui
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.location.Geocoder
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -15,11 +17,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bcsd_weather.R
 import com.example.bcsd_weather.adapter.NavDrawerAdapter
 import com.example.bcsd_weather.adapter.TodayForecastAdapter
+import com.example.bcsd_weather.data.mapper.ConvertGPS
 import com.example.bcsd_weather.databinding.ActivityMainBinding
+import com.example.bcsd_weather.domain.model.LocalData
 import com.example.bcsd_weather.util.OpenSettings
 import com.example.bcsd_weather.view.GeocoderDialog
 import com.example.bcsd_weather.viewmodel.MainViewModel
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -90,11 +96,32 @@ class MainActivity : AppCompatActivity() {
             val dialog = GeocoderDialog()
             dialog.setButtonClickListener(object : GeocoderDialog.OnButtonClickListener {
                 override fun onButtonClicked() {
+                    val locationName = dialog.binding.dialogAddressEditText.text.toString()
+                    val geocoder = Geocoder(this@MainActivity, Locale.KOREA)
 
+                    dialog.binding.dialogProgressBar.visibility = View.VISIBLE
+                    try {
+                        val add = geocoder.getFromLocationName(locationName, 1)
+
+                        val x = add[0].latitude
+                        val y = add[0].longitude
+
+                        val convertGPS = ConvertGPS()
+                        val converted = convertGPS.convertGPStoXY(x, y)
+
+                        val input = LocalData(0, locationName, converted.x, converted.y)
+                        mainViewModel.insertLocalData(input)
+                        dialog.binding.dialogProgressBar.visibility = View.GONE
+                        dialog.dismiss()
+                    } catch (e: IndexOutOfBoundsException) {
+                        dialog.binding.dialogProgressBar.visibility = View.GONE
+                        dialog.dismiss()
+                        Snackbar.make(binding.root, "Can't find $locationName!", Snackbar.LENGTH_SHORT).show()
+                    }
+                    mainViewModel.getAllLocalData()
                 }
             })
             dialog.show(supportFragmentManager, "GeocoderDialog")
-
         }
 
         mainViewModel.locationList.observe(this) {
