@@ -60,4 +60,5 @@ class MainActivity : AppCompatActivity() {
     private fun getGPSLocation() {
 
     }
+
 }
