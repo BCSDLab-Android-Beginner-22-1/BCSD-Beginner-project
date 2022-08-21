@@ -68,10 +68,22 @@ class MainViewModel(
     }
 
     private fun getNowWeather() {
-
+        CoroutineScope(Dispatchers.IO).launch {
+            _todayForecastList.postValue(
+                getCurrentWeatherUseCase(
+                    nowLocation.value!!.x,
+                    nowLocation.value!!.y
+                )
+            )
+        }
     }
 
     private fun getTodayForecast() {
-
+        viewModelScope.launch {
+            _nowCastData.value = getUltraSrtLiveUseCase(
+                nowLocation.value!!.x,
+                nowLocation.value!!.y
+            )
+        }
     }
 }

@@ -52,6 +52,8 @@ class ForecastActivity : AppCompatActivity() {
         forecastViewModel.forecastData.observe(this) {
             forecastAdapter.submitList(it)
         }
+
+        forecastViewModel.getForecastList()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

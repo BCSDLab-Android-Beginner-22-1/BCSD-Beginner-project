@@ -6,8 +6,12 @@ import com.example.bcsd_weather.data.mapper.mapToCurrentWeather
 import com.example.bcsd_weather.data.mapper.mapToCurrentWeatherEntity
 import com.example.bcsd_weather.domain.model.CurrentWeather
 import com.example.bcsd_weather.domain.repository.CurrentWeatherRepository
+import com.example.bcsd_weather.domain.usecase.GetUltraSrtFcstUseCase
 
-class CurrentWeatherRepositoryImpl(private val currentWeatherDao: CurrentWeatherDao) :
+class CurrentWeatherRepositoryImpl(
+    private val currentWeatherDao: CurrentWeatherDao,
+    private val getUltraSrtFcstUseCase: GetUltraSrtFcstUseCase
+) :
     CurrentWeatherRepository {
 
 
@@ -20,8 +24,19 @@ class CurrentWeatherRepositoryImpl(private val currentWeatherDao: CurrentWeather
     }
 
 
-    override fun getCurrentWeather(x: Int, y: Int): List<CurrentWeather> {
+    override suspend fun getCurrentWeather(x: Int, y: Int): List<CurrentWeather> {
         val data = currentWeatherDao.getCurrentWeather()
+
+        if (data.isEmpty()) {
+            val apiData = getUltraSrtFcstUseCase(x, y)
+
+            for (i in apiData) {
+                currentWeatherDao.insertCurrentWeather(i.mapToCurrentWeatherEntity(x, y))
+            }
+
+            return apiData
+        }
+
         val converted = ArrayList<CurrentWeather>()
 
         for (i in data) {

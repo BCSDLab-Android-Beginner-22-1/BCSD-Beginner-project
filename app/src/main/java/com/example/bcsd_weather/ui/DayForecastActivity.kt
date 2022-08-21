@@ -46,6 +46,8 @@ class DayForecastActivity : AppCompatActivity() {
         dayForecastViewModel.forecastData.observe(this) {
             dayForecastAdapter.submitList(it)
         }
+
+        dayForecastViewModel.getForecastDataByDate()
     }
 
     private fun String.formatDate(): String {

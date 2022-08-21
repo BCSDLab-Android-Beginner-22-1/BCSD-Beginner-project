@@ -5,9 +5,13 @@ import com.example.bcsd_weather.data.mapper.mapToFutureWeather
 import com.example.bcsd_weather.data.mapper.mapToFutureWeatherEntity
 import com.example.bcsd_weather.domain.model.FutureWeather
 import com.example.bcsd_weather.domain.repository.FutureWeatherRepository
+import com.example.bcsd_weather.domain.usecase.GetShortTermFcstUseCase
 
 
-class FutureWeatherRepositoryImpl(private val futureWeatherDao: FutureWeatherDao) :
+class FutureWeatherRepositoryImpl(
+    private val futureWeatherDao: FutureWeatherDao,
+    private val getShortTermFcstUseCase: GetShortTermFcstUseCase,
+) :
     FutureWeatherRepository {
 
     override suspend fun insertFutureWeather(futureWeather: FutureWeather, x: Int, y: Int) {
@@ -15,8 +19,19 @@ class FutureWeatherRepositoryImpl(private val futureWeatherDao: FutureWeatherDao
     }
 
 
-    override fun getDetailedFutureWeather(date: String, x: Int, y: Int): List<FutureWeather> {
+    override suspend fun getDetailedFutureWeather(date: String, x: Int, y: Int): List<FutureWeather> {
         val data = futureWeatherDao.getDetailedFutureWeather(date)
+
+        if (data.isEmpty()) {
+            val apiData = getShortTermFcstUseCase(x, y)
+
+            for (i in apiData) {
+                futureWeatherDao.insertFutureWeather(i.mapToFutureWeatherEntity(x, y))
+            }
+
+            return getDetailedFutureWeather(date, x, y)
+        }
+
         val converted = ArrayList<FutureWeather>()
 
         for (i in data) {

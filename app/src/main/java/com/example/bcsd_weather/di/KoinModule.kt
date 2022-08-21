@@ -98,9 +98,9 @@ val appModule = module {
     single<UltraSrtFcstRepository> { UltraSrtFcstRepositoryImpl(get()) }
     single<UltraSrtLiveRepository> { UltraSrtLiveRepositoryImpl(get()) }
     single<GPSRepository> { GPSRepositoryImpl(get(), get()) }
-    single<TempRepository> { TempRepositoryImpl(get()) }
-    single<FutureWeatherRepository> { FutureWeatherRepositoryImpl(get()) }
-    single<CurrentWeatherRepository> { CurrentWeatherRepositoryImpl(get()) }
+    single<TempRepository> { TempRepositoryImpl(get(), get()) }
+    single<FutureWeatherRepository> { FutureWeatherRepositoryImpl(get(), get()) }
+    single<CurrentWeatherRepository> { CurrentWeatherRepositoryImpl(get(), get()) }
     single<LocalRepository> { LocalRepositoryImpl(get()) }
 
     single { ShortTermForecastDataSource() }
@@ -139,6 +139,6 @@ val viewModelModule = module {
         ForecastViewModel(get())
     }
     viewModel {
-        DayForecastViewModel()
+        DayForecastViewModel(get())
     }
 }

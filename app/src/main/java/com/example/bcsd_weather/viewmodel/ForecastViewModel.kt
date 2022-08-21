@@ -32,7 +32,19 @@ class ForecastViewModel(
     }
 
     fun getForecastList() {
-        // Get forecast list from db
-        TODO()
+        _isLoading.value = true
+        val date = Date()
+        val todayDate = SimpleDateFormat("yyyyMMdd")
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val data =
+                getTempUseCase(
+                    todayDate.format(date).toString(),
+                    nowLocation.value!!.x,
+                    nowLocation.value!!.y
+                )
+            _forecastData.postValue(data)
+            _isLoading.postValue(false)
+        }
     }
 }

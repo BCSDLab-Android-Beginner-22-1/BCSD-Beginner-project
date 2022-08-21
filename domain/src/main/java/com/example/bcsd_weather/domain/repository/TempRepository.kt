@@ -9,5 +9,5 @@ interface TempRepository {
 
     suspend fun deleteTempData(tempWeatherEntity: TempData)
 
-    fun getTempData(findDate : String, x : Int, y : Int):List<TempData>
+    suspend fun getTempData(findDate : String, x : Int, y : Int):List<TempData>
 }
