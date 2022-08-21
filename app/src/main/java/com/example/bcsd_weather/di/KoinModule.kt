@@ -32,7 +32,7 @@ import org.koin.dsl.module
 
 
 val appModule = module {
-    fun provideDataBase(application: Application): FutureWeatherDatabase {
+    fun provideFutureWeatherDataBase(application: Application): FutureWeatherDatabase {
         return Room.databaseBuilder(application,
             FutureWeatherDatabase::class.java,
             "future_weather")
@@ -41,12 +41,12 @@ val appModule = module {
 
     }
 
-    fun provideDao(dataBase: FutureWeatherDatabase): FutureWeatherDao {
+    fun provideFutureWeatherDao(dataBase: FutureWeatherDatabase): FutureWeatherDao {
         return dataBase.futureWeatherDao()
     }
 
-    single { provideDataBase(androidApplication()) }
-    single { provideDao(get()) }
+    single { provideFutureWeatherDataBase(androidApplication()) }
+    single { provideFutureWeatherDao(get()) }
 
     single<ShortTermFcstRepository> { ShortTermFcstRepositoryImpl(get()) }
     single<UltraSrtFcstRepository> { UltraSrtFcstRepositoryImpl(get()) }
