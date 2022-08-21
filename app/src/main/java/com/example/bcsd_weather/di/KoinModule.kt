@@ -16,7 +16,7 @@ import org.koin.dsl.module
 
 val appModule = module {
 
-    fun provideDataBase(application: Application): CurrentWeatherDatabase {
+    fun provideCurrentWeatherDataBase(application: Application): CurrentWeatherDatabase {
 
         return Room.databaseBuilder(application,CurrentWeatherDatabase::class.java, "current_weather")
             .fallbackToDestructiveMigration()
@@ -24,12 +24,12 @@ val appModule = module {
 
     }
 
-    fun provideDao(dataBase: CurrentWeatherDatabase): CurrentWeatherDao {
+    fun provideCurrentWeatherDao(dataBase: CurrentWeatherDatabase): CurrentWeatherDao {
         return dataBase.currentWeatherDao()
     }
 
-    single { provideDataBase(androidApplication()) }
-    single { provideDao(get()) }
+    single { provideCurrentWeatherDataBase(androidApplication()) }
+    single { provideCurrentWeatherDao(get()) }
 
     single<CurrentWeatherRepository> {CurrentWeatherRepositoryImpl(get())  }
     single { DeleteCurrentWeatherUseCase(get()) }
