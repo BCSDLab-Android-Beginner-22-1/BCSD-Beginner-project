@@ -4,7 +4,7 @@ import com.example.bcsd_weather.domain.enum.UltraShortLivePrecipitationType
 
 data class CurrentWeather(
     var temperature: String,
-    var precipitationType: UltraShortLivePrecipitationType = UltraShortLivePrecipitationType.NONE,
+    var precipitationType: UltraShortLivePrecipitationType,
     var precipitation: String,
     var humidity: String,
     var windDirection: String,

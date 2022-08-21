@@ -1,4 +1,4 @@
-package com.example.bcsd_weather.data
+package com.example.bcsd_weather.data.model
 
 import androidx.room.Entity
 import androidx.room.Index
@@ -10,7 +10,7 @@ data class CurrentWeatherEntity(
     var x: Int,
     var y: Int,
     var temperature: String,
-    var precipitationType: UltraShortLivePrecipitationType = UltraShortLivePrecipitationType.NONE,
+    var precipitationType: UltraShortLivePrecipitationType ,
     var precipitation: String,
     var humidity: String,
     var windDirection: String,

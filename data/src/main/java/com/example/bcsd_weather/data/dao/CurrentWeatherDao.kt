@@ -2,7 +2,7 @@ package com.example.bcsd_weather.data.dao
 
 
 import androidx.room.*
-import com.example.bcsd_weather.data.CurrentWeatherEntity
+import com.example.bcsd_weather.data.model.CurrentWeatherEntity
 
 @Dao
 interface CurrentWeatherDao {
