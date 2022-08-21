@@ -3,7 +3,7 @@ package com.example.bcsd_weather.data.mapper
 import com.example.bcsd_weather.domain.model.TempData
 import com.example.bcsd_weather.data.model.TempEntity
 
-fun TempEntity.mapToTempData():TempData{
+fun TempEntity.mapToTempData(x: Int = 0, y: Int = 0):TempData{
     return TempData(
         date,
         x,
@@ -14,7 +14,7 @@ fun TempEntity.mapToTempData():TempData{
     )
 }
 
-fun TempData.mapToTempEntity():TempEntity{
+fun TempData.mapToTempEntity(x: Int = 0, y: Int = 0):TempEntity{
     return TempEntity(
         date,
         x,

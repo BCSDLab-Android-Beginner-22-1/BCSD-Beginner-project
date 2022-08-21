@@ -8,8 +8,8 @@ import com.example.bcsd_weather.data.mapper.mapToTempEntity
 
 class TempRepositoryImpl(private val tempDao: TempDao):TempRepository {
 
-    override fun getAllTempData(): List<TempData> {
-        val data = tempDao.getAllTempData()
+    override fun getAllTempData(x: Int, y: Int): List<TempData> {
+        val data = tempDao.getAllTempData(x, y)
         val converted = ArrayList<TempData>()
 
         for (i in data){
@@ -18,12 +18,12 @@ class TempRepositoryImpl(private val tempDao: TempDao):TempRepository {
         return converted.toList()
     }
 
-    override fun getTempData(findDate: String): List<TempData> {
-        val data = tempDao.getTempData(findDate)
+    override fun getTempData(findDate: String, x: Int, y: Int): List<TempData> {
+        val data = tempDao.getTempData(findDate, x, y)
         val converted = ArrayList<TempData>()
 
         for (i in data){
-            converted.add(i.mapToTempData())
+            converted.add(i.mapToTempData(x, y))
         }
         return converted.toList()
     }
