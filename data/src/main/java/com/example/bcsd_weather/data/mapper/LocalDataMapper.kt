@@ -15,7 +15,7 @@ fun LocalEntity.mapToLocalData():LocalData{
 fun LocalData.mapToLocalEntity():LocalEntity{
     return LocalEntity(
         id,
-        LocalName,
+        LocalName!!,
         x,
         y
     )

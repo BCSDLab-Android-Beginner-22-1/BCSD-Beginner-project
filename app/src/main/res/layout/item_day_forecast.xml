@@ -6,7 +6,7 @@
 
         <variable
             name="shortTermForecast"
-            type="com.example.bcsd_weather.domain.model.ShortTermForecast" />
+            type="com.example.bcsd_weather.domain.model.FutureWeather" />
 
     </data>
 

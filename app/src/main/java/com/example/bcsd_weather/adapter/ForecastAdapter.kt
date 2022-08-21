@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bcsd_weather.databinding.ItemForecastBinding
-import com.example.bcsd_weather.domain.model.ShortTermTempForecast
+import com.example.bcsd_weather.domain.model.TempData
 import com.example.bcsd_weather.util.ForecastDiffUtil
 
-class ForecastAdapter : ListAdapter<ShortTermTempForecast, ForecastAdapter.ViewHolder>(ForecastDiffUtil) {
+class ForecastAdapter : ListAdapter<TempData, ForecastAdapter.ViewHolder>(ForecastDiffUtil) {
 
     lateinit var onClickListener: OnClickListener
 
@@ -24,10 +24,10 @@ class ForecastAdapter : ListAdapter<ShortTermTempForecast, ForecastAdapter.ViewH
 
     class ViewHolder(private val binding: ItemForecastBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(shortTermTempForecast: ShortTermTempForecast, onClickListener: OnClickListener) {
-            binding.shortTermTempForecast = shortTermTempForecast
+        fun bind(tempData: TempData, onClickListener: OnClickListener) {
+            binding.tempData = tempData
             binding.forecastLayout.setOnClickListener {
-                onClickListener.onClick(shortTermTempForecast.forecastDate!!)
+                onClickListener.onClick(tempData.date)
             }
         }
     }

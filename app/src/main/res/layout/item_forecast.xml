@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="shortTermTempForecast"
-            type="com.example.bcsd_weather.domain.model.ShortTermTempForecast" />
+            name="tempData"
+            type="com.example.bcsd_weather.domain.model.TempData" />
 
     </data>
 
@@ -25,7 +25,7 @@
 
             <TextView
                 android:id="@+id/forecast_date_time"
-                date_text="@{shortTermTempForecast.forecastDate}"
+                date_text="@{tempData.date}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="@{@string/forecast_low_high_temperature(shortTermTempForecast.lowestTemperature, shortTermTempForecast.highestTemperature)}"
+                android:text="@{@string/forecast_low_high_temperature(tempData.minTemperature, tempData.maxTemperature)}"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintBottom_toTopOf="@id/forecast_more"

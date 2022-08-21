@@ -43,7 +43,7 @@ class ForecastActivity : AppCompatActivity() {
         forecastAdapter.setOnClickListener {
             val intent = Intent(this, DayForecastActivity::class.java)
             intent.putExtra("date", it)
-            intent.putExtra("name", forecastViewModel.nowLocation.value!!.title)
+            intent.putExtra("name", forecastViewModel.nowLocation.value!!.LocalName)
             intent.putExtra("x", forecastViewModel.nowLocation.value!!.x)
             intent.putExtra("y", forecastViewModel.nowLocation.value!!.y)
             startActivity(intent)

@@ -1,6 +1,6 @@
 package com.example.bcsd_weather.data.model
 
-import com.example.bcsd_weather.domain.model.UltraShortTermForecast
+import com.example.bcsd_weather.domain.model.CurrentWeather
 
 data class UltraShortTermForeCastRemote(val response: UstResponse)
 data class UstResponse(val header: UstHeader, val body: UstBody)
@@ -15,7 +15,7 @@ data class UltraShortTermFcst(
     val fcstValue: String,  // 예보 값
 )
 
-fun UltraShortTermForeCastRemote.mapToUltraShortTermForecast(): List<UltraShortTermForecast> {
+fun UltraShortTermForeCastRemote.mapToUltraShortTermForecast(): List<CurrentWeather> {
 
     if (response.header.resultCode != 0) {
         return listOf()
@@ -23,12 +23,12 @@ fun UltraShortTermForeCastRemote.mapToUltraShortTermForecast(): List<UltraShortT
 
     val list = response.body.items.item
 
-    val mappedData = ArrayList<UltraShortTermForecast>()
+    val mappedData = ArrayList<CurrentWeather>()
 
     for (item in list) {
         when (item.category) {
             "T1H" -> {
-                mappedData.add(UltraShortTermForecast(item.fcstValue, item.fcstTime))
+                mappedData.add(CurrentWeather(item.fcstValue, item.fcstTime))
             }
             else -> {}
         }

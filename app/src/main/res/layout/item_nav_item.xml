@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="locationItem"
-            type="com.example.bcsd_weather.domain.model.LocationItem" />
+            name="localData"
+            type="com.example.bcsd_weather.domain.model.LocalData" />
 
     </data>
 
@@ -23,7 +23,7 @@
             android:id="@+id/nav_item_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{locationItem.title}"
+            android:text="@{localData.localName}"
             android:textAppearance="@style/TextAppearance.AppCompat.Menu"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

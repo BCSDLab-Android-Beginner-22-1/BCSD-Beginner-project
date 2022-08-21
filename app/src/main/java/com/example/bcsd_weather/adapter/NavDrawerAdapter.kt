@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bcsd_weather.databinding.ItemNavItemBinding
-import com.example.bcsd_weather.domain.model.LocationItem
+import com.example.bcsd_weather.domain.model.LocalData
 import com.example.bcsd_weather.util.LocationItemDiffUtil
 
 class NavDrawerAdapter :
-    ListAdapter<LocationItem, NavDrawerAdapter.ViewHolder>(LocationItemDiffUtil) {
+    ListAdapter<LocalData, NavDrawerAdapter.ViewHolder>(LocationItemDiffUtil) {
 
     lateinit var onClickListener: OnClickListener
 
@@ -24,21 +24,21 @@ class NavDrawerAdapter :
 
     class ViewHolder(private val binding: ItemNavItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(locationItem: LocationItem, onClickListener: OnClickListener) {
-            binding.locationItem = locationItem
+        fun bind(localData: LocalData, onClickListener: OnClickListener) {
+            binding.localData = localData
             binding.navItem.setOnClickListener {
-                onClickListener.onClick(locationItem)
+                onClickListener.onClick(localData)
             }
         }
     }
 
     interface OnClickListener {
-        fun onClick(position: LocationItem)
+        fun onClick(position: LocalData)
     }
 
-    inline fun setOnClickListener(crossinline item: (LocationItem) -> Unit) {
+    inline fun setOnClickListener(crossinline item: (LocalData) -> Unit) {
         this.onClickListener = object : OnClickListener {
-            override fun onClick(position: LocationItem) {
+            override fun onClick(position: LocalData) {
                 item(position)
             }
         }

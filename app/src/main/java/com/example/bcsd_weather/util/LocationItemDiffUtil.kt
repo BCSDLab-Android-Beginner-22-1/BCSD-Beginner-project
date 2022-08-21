@@ -1,14 +1,14 @@
 package com.example.bcsd_weather.util
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.bcsd_weather.domain.model.LocationItem
+import com.example.bcsd_weather.domain.model.LocalData
 
-object LocationItemDiffUtil : DiffUtil.ItemCallback<LocationItem>() {
-    override fun areItemsTheSame(oldItem: LocationItem, newItem: LocationItem): Boolean {
-        return oldItem.title == newItem.title
+object LocationItemDiffUtil : DiffUtil.ItemCallback<LocalData>() {
+    override fun areItemsTheSame(oldItem: LocalData, newItem: LocalData): Boolean {
+        return oldItem.LocalName == newItem.LocalName
     }
 
-    override fun areContentsTheSame(oldItem: LocationItem, newItem: LocationItem): Boolean {
+    override fun areContentsTheSame(oldItem: LocalData, newItem: LocalData): Boolean {
         return oldItem == newItem
     }
 }

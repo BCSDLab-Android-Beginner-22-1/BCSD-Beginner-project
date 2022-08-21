@@ -1,19 +1,19 @@
 package com.example.bcsd_weather.util
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.bcsd_weather.domain.model.UltraShortTermForecast
+import com.example.bcsd_weather.domain.model.CurrentWeather
 
-object TodayForecastDiffUtil : DiffUtil.ItemCallback<UltraShortTermForecast>() {
+object TodayForecastDiffUtil : DiffUtil.ItemCallback<CurrentWeather>() {
     override fun areItemsTheSame(
-        oldItem: UltraShortTermForecast,
-        newItem: UltraShortTermForecast
+        oldItem: CurrentWeather,
+        newItem: CurrentWeather
     ): Boolean {
         return oldItem.forecastTime == newItem.forecastTime
     }
 
     override fun areContentsTheSame(
-        oldItem: UltraShortTermForecast,
-        newItem: UltraShortTermForecast
+        oldItem: CurrentWeather,
+        newItem: CurrentWeather
     ): Boolean {
         return oldItem == newItem
     }

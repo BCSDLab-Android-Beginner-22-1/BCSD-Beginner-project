@@ -2,8 +2,8 @@ package com.example.bcsd_weather.data.model
 
 import com.example.bcsd_weather.domain.enums.ShortForecastPrecipitationType
 import com.example.bcsd_weather.domain.enums.SkyType
-import com.example.bcsd_weather.domain.model.ShortTermForecast
-import com.example.bcsd_weather.domain.model.ShortTermTempForecast
+import com.example.bcsd_weather.domain.model.FutureWeather
+import com.example.bcsd_weather.domain.model.TempData
 
 data class ShortTermForecastRemote(val response: StResponse)
 data class StResponse(val header: StHeader, val body: StBody)
@@ -18,7 +18,7 @@ data class ShortTermFcst(
     val fcstValue: String  // 예보 값
 )
 
-fun ShortTermForecastRemote.mapToShortTermForecast(): List<ShortTermForecast> {
+fun ShortTermForecastRemote.mapToShortTermForecast(): List<FutureWeather> {
 
     if (response.header.resultCode != 0) {
         return listOf()
@@ -26,7 +26,7 @@ fun ShortTermForecastRemote.mapToShortTermForecast(): List<ShortTermForecast> {
 
     val list = response.body.items.item
 
-    val mappedData = ArrayList<ShortTermForecast>()
+    val mappedData = ArrayList<FutureWeather>()
 
     var forecastDate = ""
     var forecastTime = ""
@@ -46,7 +46,7 @@ fun ShortTermForecastRemote.mapToShortTermForecast(): List<ShortTermForecast> {
         if (forecastTime != item.fcstTime) {
             if (forecastTime != "") {
                 mappedData.add(
-                    ShortTermForecast(
+                    FutureWeather(
                         forecastDate,
                         forecastTime,
                         precipitationProbability,
@@ -116,14 +116,14 @@ fun ShortTermForecastRemote.mapToShortTermForecast(): List<ShortTermForecast> {
     return mappedData
 }
 
-fun ShortTermForecastRemote.mapToShortTermTempForecast(): List<ShortTermTempForecast> {
+fun ShortTermForecastRemote.mapToTempData(): List<TempData> {
     if (response.header.resultCode != 0) {
         return listOf()
     }
 
     val list = response.body.items.item
 
-    val mappedData = ArrayList<ShortTermTempForecast>()
+    val mappedData = ArrayList<TempData>()
 
     var lowestTemperature = ""
     var highestTemperature = ""
@@ -133,7 +133,7 @@ fun ShortTermForecastRemote.mapToShortTermTempForecast(): List<ShortTermTempFore
     for (item in list) {
         if (forecastDate != item.fcstDate && forecastDate != "") {
             mappedData.add(
-                ShortTermTempForecast(
+                TempData(
                     forecastDate,
                     lowestTemperature,
                     highestTemperature

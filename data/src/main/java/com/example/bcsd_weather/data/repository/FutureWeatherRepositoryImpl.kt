@@ -11,7 +11,7 @@ class FutureWeatherRepositoryImpl(private val futureWeatherDao: FutureWeatherDao
     FutureWeatherRepository {
 
     override suspend fun insertFutureWeather(futureWeather: FutureWeather, x: Int, y: Int) {
-        futureWeatherDao.insertFutureWeather(futureWeather.mapToFutureWeatherEntity(x,y))
+        futureWeatherDao.insertFutureWeather(futureWeather.mapToFutureWeatherEntity(x, y))
     }
 
 
@@ -29,6 +29,4 @@ class FutureWeatherRepositoryImpl(private val futureWeatherDao: FutureWeatherDao
     override suspend fun deleteWeather(firstDateToKeep: String) {
         futureWeatherDao.deleteWeather(firstDateToKeep)
     }
-
-
 }

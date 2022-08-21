@@ -3,20 +3,20 @@ package com.example.bcsd_weather.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.bcsd_weather.domain.model.LocationItem
-import com.example.bcsd_weather.domain.model.ShortTermForecast
+import com.example.bcsd_weather.domain.model.FutureWeather
+import com.example.bcsd_weather.domain.model.LocalData
 
 class DayForecastViewModel : ViewModel() {
     private val _forecastDate = MutableLiveData<String>()
     val forecastDate: LiveData<String>
         get() = _forecastDate
 
-    private val _forecastData = MutableLiveData<List<ShortTermForecast>>()
-    val forecastData: LiveData<List<ShortTermForecast>>
+    private val _forecastData = MutableLiveData<List<FutureWeather>>()
+    val forecastData: LiveData<List<FutureWeather>>
         get() = _forecastData
 
-    private val _nowLocation = MutableLiveData<LocationItem>()
-    val nowLocation: LiveData<LocationItem>
+    private val _nowLocation = MutableLiveData<LocalData>()
+    val nowLocation: LiveData<LocalData>
         get() = _nowLocation
 
     private val _isLoading = MutableLiveData(false)
@@ -28,7 +28,7 @@ class DayForecastViewModel : ViewModel() {
     }
 
     fun setLocation(name: String?, x: Int, y:Int) {
-        _nowLocation.value = LocationItem(name, x, y)
+        _nowLocation.value = LocalData(0, name, x, y)
     }
 
     fun getForecastDataByDate() {

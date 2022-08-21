@@ -119,7 +119,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.contentMain.forecastButton.setOnClickListener {
             val intent = Intent(this, ForecastActivity::class.java)
-            intent.putExtra("name", mainViewModel.nowLocation.value!!.title)
+            intent.putExtra("name", mainViewModel.nowLocation.value!!.LocalName)
             intent.putExtra("x", mainViewModel.nowLocation.value!!.x)
             intent.putExtra("y", mainViewModel.nowLocation.value!!.y)
             startActivity(intent)
