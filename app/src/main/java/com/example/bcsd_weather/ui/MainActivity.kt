@@ -109,14 +109,18 @@ class MainActivity : AppCompatActivity() {
                         val convertGPS = ConvertGPS()
                         val converted = convertGPS.convertGPStoXY(x, y)
 
-                        val input = LocalData(0, locationName, converted.x, converted.y)
+                        val input = LocalData(locationName, converted.x, converted.y)
                         mainViewModel.insertLocalData(input)
                         dialog.binding.dialogProgressBar.visibility = View.GONE
                         dialog.dismiss()
                     } catch (e: IndexOutOfBoundsException) {
                         dialog.binding.dialogProgressBar.visibility = View.GONE
                         dialog.dismiss()
-                        Snackbar.make(binding.root, "Can't find $locationName!", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(
+                            binding.root,
+                            "Can't find $locationName!",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
                     }
                     mainViewModel.getAllLocalData()
                 }
