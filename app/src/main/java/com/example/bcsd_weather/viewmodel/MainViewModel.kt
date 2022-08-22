@@ -72,21 +72,25 @@ class MainViewModel(
 
     private fun getNowWeather() {
         CoroutineScope(Dispatchers.IO).launch {
+            _isLoading.postValue(true)
             _todayForecastList.postValue(
                 getCurrentWeatherUseCase(
                     nowLocation.value!!.x,
                     nowLocation.value!!.y
                 )
             )
+            _isLoading.postValue(false)
         }
     }
 
     private fun getTodayForecast() {
         viewModelScope.launch {
+            _isLoading.value = true
             _nowCastData.value = getUltraSrtLiveUseCase(
                 nowLocation.value!!.x,
                 nowLocation.value!!.y
             )
+            _isLoading.value = false
         }
     }
 
@@ -101,7 +105,9 @@ class MainViewModel(
 
     fun insertLocalData(localData: LocalData) {
         CoroutineScope(Dispatchers.IO).launch {
+            _isLoading.postValue(true)
             insertLocalUseCase(localData)
+            _isLoading.postValue(false)
         }
     }
 }
