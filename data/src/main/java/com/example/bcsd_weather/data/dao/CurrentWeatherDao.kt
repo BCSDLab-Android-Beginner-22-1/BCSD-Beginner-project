@@ -1,6 +1,5 @@
 package com.example.bcsd_weather.data.dao
 
-
 import androidx.room.*
 import com.example.bcsd_weather.data.model.CurrentWeatherEntity
 
@@ -12,6 +11,6 @@ interface CurrentWeatherDao {
     @Delete
     fun deleteCurrentWeather(currentWeatherEntity: CurrentWeatherEntity)
 
-    @Query("select * from current_weather")
-    fun getCurrentWeather() : List<CurrentWeatherEntity>
+    @Query("select * from current_weather where x = :x and y = :y")
+    fun getCurrentWeather(x: Int, y: Int) : List<CurrentWeatherEntity>
 }

@@ -1,6 +1,5 @@
 package com.example.bcsd_weather.data.repository
 
-
 import com.example.bcsd_weather.data.dao.CurrentWeatherDao
 import com.example.bcsd_weather.data.mapper.mapToCurrentWeather
 import com.example.bcsd_weather.data.mapper.mapToCurrentWeatherEntity
@@ -25,7 +24,7 @@ class CurrentWeatherRepositoryImpl(
 
 
     override suspend fun getCurrentWeather(x: Int, y: Int): List<CurrentWeather> {
-        val data = currentWeatherDao.getCurrentWeather()
+        val data = currentWeatherDao.getCurrentWeather(x, y)
 
         val updatedTime = if (data.isNotEmpty()) {
             data[0].lastUpdateTime
