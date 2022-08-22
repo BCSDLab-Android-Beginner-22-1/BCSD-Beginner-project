@@ -123,7 +123,13 @@ class MainActivity : AppCompatActivity() {
                         val convertGPS = ConvertGPS()
                         val converted = convertGPS.convertGPStoXY(x, y)
 
-                        val input = LocalData(locationName, converted.x, converted.y)
+                        val fullLocationName = if (add[0].adminArea == add[0].featureName) {
+                            add[0].featureName
+                        } else {
+                            "${add[0].adminArea} ${add[0].featureName}"
+                        }
+
+                        val input = LocalData(fullLocationName, converted.x, converted.y)
                         mainViewModel.insertLocalData(input)
                         dialog.binding.dialogProgressBar.visibility = View.GONE
                         dialog.dismiss()
@@ -164,7 +170,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.contentMain.forecastButton.setOnClickListener {
             if (mainViewModel.nowLocation.value == null) {
-                Snackbar.make(binding.root, getString(R.string.activity_cant_change), Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    binding.root,
+                    getString(R.string.activity_cant_change),
+                    Snackbar.LENGTH_SHORT
+                ).show()
             } else {
                 val intent = Intent(this, ForecastActivity::class.java)
                 intent.putExtra("name", mainViewModel.nowLocation.value!!.localName)
