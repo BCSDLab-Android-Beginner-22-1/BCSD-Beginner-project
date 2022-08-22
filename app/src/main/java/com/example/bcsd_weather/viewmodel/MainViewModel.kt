@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.bcsd_weather.domain.model.LocalData
 import com.example.bcsd_weather.domain.model.CurrentWeather
+import com.example.bcsd_weather.domain.model.LocalData
 import com.example.bcsd_weather.domain.model.UltraShortTermLive
 import com.example.bcsd_weather.domain.usecase.*
 import kotlinx.coroutines.CoroutineScope
@@ -59,7 +59,7 @@ class MainViewModel(
                     if (it) {
                         getGPSLocationUseCase()
                             .collect { location ->
-                                _nowLocation.value = LocalData(0, null, location.x, location.y)
+                                _nowLocation.value = LocalData(null, location.x, location.y)
                                 _isLoading.value = false
                                 getNowWeather()
                                 getTodayForecast()
