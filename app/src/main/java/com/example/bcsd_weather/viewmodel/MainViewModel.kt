@@ -19,7 +19,8 @@ class MainViewModel(
     private val getLocalUseCase: GetLocalUseCase,
     private val insertLocalUseCase: InsertLocalUseCase,
     private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase,
-    private val getUltraSrtLiveUseCase: GetUltraSrtLiveUseCase
+    private val getUltraSrtLiveUseCase: GetUltraSrtLiveUseCase,
+    private val deleteLocalUseCase: DeleteLocalUseCase
 ) : ViewModel() {
     private val _nowLocation = MutableLiveData<LocalData>()
     val nowLocation: LiveData<LocalData>
@@ -109,5 +110,14 @@ class MainViewModel(
             insertLocalUseCase(localData)
             _isLoading.postValue(false)
         }
+    }
+
+    fun deleteLocalData(localData: LocalData) {
+        CoroutineScope(Dispatchers.IO).launch {
+            _isLoading.postValue(true)
+            deleteLocalUseCase(localData)
+            _isLoading.postValue(false)
+        }
+        getAllLocalData()
     }
 }

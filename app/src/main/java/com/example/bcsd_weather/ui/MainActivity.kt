@@ -87,6 +87,20 @@ class MainActivity : AppCompatActivity() {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
         }
 
+        navDrawerAdapter.setOnLongClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle(getString(R.string.dialog_delete_location_title))
+                .setMessage(getString(R.string.dialog_delete_location_message, it.localName))
+                .setPositiveButton(getString(R.string.dialog_delete_location_delete)) { dialog, _ ->
+                    mainViewModel.deleteLocalData(it)
+                    dialog.dismiss()
+                }
+                .setNegativeButton(getString(R.string.dialog_delete_location_cancel)) { dialog, _ ->
+                    dialog.dismiss()
+                }
+            builder.show()
+        }
+
         binding.navContent.currentLocationLayout.setOnClickListener {
             mainViewModel.setCurrentLocationToGPS()
             binding.drawerLayout.closeDrawer(GravityCompat.START)

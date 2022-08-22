@@ -41,6 +41,10 @@
     <string name="dialog_network_check_title">Connect network first!</string>
     <string name="dialog_network_check_message">Can\'t find any network connection!</string>
     <string name="dialog_network_check_finish">Finish</string>
+    <string name="dialog_delete_location_title">Delete location</string>
+    <string name="dialog_delete_location_message">Are you sure want to delete %s?</string>
+    <string name="dialog_delete_location_delete">Delete</string>
+    <string name="dialog_delete_location_cancel">Cancel</string>
 
     <string name="geocoder_location_not_found">Can\'t find %s!</string>
 

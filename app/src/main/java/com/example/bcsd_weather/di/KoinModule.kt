@@ -133,7 +133,7 @@ val appModule = module {
 
 val viewModelModule = module {
     viewModel {
-        MainViewModel(get(), get(), get(), get(), get(), get())
+        MainViewModel(get(), get(), get(), get(), get(), get(), get())
     }
     viewModel {
         ForecastViewModel(get())
