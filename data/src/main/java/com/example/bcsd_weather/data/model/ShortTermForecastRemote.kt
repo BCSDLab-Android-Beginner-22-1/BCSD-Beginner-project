@@ -135,8 +135,8 @@ fun ShortTermForecastRemote.mapToTempData(): List<TempData> {
             mappedData.add(
                 TempData(
                     forecastDate,
-                    lowestTemperature,
-                    highestTemperature
+                    highestTemperature,
+                    lowestTemperature
                 )
             )
         }
