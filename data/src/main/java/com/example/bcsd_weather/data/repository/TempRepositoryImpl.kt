@@ -26,7 +26,7 @@ class TempRepositoryImpl(
         val data = tempDao.getTempData(findDate, x, y)
 
         val updatedTime = if (data.isNotEmpty()) {
-            data[0].updateTime
+            data[data.lastIndex].updateTime
         } else {
             0
         }

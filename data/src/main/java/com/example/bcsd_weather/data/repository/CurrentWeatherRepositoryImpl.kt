@@ -27,7 +27,7 @@ class CurrentWeatherRepositoryImpl(
         val data = currentWeatherDao.getCurrentWeather(x, y)
 
         val updatedTime = if (data.isNotEmpty()) {
-            data[0].lastUpdateTime
+            data[data.lastIndex].lastUpdateTime
         } else {
             0
         }

@@ -23,7 +23,7 @@ class FutureWeatherRepositoryImpl(
         val data = futureWeatherDao.getDetailedFutureWeather(date, x, y)
 
         val updatedTime = if (data.isNotEmpty()) {
-            data[0].lastUpdateTime
+            data[data.lastIndex].lastUpdateTime
         } else {
             0
         }
