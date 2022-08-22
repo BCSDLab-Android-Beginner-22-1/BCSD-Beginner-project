@@ -20,12 +20,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/temperature_layout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/more_info_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_weight="0.4">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/temperature_text_view"
@@ -56,12 +55,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/more_info_layout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/temperature_layout"
-            app:layout_constraintVertical_weight="0.6">
+            app:layout_constraintTop_toBottomOf="@id/temperature_layout">
 
             <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/precipitation_card_view"
