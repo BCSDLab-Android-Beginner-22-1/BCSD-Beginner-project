@@ -40,4 +40,6 @@
     <string name="dialog_network_check_title">Connect network first!</string>
     <string name="dialog_network_check_message">Can\'t find any network connection!</string>
     <string name="dialog_network_check_finish">Finish</string>
+
+    <string name="geocoder_location_not_found">Can\'t find %s!</string>
 </resources>

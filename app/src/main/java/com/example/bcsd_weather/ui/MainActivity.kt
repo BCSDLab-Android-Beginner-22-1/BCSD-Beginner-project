@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
                         dialog.dismiss()
                         Snackbar.make(
                             binding.root,
-                            "Can't find $locationName!",
+                            getString(R.string.geocoder_location_not_found, locationName),
                             Snackbar.LENGTH_SHORT
                         ).show()
                     }
