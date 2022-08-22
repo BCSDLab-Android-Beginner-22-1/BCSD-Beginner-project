@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.bcsd_weather.domain.model.FutureWeather
-import com.example.bcsd_weather.domain.model.LocalData
+import com.example.bcsd_weather.domain.model.Location
 import com.example.bcsd_weather.domain.usecase.GetDetailedFutureWeatherUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,8 +21,8 @@ class DayForecastViewModel(
     val forecastData: LiveData<List<FutureWeather>>
         get() = _forecastData
 
-    private val _nowLocation = MutableLiveData<LocalData>()
-    val nowLocation: LiveData<LocalData>
+    private val _nowLocation = MutableLiveData<Location>()
+    val nowLocation: LiveData<Location>
         get() = _nowLocation
 
     private val _isLoading = MutableLiveData(false)
@@ -33,8 +33,8 @@ class DayForecastViewModel(
         _forecastDate.value = date
     }
 
-    fun setLocation(name: String?, x: Int, y:Int) {
-        _nowLocation.value = LocalData(0, name, x, y)
+    fun setLocation(x: Int, y: Int) {
+        _nowLocation.value = Location(x, y)
     }
 
     fun getForecastDataByDate() {

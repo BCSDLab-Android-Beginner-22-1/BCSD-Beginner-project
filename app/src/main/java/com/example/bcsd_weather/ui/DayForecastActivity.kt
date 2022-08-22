@@ -28,7 +28,6 @@ class DayForecastActivity : AppCompatActivity() {
         binding.vm = dayForecastViewModel
 
         dayForecastViewModel.setLocation(
-            intent.getStringExtra("name"),
             intent.getIntExtra("x", 0),
             intent.getIntExtra("y", 0)
         )
