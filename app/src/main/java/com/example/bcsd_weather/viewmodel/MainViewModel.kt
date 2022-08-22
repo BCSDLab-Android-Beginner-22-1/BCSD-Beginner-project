@@ -70,7 +70,7 @@ class MainViewModel(
         }
     }
 
-    private fun getNowWeather() {
+    private fun getTodayForecast() {
         CoroutineScope(Dispatchers.IO).launch {
             _isLoading.postValue(true)
             _todayForecastList.postValue(
@@ -83,7 +83,7 @@ class MainViewModel(
         }
     }
 
-    private fun getTodayForecast() {
+    private fun getNowWeather() {
         viewModelScope.launch {
             _isLoading.value = true
             _nowCastData.value = getUltraSrtLiveUseCase(
