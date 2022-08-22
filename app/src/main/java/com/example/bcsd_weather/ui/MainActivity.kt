@@ -7,6 +7,7 @@ import android.location.Geocoder
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -123,11 +124,7 @@ class MainActivity : AppCompatActivity() {
                         val convertGPS = ConvertGPS()
                         val converted = convertGPS.convertGPStoXY(x, y)
 
-                        val fullLocationName = if (add[0].adminArea == add[0].featureName) {
-                            add[0].featureName
-                        } else {
-                            "${add[0].adminArea} ${add[0].featureName}"
-                        }
+                        val fullLocationName = add[0].getAddressLine(0).replace("대한민국 ", "")
 
                         val input = LocalData(fullLocationName, converted.x, converted.y)
                         mainViewModel.insertLocalData(input)
@@ -203,7 +200,7 @@ class MainActivity : AppCompatActivity() {
         val connectivityManager =
             getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
-        return activeNetwork?.isConnectedOrConnecting == true
+        return activeNetwork?.isConnected == true
     }
 
     private fun checkPermission() {
