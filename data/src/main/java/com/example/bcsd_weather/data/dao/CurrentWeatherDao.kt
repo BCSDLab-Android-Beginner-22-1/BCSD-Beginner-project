@@ -11,6 +11,6 @@ interface CurrentWeatherDao {
     @Delete
     fun deleteCurrentWeather(currentWeatherEntity: CurrentWeatherEntity)
 
-    @Query("select * from current_weather where x = :x and y = :y")
+    @Query("select * from current_weather where x = :x and y = :y ORDER BY fcstDate ASC")
     fun getCurrentWeather(x: Int, y: Int) : List<CurrentWeatherEntity>
 }

@@ -13,6 +13,7 @@ data class CurrentWeatherEntity(
     var x: Int,
     var y: Int,
     var temperature: String,
+    var fcstDate: String,
     var fcstTime: String,
     var lastUpdateTime: Long
 )

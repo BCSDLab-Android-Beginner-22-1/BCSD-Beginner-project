@@ -5,8 +5,7 @@ import com.example.bcsd_weather.domain.model.CurrentWeather
 
 fun CurrentWeatherEntity.mapToCurrentWeather(): CurrentWeather {
     return CurrentWeather(
-        temperature,
-        fcstTime
+        temperature, fcstDate, fcstTime
     )
 }
 
@@ -15,6 +14,7 @@ fun CurrentWeather.mapToCurrentWeatherEntity(x: Int, y: Int): CurrentWeatherEnti
         x,
         y,
         temperature,
+        forecastDate,
         forecastTime,
         System.currentTimeMillis(),
     )

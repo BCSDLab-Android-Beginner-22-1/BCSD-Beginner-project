@@ -28,7 +28,7 @@ fun UltraShortTermForeCastRemote.mapToUltraShortTermForecast(): List<CurrentWeat
     for (item in list) {
         when (item.category) {
             "T1H" -> {
-                mappedData.add(CurrentWeather(item.fcstValue, item.fcstTime))
+                mappedData.add(CurrentWeather(item.fcstValue, item.fcstDate, item.fcstTime))
             }
             else -> {}
         }
