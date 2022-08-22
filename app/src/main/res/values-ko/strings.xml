@@ -41,4 +41,6 @@
     <string name="dialog_network_check_finish">종료</string>
 
     <string name="geocoder_location_not_found">%s를 찾을 수 없습니다!</string>
+
+    <string name="activity_cant_change">잠시 후 다시 시도해주세요!</string>
 </resources>

@@ -149,11 +149,15 @@ class MainActivity : AppCompatActivity() {
         // Today forecast end
 
         binding.contentMain.forecastButton.setOnClickListener {
-            val intent = Intent(this, ForecastActivity::class.java)
-            intent.putExtra("name", mainViewModel.nowLocation.value!!.LocalName)
-            intent.putExtra("x", mainViewModel.nowLocation.value!!.x)
-            intent.putExtra("y", mainViewModel.nowLocation.value!!.y)
-            startActivity(intent)
+            if (mainViewModel.nowLocation.value == null) {
+                Snackbar.make(binding.root, getString(R.string.activity_cant_change), Snackbar.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this, ForecastActivity::class.java)
+                intent.putExtra("name", mainViewModel.nowLocation.value!!.LocalName)
+                intent.putExtra("x", mainViewModel.nowLocation.value!!.x)
+                intent.putExtra("y", mainViewModel.nowLocation.value!!.y)
+                startActivity(intent)
+            }
         }
     }
 

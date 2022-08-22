@@ -42,4 +42,6 @@
     <string name="dialog_network_check_finish">Finish</string>
 
     <string name="geocoder_location_not_found">Can\'t find %s!</string>
+
+    <string name="activity_cant_change">Please try later!</string>
 </resources>
