@@ -25,14 +25,22 @@ class TempRepositoryImpl(
     override suspend fun getTempData(findDate: String, x: Int, y: Int): List<TempData> {
         val data = tempDao.getTempData(findDate, x, y)
 
-        if (data.isEmpty()) {
+        val updatedTime = if (data.isNotEmpty()) {
+            data[0].updateTime
+        } else {
+            0
+        }
+
+        val currentTime = System.currentTimeMillis()
+
+        if (currentTime - updatedTime > 600000) {
             val apiData = getShortTermTempFcstUseCase(x, y)
 
             for (i in apiData) {
                 tempDao.insertTempData(i.mapToTempEntity(x, y))
             }
 
-            return apiData
+            return getTempData(findDate, x, y)
         }
 
         val converted = ArrayList<TempData>()

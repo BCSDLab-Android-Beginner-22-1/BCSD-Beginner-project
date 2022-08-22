@@ -22,7 +22,15 @@ class FutureWeatherRepositoryImpl(
     override suspend fun getDetailedFutureWeather(date: String, x: Int, y: Int): List<FutureWeather> {
         val data = futureWeatherDao.getDetailedFutureWeather(date)
 
-        if (data.isEmpty()) {
+        val updatedTime = if (data.isNotEmpty()) {
+            data[0].lastUpdateTime
+        } else {
+            0
+        }
+
+        val currentTime = System.currentTimeMillis()
+
+        if (currentTime - updatedTime > 600000) {
             val apiData = getShortTermFcstUseCase(x, y)
 
             for (i in apiData) {

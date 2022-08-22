@@ -27,7 +27,15 @@ class CurrentWeatherRepositoryImpl(
     override suspend fun getCurrentWeather(x: Int, y: Int): List<CurrentWeather> {
         val data = currentWeatherDao.getCurrentWeather()
 
-        if (data.isEmpty()) {
+        val updatedTime = if (data.isNotEmpty()) {
+            data[0].lastUpdateTime
+        } else {
+            0
+        }
+
+        val currentTime = System.currentTimeMillis()
+
+        if (currentTime - updatedTime > 600000) {
             val apiData = getUltraSrtFcstUseCase(x, y)
 
             for (i in apiData) {
