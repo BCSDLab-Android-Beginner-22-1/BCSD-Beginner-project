@@ -51,13 +51,13 @@ class TempRepositoryImpl(
         return converted.toList()
     }
 
-    override suspend fun insertTempData(TempData: TempData) {
-        tempDao.insertTempData(TempData.mapToTempEntity())
+    override suspend fun insertTempData(tempData: TempData) {
+        tempDao.insertTempData(tempData.mapToTempEntity())
     }
 
 
-    override suspend fun deleteTempData(TempData: TempData) {
-        this.tempDao.deleteTempData(TempData.mapToTempEntity())
+    override suspend fun deleteTempData(tempData: TempData) {
+        this.tempDao.deleteTempData(tempData.mapToTempEntity())
     }
 
 }

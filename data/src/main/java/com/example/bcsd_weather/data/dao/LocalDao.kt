@@ -9,11 +9,11 @@ import com.example.bcsd_weather.data.model.LocalEntity
 @Dao
 interface LocalDao {
     @Query("SELECT * FROM localDataTable")
-    fun getAllLocalData():List<LocalEntity>
+    fun getAllLocalData(): List<LocalEntity>
 
     @Insert
-    fun insertLocalData(localWeatherEntity: LocalEntity)
+    fun insertLocalData(localEntity: LocalEntity)
 
     @Delete
-    fun deleteLocalData(localWeatherEntity: LocalEntity)
+    fun deleteLocalData(localEntity: LocalEntity)
 }

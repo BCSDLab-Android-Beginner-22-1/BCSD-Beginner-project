@@ -5,7 +5,7 @@ import com.example.bcsd_weather.data.model.LocalEntity
 
 fun LocalEntity.mapToLocalData():LocalData{
     return LocalData(
-        LocalName,
+        localName,
         x,
         y
     )
@@ -13,7 +13,7 @@ fun LocalEntity.mapToLocalData():LocalData{
 
 fun LocalData.mapToLocalEntity():LocalEntity{
     return LocalEntity(
-        LocalName!!,
+        localName!!,
         x,
         y
     )
