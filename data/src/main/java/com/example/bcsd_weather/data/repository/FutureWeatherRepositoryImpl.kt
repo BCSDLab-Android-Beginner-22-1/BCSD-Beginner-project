@@ -20,7 +20,7 @@ class FutureWeatherRepositoryImpl(
 
 
     override suspend fun getDetailedFutureWeather(date: String, x: Int, y: Int): List<FutureWeather> {
-        val data = futureWeatherDao.getDetailedFutureWeather(date)
+        val data = futureWeatherDao.getDetailedFutureWeather(date, x, y)
 
         val updatedTime = if (data.isNotEmpty()) {
             data[0].lastUpdateTime
