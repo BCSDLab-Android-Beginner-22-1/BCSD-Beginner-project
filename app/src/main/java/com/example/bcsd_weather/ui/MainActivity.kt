@@ -226,7 +226,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getGPSLocation() {
-        mainViewModel.setCurrentLocationToGPS()
+        if (!mainViewModel.isGPSInitialized)
+            mainViewModel.setCurrentLocationToGPS()
     }
 
     override fun onBackPressed() {

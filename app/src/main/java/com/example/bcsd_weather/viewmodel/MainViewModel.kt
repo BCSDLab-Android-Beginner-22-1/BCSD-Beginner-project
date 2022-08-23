@@ -42,6 +42,8 @@ class MainViewModel(
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
+    var isGPSInitialized = false
+
     init {
         getAllLocalData()
     }
@@ -53,6 +55,7 @@ class MainViewModel(
     }
 
     fun setCurrentLocationToGPS() {
+        isGPSInitialized = true
         _isLoading.value = true
         viewModelScope.launch {
             initGPSLocationUseCase()
