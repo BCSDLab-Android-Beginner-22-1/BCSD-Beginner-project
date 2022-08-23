@@ -1,11 +1,15 @@
 package com.example.bcsd_weather.data.repository
 
+import android.util.Log
 import com.example.bcsd_weather.data.dao.CurrentWeatherDao
 import com.example.bcsd_weather.data.mapper.mapToCurrentWeather
 import com.example.bcsd_weather.data.mapper.mapToCurrentWeatherEntity
 import com.example.bcsd_weather.domain.model.CurrentWeather
 import com.example.bcsd_weather.domain.repository.CurrentWeatherRepository
 import com.example.bcsd_weather.domain.usecase.GetUltraSrtFcstUseCase
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CurrentWeatherRepositoryImpl(
     private val currentWeatherDao: CurrentWeatherDao,
@@ -24,7 +28,14 @@ class CurrentWeatherRepositoryImpl(
 
 
     override suspend fun getCurrentWeather(x: Int, y: Int): List<CurrentWeather> {
-        val data = currentWeatherDao.getCurrentWeather(x, y)
+        val date = Date()
+        val nowTimeFormat = SimpleDateFormat("HH")
+        val nowTime = nowTimeFormat.format(date) + "00"
+
+        val todayDateFormat = SimpleDateFormat("yyyyMMdd")
+        val todayDate = todayDateFormat.format(date)
+
+        val data = currentWeatherDao.getCurrentWeather(x, y, nowTime, todayDate)
 
         val updatedTime = if (data.isNotEmpty()) {
             data[data.lastIndex].lastUpdateTime
