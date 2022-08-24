@@ -6,7 +6,9 @@ import com.example.bcsd_weather.data.mapper.mapToFutureWeatherEntity
 import com.example.bcsd_weather.domain.model.FutureWeather
 import com.example.bcsd_weather.domain.repository.FutureWeatherRepository
 import com.example.bcsd_weather.domain.usecase.GetShortTermFcstUseCase
-
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class FutureWeatherRepositoryImpl(
     private val futureWeatherDao: FutureWeatherDao,
@@ -17,10 +19,24 @@ class FutureWeatherRepositoryImpl(
     override suspend fun insertFutureWeather(futureWeather: FutureWeather, x: Int, y: Int) {
         futureWeatherDao.insertFutureWeather(futureWeather.mapToFutureWeatherEntity(x, y))
     }
-
-
+    
     override suspend fun getDetailedFutureWeather(date: String, x: Int, y: Int): List<FutureWeather> {
-        val data = futureWeatherDao.getDetailedFutureWeather(date, x, y)
+        val nowDate = Date()
+
+        val nowTimeFormat = SimpleDateFormat("HH")
+        val nowTime = nowTimeFormat.format(nowDate)
+        val nextHour = Integer.parseInt(nowTime) + 1
+
+        val todayDateFormat = SimpleDateFormat("yyyyMMdd")
+        val todayDate = todayDateFormat.format(nowDate)
+
+        val startTime = if (date == todayDate) {
+            String.format("%02d00", nextHour)
+        } else {
+            "0000"
+        }
+
+        val data = futureWeatherDao.getDetailedFutureWeather(date, x, y, startTime)
 
         val updatedTime = if (data.isNotEmpty()) {
             data[data.lastIndex].lastUpdateTime
