@@ -52,7 +52,7 @@ class CurrentWeatherRepositoryImpl(
                 currentWeatherDao.insertCurrentWeather(i.mapToCurrentWeatherEntity(x, y))
             }
 
-            return apiData
+            return getCurrentWeather(x, y)
         }
 
         val converted = ArrayList<CurrentWeather>()
