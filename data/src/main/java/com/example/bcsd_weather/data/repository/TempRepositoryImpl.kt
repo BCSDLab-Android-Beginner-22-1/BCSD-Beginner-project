@@ -6,6 +6,9 @@ import com.example.bcsd_weather.data.mapper.mapToTempEntity
 import com.example.bcsd_weather.domain.model.TempData
 import com.example.bcsd_weather.domain.repository.TempRepository
 import com.example.bcsd_weather.domain.usecase.GetShortTermTempFcstUseCase
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class TempRepositoryImpl(
     private val tempDao: TempDao,
@@ -23,7 +26,17 @@ class TempRepositoryImpl(
     }
 
     override suspend fun getTempData(findDate: String, x: Int, y: Int): List<TempData> {
-        val data = tempDao.getTempData(findDate, x, y)
+        val nowDate = Date()
+        val nowTimeFormat = SimpleDateFormat("HH")
+        val nowTime = nowTimeFormat.format(nowDate)
+
+        val date = if (Integer.parseInt(nowTime) >= 23) {
+             (Integer.parseInt(findDate) + 1).toString()
+        } else {
+            findDate
+        }
+
+        val data = tempDao.getTempData(date, x, y)
 
         val updatedTime = if (data.isNotEmpty()) {
             data[data.lastIndex].updateTime
