@@ -70,8 +70,6 @@ class MainActivity : AppCompatActivity() {
             setHomeAsUpIndicator(R.drawable.ic_nav_menu)
         }
 
-        checkPermission()
-
         binding.toolbar.setNavigationOnClickListener {
             binding.drawerLayout.open()
         }
@@ -193,6 +191,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 .setCancelable(false)
             builder.show()
+        } else {
+            checkPermission()
         }
     }
 
