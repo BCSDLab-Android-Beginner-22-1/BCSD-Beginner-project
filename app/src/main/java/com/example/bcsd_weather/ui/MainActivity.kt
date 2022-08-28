@@ -200,7 +200,17 @@ class MainActivity : AppCompatActivity() {
         val connectivityManager =
             getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
-        return activeNetwork?.isConnected == true
+
+        var isConnected = true
+
+        try {
+            val process = Runtime.getRuntime().exec("ping -c 1 google.com")
+            isConnected = process.waitFor() == 0
+        } catch (e: Exception) {
+            println(e)
+        }
+
+        return activeNetwork?.isConnected == true && isConnected
     }
 
     private fun checkPermission() {
