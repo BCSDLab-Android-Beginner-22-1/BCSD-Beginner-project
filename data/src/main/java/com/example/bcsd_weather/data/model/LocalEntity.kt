@@ -1,12 +1,10 @@
 package com.example.bcsd_weather.data.model
 
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-@Entity(tableName = "localDataTable")
+@Entity(tableName = "localDataTable", primaryKeys = ["x", "y"])
 data class LocalEntity(
-    @PrimaryKey(autoGenerate = true) val id : Long,
-    val LocalName: String,
-    val x:Double,
-    val y:Double
+    val localName: String,
+    val x: Int,
+    val y: Int
 )

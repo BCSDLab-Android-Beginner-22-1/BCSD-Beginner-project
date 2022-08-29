@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="shortTermForecast"
+            type="com.example.bcsd_weather.domain.model.FutureWeather" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/forecast_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/forecast_time"
+            time_text="@{shortTermForecast.forecastTime}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/forecast_temperature" />
+
+        <TextView
+            android:id="@+id/forecast_precipitation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/forecast_precipitation(shortTermForecast.precipitation, shortTermForecast.precipitationProbability)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/forecast_time" />
+
+        <TextView
+            android:id="@+id/forecast_wind_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/forecast_humidity_wind_speed(shortTermForecast.humidity, shortTermForecast.windSpeed)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/forecast_precipitation" />
+
+        <TextView
+            android:id="@+id/forecast_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/forecast_temperature(shortTermForecast.temperature)}"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/forecast_sky_type"
+            sky_type_text="@{shortTermForecast.skyState.name()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/forecast_temperature" />
+
+        <TextView
+            android:id="@+id/forecast_precipitation_type"
+            precipitation_type_text="@{shortTermForecast.precipitationType}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/forecast_sky_type" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -4,5 +4,5 @@ import com.example.bcsd_weather.domain.model.CurrentWeather
 import com.example.bcsd_weather.domain.repository.CurrentWeatherRepository
 
 class GetCurrentWeatherUseCase(private val currentWeatherRepository: CurrentWeatherRepository) {
-    operator fun invoke(x: Int, y: Int): List<CurrentWeather> = currentWeatherRepository.getCurrentWeather(x,y)
+    suspend operator fun invoke(x: Int, y: Int): List<CurrentWeather> = currentWeatherRepository.getCurrentWeather(x,y)
 }

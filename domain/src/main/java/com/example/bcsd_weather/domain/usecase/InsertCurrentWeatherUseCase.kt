@@ -5,5 +5,5 @@ import com.example.bcsd_weather.domain.repository.CurrentWeatherRepository
 
 class InsertCurrentWeatherUseCase(private val currentWeatherRepository: CurrentWeatherRepository) {
     suspend operator fun invoke(currentWeather: CurrentWeather, x: Int, y: Int) =
-        currentWeatherRepository.insertCurrentWeather(currentWeather,x,y)
+        currentWeatherRepository.insertCurrentWeather(currentWeather, x, y)
 }

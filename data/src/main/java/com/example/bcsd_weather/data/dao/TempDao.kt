@@ -1,9 +1,6 @@
 package com.example.bcsd_weather.data.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.example.bcsd_weather.data.model.TempEntity
 
 @Dao
@@ -11,7 +8,7 @@ interface TempDao {
     @Query("SELECT * FROM tempDataTable where x = :x and y = :y")
     fun getAllTempData(x: Int, y: Int):List<TempEntity>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTempData(localWeatherEntity: TempEntity)
 
     @Delete

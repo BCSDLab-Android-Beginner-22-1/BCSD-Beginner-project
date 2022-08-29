@@ -1,8 +1,52 @@
 <resources>
     <string name="app_name">BCSD-weather</string>
+    <string name="current_temperature">%s°C</string>
+    <string name="current_precipitation">Precipitation: %smm</string>
+    <string name="current_humidity">Humidity: %s%%</string>
+    <string name="current_wind_speed">Wind speed: %sm/s</string>
+    <string name="current_unknown">Unknown</string>
+
+    <string name="today_forecast_title">Today\'s weather</string>
+    <string name="more_forecast">More forecast</string>
+    <string name="forecast_time">%s</string>
+    <string name="forecast_temperature">%s°C</string>
+    <string name="forecast_low_high_temperature">Minimum temperature: %1$s°C / Maximum temperature: %2$s°C</string>
+    <string name="forecast_more">More forecast</string>
+    <string name="forecast_date_time">%1$s\n%2$s</string>
+    <string name="forecast_precipitation">Precipitation: %s Precipitation probability: %s%%</string>
+    <string name="forecast_humidity_wind_speed">Humidity: %s%% Wind speed: %sm/s</string>
+    
+    <string name="forecast_sky_type_sunny">Sunny</string>
+    <string name="forecast_sky_type_overcast">Overcast</string>
+    <string name="forecast_sky_type_cloudy">Cloudy</string>
+
+    <string name="forecast_precipitation_type_rain">Rain</string>
+    <string name="forecast_precipitation_type_rain_snow">Rain and snow</string>
+    <string name="forecast_precipitation_type_snow">Snow</string>
+    <string name="forecast_precipitation_type_shower">Shower</string>
+
+
+    <string name="current_location">Current location</string>
+    <string name="add_location">Add location</string>
+
+    <string name="data_empty">No Data!</string>
 
     <string name="dialog_request_permission_title">Permission required!</string>
     <string name="dialog_request_permission_message">Location permission is required to run this app!</string>
     <string name="dialog_request_permission_ok">OK</string>
     <string name="dialog_request_permission_cancel">Cancel</string>
+    <string name="dialog_add_location_title">Add Location</string>
+    <string name="dialog_add_location_address">Address</string>
+    <string name="dialog_add_location_add">Add</string>
+    <string name="dialog_network_check_title">Connect network first!</string>
+    <string name="dialog_network_check_message">Can\'t find any network connection!</string>
+    <string name="dialog_network_check_finish">Finish</string>
+    <string name="dialog_delete_location_title">Delete location</string>
+    <string name="dialog_delete_location_message">Are you sure want to delete %s?</string>
+    <string name="dialog_delete_location_delete">Delete</string>
+    <string name="dialog_delete_location_cancel">Cancel</string>
+
+    <string name="geocoder_location_not_found">Can\'t find %s!</string>
+
+    <string name="activity_cant_change">Please try later!</string>
 </resources>
